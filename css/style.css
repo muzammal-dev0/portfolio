@@ -304,6 +304,202 @@ html {
   opacity: 0.8;
 }
 
+/* React Skill Card */
+.skill-card-react {
+  background: linear-gradient(135deg, #282c34, #61dafb);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(97, 218, 251, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-react:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(97, 218, 251, 0.4);
+}
+
+/* Orbital effect for React */
+.skill-card-react::before,
+.skill-card-react::after {
+  content: "";
+  position: absolute;
+  border: 2px solid rgba(97, 218, 251, 0.3);
+  width: 120px;
+  height: 60px;
+  border-radius: 50%;
+  top: calc(50% - 30px);
+  left: calc(50% - 60px);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.skill-card-react::after {
+  transform: rotate(60deg);
+}
+
+.skill-card-react::before {
+  transform: rotate(-60deg);
+}
+
+.skill-card-react:hover::before,
+.skill-card-react:hover::after {
+  opacity: 1;
+  width: 140px;
+  height: 70px;
+  top: calc(50% - 35px);
+  left: calc(50% - 70px);
+}
+
+/* Animation for the orbits */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skill-card-react:hover::before {
+  animation: orbit 8s linear infinite;
+}
+
+.skill-card-react:hover::after {
+  animation: orbit 8s linear infinite reverse;
+}
+
+.skill-card-react .text-4xl {
+  color: #61dafb;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  background: rgba(40, 44, 52, 0.7);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(97, 218, 251, 0.5);
+}
+
+.skill-card-react:hover .text-4xl {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(97, 218, 251, 0.8);
+}
+
+.skill-card-react h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-react p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Node.js Skill Card */
+.skill-card-node {
+  background: linear-gradient(135deg, #333333, #68a063);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(104, 160, 99, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-node:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(104, 160, 99, 0.3);
+}
+
+.skill-card-node::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill='%2368a063' fill-opacity='0.1' d='M10 0L0 10h10v10L20 10H10V0z'/%3E%3C/svg%3E");
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.skill-card-node:hover::before {
+  opacity: 0.2;
+  transform: scale(1.2);
+}
+
+.skill-card-node .text-4xl {
+  color: #68a063;
+  position: relative;
+  z-index: 2;
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 0 5px rgba(104, 160, 99, 0.5));
+}
+
+.skill-card-node:hover .text-4xl {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(104, 160, 99, 0.7));
+}
+
+/* Connection effects */
+.skill-card-node::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(104, 160, 99, 0),
+    rgba(104, 160, 99, 1) 50%,
+    rgba(104, 160, 99, 0) 100%
+  );
+  transition: all 0.5s ease;
+}
+
+.skill-card-node:hover::after {
+  width: 100%;
+  animation: networkPulse 2s infinite;
+}
+
+@keyframes networkPulse {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(0.5);
+  }
+}
+
+.skill-card-node h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-node p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
 /* Custom styles for section transitions */
 section {
   position: relative;

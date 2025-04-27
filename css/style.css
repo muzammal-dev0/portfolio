@@ -1,5 +1,10 @@
 /* Custom styles for portfolio */
 
+/* Font Family */
+body {
+  font-family: "Sansation", sans-serif;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

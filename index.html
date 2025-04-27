@@ -11,10 +11,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <!-- Sansation Font -->
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sansation" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+  <body
+    class="bg-gray-100 font-sans leading-normal tracking-normal"
+    style="font-family: 'Sansation', sans-serif"
+  >
     <!-- Navigation -->
     <nav class="bg-gray-900 p-4 sticky top-0 z-50 shadow-md">
       <div
@@ -371,31 +376,34 @@
           My Projects
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project 1 -->
+          <!-- Project 1 - Promethium -->
           <div
             class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition"
           >
             <div class="bg-gray-300 h-48 flex items-center justify-center">
-              <span class="text-gray-600">Project Image</span>
+              <i class="fas fa-database text-5xl text-gray-500"></i>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-gray-800">Project Name</h3>
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Promethium - DAS Management
+              </h3>
               <p class="text-gray-600 mb-4">
-                A brief description of the project, what technologies were used,
-                and what problems it solves.
+                Built microservices architecture for DAS Management. Implemented
+                GraphQL APIs for data querying and designed scalable backend
+                solutions with extensive testing.
               </p>
               <div class="flex space-x-2 mb-4">
                 <span
                   class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
-                  >HTML</span
+                  >NestJS</span
                 >
                 <span
                   class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
-                  >CSS</span
+                  >PostgreSQL</span
                 >
                 <span
                   class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
-                  >JavaScript</span
+                  >GraphQL</span
                 >
               </div>
               <div class="flex space-x-4">
@@ -415,32 +423,35 @@
             </div>
           </div>
 
-          <!-- Project 2 -->
+          <!-- Project 2 - Willo Box -->
           <div
             class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition"
           >
             <div class="bg-gray-300 h-48 flex items-center justify-center">
-              <span class="text-gray-600">Project Image</span>
+              <i class="fas fa-robot text-5xl text-gray-500"></i>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-gray-800">Project Name</h3>
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Willo Box - AI PDF Assistant
+              </h3>
               <p class="text-gray-600 mb-4">
-                A brief description of the project, what technologies were used,
-                and what problems it solves.
+                Created a platform for users to upload PDFs and ask
+                context-based questions, using OpenAI APIs, LangChain, and
+                VectorDB for semantic search capabilities.
               </p>
               <div class="flex space-x-2 mb-4">
-                <span
-                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
-                  >React</span
-                >
-                <span
-                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
-                  >Tailwind</span
-                >
                 <span
                   class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
                   >Node.js</span
                 >
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >OpenAI</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >VectorDB</span
+                >
               </div>
               <div class="flex space-x-4">
                 <a
@@ -459,31 +470,175 @@
             </div>
           </div>
 
-          <!-- Project 3 -->
+          <!-- Project 3 - Crypto Broker -->
           <div
             class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition"
           >
             <div class="bg-gray-300 h-48 flex items-center justify-center">
-              <span class="text-gray-600">Project Image</span>
+              <i class="fab fa-bitcoin text-5xl text-gray-500"></i>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-gray-800">Project Name</h3>
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Crypto Broker Platform
+              </h3>
               <p class="text-gray-600 mb-4">
-                A brief description of the project, what technologies were used,
-                and what problems it solves.
+                Developed a secure crypto exchange platform enabling users to
+                sell cryptocurrency to admins with bank transfers, supporting
+                both web and mobile interfaces.
               </p>
               <div class="flex space-x-2 mb-4">
                 <span
                   class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
-                  >JavaScript</span
+                  >NestJS</span
                 >
                 <span
                   class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
-                  >API</span
+                  >MongoDB</span
                 >
                 <span
                   class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
-                  >CSS</span
+                  >React Native</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="text-blue-600 hover:text-blue-800 transition"
+                >
+                  <i class="fab fa-github"></i> Code
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-600 hover:text-blue-800 transition"
+                >
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 - KatanaInu -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition"
+          >
+            <div class="bg-gray-300 h-48 flex items-center justify-center">
+              <i class="fas fa-gamepad text-5xl text-gray-500"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                KatanaInu Gaming Platform
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Built a gaming platform similar to Epic or Steam, where users
+                can play games and admins can upload games, featuring social
+                media components for tournament organization.
+              </p>
+              <div class="flex space-x-2 mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >MongoDB</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Express.js</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >React.js</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="text-blue-600 hover:text-blue-800 transition"
+                >
+                  <i class="fab fa-github"></i> Code
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-600 hover:text-blue-800 transition"
+                >
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 - Obon -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition"
+          >
+            <div class="bg-gray-300 h-48 flex items-center justify-center">
+              <i class="fas fa-utensils text-5xl text-gray-500"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Obon - Restaurant Tipping Platform
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Contributed to a restaurant tipping platform allowing waitstaff
+                and restaurants to register and receive tips. Implemented Google
+                Reviews integration for customer feedback.
+              </p>
+              <div class="flex space-x-2 mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >PostgreSQL</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Express.js</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >React.js</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="text-blue-600 hover:text-blue-800 transition"
+                >
+                  <i class="fab fa-github"></i> Code
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-600 hover:text-blue-800 transition"
+                >
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6 - Solutionz -->
+          <div
+            class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition"
+          >
+            <div class="bg-gray-300 h-48 flex items-center justify-center">
+              <i class="fas fa-school text-5xl text-gray-500"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800">
+                Solutionz - Educational CRM
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Designed and implemented a comprehensive backend for an
+                educational CRM system with user authentication, student
+                management, and performance tracking capabilities.
+              </p>
+              <div class="flex space-x-2 mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >MongoDB</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Express.js</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Node.js</span
                 >
               </div>
               <div class="flex space-x-4">

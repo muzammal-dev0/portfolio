@@ -39,6 +39,271 @@ html {
   animation: slideUp 0.8s ease-out;
 }
 
+/* Custom animations for skill cards */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes borderPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* HTML Skill Card */
+.skill-card-html {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.skill-card-html:hover {
+  transform: translateY(-15px) rotateY(10deg);
+  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+}
+
+.skill-card-html::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: rotate(30deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.skill-card-html:hover::before {
+  opacity: 1;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skill-card-html .text-4xl {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.skill-card-html:hover .text-4xl {
+  transform: scale(1.2);
+  animation: pulse 2s infinite;
+}
+
+.skill-card-html h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card-html p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* CSS Skill Card */
+.skill-card-css {
+  background: linear-gradient(135deg, #4158d0, #c850c0);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(192, 80, 192, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-css:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(192, 80, 192, 0.3);
+}
+
+.skill-card-css::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: all 0.8s ease;
+}
+
+.skill-card-css:hover::before {
+  left: 100%;
+}
+
+.skill-card-css .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.skill-card-css:hover .text-4xl {
+  animation: float 2s ease-in-out infinite;
+}
+
+.skill-card-css h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card-css p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Custom pseudo-elements for CSS card */
+.skill-card-css::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.skill-card-css:hover::after {
+  opacity: 1;
+  transform: scale(2);
+}
+
+/* JavaScript Skill Card */
+.skill-card-js {
+  background: linear-gradient(135deg, #f7df1e, #e6b800);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(247, 223, 30, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-js:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(247, 223, 30, 0.3);
+}
+
+.skill-card-js::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(247, 223, 30, 0.3), rgba(230, 184, 0, 0.3));
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-js:hover::before {
+  opacity: 1;
+}
+
+.skill-card-js .text-4xl {
+  color: #333;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-js:hover .text-4xl {
+  transform: rotate(360deg);
+  color: #000;
+}
+
+.skill-card-js h3 {
+  color: #333;
+  position: relative;
+  z-index: 2;
+  font-weight: bold;
+}
+
+.skill-card-js p {
+  color: #333;
+  position: relative;
+  z-index: 2;
+}
+
+/* JavaScript Code Pattern */
+.skill-card-js::after {
+  content: "{ }";
+  position: absolute;
+  font-size: 80px;
+  bottom: -20px;
+  right: -20px;
+  color: rgba(0, 0, 0, 0.1);
+  font-family: monospace;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.skill-card-js:hover::after {
+  transform: rotate(10deg);
+  opacity: 0.8;
+}
+
 /* Custom styles for section transitions */
 section {
   position: relative;

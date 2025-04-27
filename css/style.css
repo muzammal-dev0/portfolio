@@ -909,3 +909,256 @@ textarea:focus {
   opacity: 1;
   transform: translateY(-5px);
 }
+
+/* Tailwind CSS Skill Card */
+.skill-card-tailwind {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-tailwind:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(56, 189, 248, 0.3);
+}
+
+.skill-card-tailwind::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'%3E%3C/path%3E%3Cpath d='M2 17l10 5 10-5'%3E%3C/path%3E%3Cpath d='M2 12l10 5 10-5'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: repeat;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.skill-card-tailwind:hover::before {
+  opacity: 0.2;
+  transform: scale(1.2);
+}
+
+.skill-card-tailwind .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-tailwind:hover .text-4xl {
+  transform: rotate(360deg);
+}
+
+.skill-card-tailwind h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-tailwind p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Bootstrap Skill Card */
+.skill-card-bootstrap {
+  background: linear-gradient(135deg, #7952b3, #5a3d86);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(121, 82, 179, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-bootstrap:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(121, 82, 179, 0.3);
+}
+
+.skill-card-bootstrap::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-bootstrap:hover::before {
+  opacity: 1;
+}
+
+/* Bootstrap component patterns */
+.skill-card-bootstrap::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  width: 100px;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 16 16' fill='rgba(255,255,255,0.1)'%3E%3Cpath fill-rule='evenodd' d='M6.375 7.125V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23H6.375zm0 3.762h1.898c1.184 0 1.81-.48 1.81-1.377 0-.885-.65-1.348-1.886-1.348H6.375v2.725z'/%3E%3Cpath d='M4.002 0a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4h-8zm1.06 12V3.545h3.399c1.587 0 2.543.809 2.543 2.11 0 .884-.65 1.675-1.483 1.816v.1c1.143.117 1.904.931 1.904 2.033 0 1.488-1.084 2.396-2.888 2.396H5.062z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  transform: rotate(15deg);
+  transition: all 0.3s ease;
+}
+
+.skill-card-bootstrap:hover::after {
+  transform: rotate(0deg) scale(1.2);
+  opacity: 0.3;
+}
+
+.skill-card-bootstrap .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-bootstrap:hover .text-4xl {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.skill-card-bootstrap h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-bootstrap p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Shadcn UI Skill Card */
+.skill-card-shadcn {
+  background: linear-gradient(135deg, #18181b, #27272a);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(24, 24, 27, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-shadcn:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(24, 24, 27, 0.3);
+}
+
+/* Abstract UI patterns */
+.skill-card-shadcn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 10%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 10%
+    );
+  opacity: 0.3;
+  transition: all 0.5s ease;
+}
+
+.skill-card-shadcn:hover::before {
+  background-position: 25% 35%, 85% 75%;
+  opacity: 0.5;
+}
+
+/* Component lines */
+.skill-card-shadcn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+        90deg,
+        transparent 49%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 51%
+      )
+      0 0 / 10px 10px,
+    linear-gradient(
+        0deg,
+        transparent 49%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 51%
+      )
+      0 0 / 10px 10px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.skill-card-shadcn:hover::after {
+  transform: scale(1.2);
+  opacity: 0.5;
+}
+
+.skill-card-shadcn .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-shadcn:hover .text-4xl {
+  filter: drop-shadow(0 0 8px rgba(119, 161, 255, 0.7));
+}
+
+@keyframes colorShift {
+  0% {
+    color: #4f46e5;
+  }
+  25% {
+    color: #2dd4bf;
+  }
+  50% {
+    color: #f97316;
+  }
+  75% {
+    color: #ec4899;
+  }
+  100% {
+    color: #4f46e5;
+  }
+}
+
+.skill-card-shadcn:hover .text-4xl i {
+  animation: colorShift 3s infinite;
+}
+
+.skill-card-shadcn h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-shadcn p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}

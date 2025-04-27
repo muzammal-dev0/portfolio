@@ -1162,3 +1162,321 @@ textarea:focus {
   position: relative;
   z-index: 2;
 }
+
+/* MongoDB Skill Card */
+.skill-card-mongo {
+  background: linear-gradient(135deg, #4db33d, #3f9c35);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(77, 179, 61, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mongo:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(77, 179, 61, 0.3);
+}
+
+/* MongoDB document pattern */
+.skill-card-mongo::before {
+  content: "{...}";
+  position: absolute;
+  font-family: monospace;
+  font-size: 100px;
+  bottom: -30px;
+  right: -20px;
+  color: rgba(255, 255, 255, 0.1);
+  opacity: 0.2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mongo:hover::before {
+  transform: scale(1.2) rotate(10deg);
+  opacity: 0.3;
+}
+
+/* MongoDB leaf pattern */
+.skill-card-mongo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 30% 40%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mongo:hover::after {
+  transform: scale(1.3);
+}
+
+.skill-card-mongo .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-mongo:hover .text-4xl {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+}
+
+.skill-card-mongo h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-mongo p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* PostgreSQL Skill Card */
+.skill-card-postgres {
+  background: linear-gradient(135deg, #336791, #254c73);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(51, 103, 145, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-postgres:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(51, 103, 145, 0.3);
+}
+
+/* SQL query pattern */
+.skill-card-postgres::before {
+  content: "SELECT";
+  position: absolute;
+  font-family: monospace;
+  font-size: 16px;
+  top: 10px;
+  right: 10px;
+  color: rgba(255, 255, 255, 0.1);
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.skill-card-postgres:hover::before {
+  content: "SELECT *\nFROM table\nWHERE id = 1;";
+  white-space: pre;
+  opacity: 0.6;
+}
+
+/* PostgreSQL elephant pattern */
+.skill-card-postgres::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 100px;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,0.1)'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L12 14.17l-4.59-4.59L6 11l6 6 6-6-1.41-1.42z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+.skill-card-postgres:hover::after {
+  transform: rotate(0deg) translateY(-20px);
+  opacity: 0.3;
+}
+
+@keyframes queryExecution {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 80%;
+  }
+}
+
+.skill-card-postgres .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-postgres:hover .text-4xl {
+  animation: pulse 2s infinite;
+}
+
+.skill-card-postgres h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-postgres p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Query execution animation */
+.skill-card-postgres p::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  bottom: -5px;
+  left: 0;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.skill-card-postgres:hover p::after {
+  animation: queryExecution 2s infinite alternate;
+}
+
+/* MySQL Skill Card */
+.skill-card-mysql {
+  background: linear-gradient(135deg, #00758f, #00546b);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 117, 143, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mysql:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(0, 117, 143, 0.3);
+}
+
+/* Dolphin pattern */
+.skill-card-mysql::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at 70% 80%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mysql:hover::before {
+  transform: scale(1.2) translateX(-10px);
+  opacity: 0.5;
+}
+
+/* Database structure pattern */
+.skill-card-mysql::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg) translateX(-100%);
+  transition: all 0.5s ease;
+}
+
+.skill-card-mysql:hover::after {
+  transform: skewX(-20deg) translateX(100%);
+}
+
+@keyframes tableRows {
+  0% {
+    width: 30%;
+  }
+  20% {
+    width: 60%;
+  }
+  40% {
+    width: 45%;
+  }
+  60% {
+    width: 75%;
+  }
+  80% {
+    width: 55%;
+  }
+  100% {
+    width: 30%;
+  }
+}
+
+.skill-card-mysql .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-mysql:hover .text-4xl {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+}
+
+.skill-card-mysql h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-mysql p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Database row visualization */
+.skill-card-mysql p::before,
+.skill-card-mysql p::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mysql p::before {
+  bottom: -10px;
+}
+
+.skill-card-mysql p::after {
+  bottom: -15px;
+  width: 40%;
+}
+
+.skill-card-mysql:hover p::before,
+.skill-card-mysql:hover p::after {
+  opacity: 1;
+}
+
+.skill-card-mysql:hover p::after {
+  animation: tableRows 3s infinite;
+}

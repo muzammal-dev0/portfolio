@@ -1480,3 +1480,320 @@ textarea:focus {
 .skill-card-mysql:hover p::after {
   animation: tableRows 3s infinite;
 }
+
+/* Git & GitHub Skill Card */
+.skill-card-git {
+  background: linear-gradient(135deg, #f05033, #bd2c00);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(240, 80, 51, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-git:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(240, 80, 51, 0.3);
+}
+
+/* Branch visualization */
+.skill-card-git::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 60%;
+  height: 40px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='rgba(255,255,255,0.1)'%3E%3Cpath d='M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z'/%3E%3Cpath d='M2 17l10 5 10-5'%3E%3C/path%3E%3Cpath d='M2 12l10 5 10-5'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.1;
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+.skill-card-git:hover::before {
+  transform: rotate(90deg) scale(1.2);
+  opacity: 0.2;
+}
+
+/* Commit dot pattern */
+.skill-card-git::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 50px;
+  background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 2%,
+        transparent 3%
+      )
+      0 0 / 20px 20px,
+    radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 2%,
+        transparent 3%
+      )
+      10px 10px / 20px 20px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.skill-card-git:hover::after {
+  transform: scale(1.3);
+  opacity: 0.4;
+}
+
+@keyframes branchMerge {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(10px);
+    opacity: 0.3;
+  }
+}
+
+.skill-card-git .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-git:hover .text-4xl {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+}
+
+.skill-card-git h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-git p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Branch line animation */
+.skill-card-git p::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 30px;
+  bottom: -10px;
+  left: 0;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-git:hover p::after {
+  opacity: 1;
+  animation: branchMerge 3s infinite;
+}
+
+/* Docker Skill Card */
+.skill-card-docker {
+  background: linear-gradient(135deg, #0db7ed, #0769ad);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(13, 183, 237, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-docker:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(13, 183, 237, 0.3);
+}
+
+/* Container pattern */
+.skill-card-docker::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+        0deg,
+        transparent 80%,
+        rgba(255, 255, 255, 0.1) 81%,
+        transparent 82%
+      )
+      0 0 / 20px 30px,
+    linear-gradient(
+        0deg,
+        transparent 85%,
+        rgba(255, 255, 255, 0.1) 86%,
+        transparent 87%
+      )
+      10px 15px / 20px 30px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.skill-card-docker:hover::before {
+  background-position: 0 5px, 10px 20px;
+  opacity: 0.5;
+}
+
+/* Docker whale pattern */
+.skill-card-docker::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512' fill='rgba(255,255,255,0.1)'%3E%3Cpath d='M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.skill-card-docker:hover::after {
+  transform: translateY(-10px);
+  opacity: 0.2;
+}
+
+.skill-card-docker .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-docker:hover .text-4xl {
+  animation: float 3s ease-in-out infinite;
+}
+
+.skill-card-docker h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-docker p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Kubernetes Skill Card */
+.skill-card-kubernetes {
+  background: linear-gradient(135deg, #326ce5, #254aa5);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(50, 108, 229, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-kubernetes:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(50, 108, 229, 0.3);
+}
+
+/* Pod pattern */
+.skill-card-kubernetes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 20%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 20%
+    ),
+    radial-gradient(
+      circle at 40% 70%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 20%
+    );
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.skill-card-kubernetes:hover::before {
+  background-position: 25% 25%, 85% 35%, 45% 75%;
+  opacity: 0.5;
+}
+
+/* Kubernetes wheel pattern */
+.skill-card-kubernetes::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  width: 100px;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512' fill='rgba(255,255,255,0.1)'%3E%3Cpath d='M512.1 191l-8.2 14.3c-3 5.3-9.4 7.5-15.1 5.4-11.8-4.4-22.6-10.7-32.1-18.6-4.6-3.8-5.8-10.5-2.8-15.7l8.2-14.3c-6.9-8-12.3-17.3-15.9-27.4h-16.5c-6 0-11.2-4.3-12.2-10.3-2-12-2.1-24.6 0-37.1 1-6 6.2-10.4 12.2-10.4h16.5c3.6-10.1 9-19.4 15.9-27.4l-8.2-14.3c-3-5.2-1.9-11.9 2.8-15.7 9.5-7.9 20.4-14.2 32.1-18.6 5.7-2.1 12.1.1 15.1 5.4l8.2 14.3c10.5-1.9 21.2-1.9 31.7 0l8.2-14.3c3-5.3 9.4-7.5 15.1-5.4 11.8 4.4 22.6 10.7 32.1 18.6 4.6 3.8 5.8 10.5 2.8 15.7l-8.2 14.3c6.9 8 12.3 17.3 15.9 27.4h16.5c6 0 11.2 4.3 12.2 10.3 2 12 2.1 24.6 0 37.1-1 6-6.2 10.4-12.2 10.4h-16.5c-3.6 10.1-9 19.4-15.9 27.4l8.2 14.3c3 5.2 1.9 11.9-2.8 15.7-9.5 7.9-20.4 14.2-32.1 18.6-5.7 2.1-12.1-.1-15.1-5.4l-8.2-14.3c-10.4 1.9-21.2 1.9-31.7 0zM501.6 431c38.5 29.6 82.4-14.3 52.8-52.8-38.5-29.6-82.4 14.3-52.8 52.8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.skill-card-kubernetes:hover::after {
+  transform: rotate(60deg);
+  opacity: 0.2;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skill-card-kubernetes .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-kubernetes:hover .text-4xl {
+  animation: rotate 4s linear infinite;
+}
+
+.skill-card-kubernetes h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-kubernetes p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}

@@ -781,3 +781,131 @@ textarea:focus {
   background-clip: text;
   color: transparent;
 }
+
+/* Responsive Design Skill Card */
+.skill-card-responsive {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-responsive:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+}
+
+/* Device frames effect */
+.skill-card-responsive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  transform: translate(10px, 10px) scale(0.8);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.skill-card-responsive::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  transform: translate(-30px, -20px) scale(0.8);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.skill-card-responsive:hover::before {
+  transform: translate(20px, 10px) scale(1);
+  opacity: 0.8;
+}
+
+.skill-card-responsive:hover::after {
+  transform: translate(-40px, -30px) scale(1);
+  opacity: 0.8;
+}
+
+/* Responsive resize animation */
+@keyframes responsiveResize {
+  0%,
+  100% {
+    width: 80%;
+    height: 80%;
+  }
+  50% {
+    width: 60%;
+    height: 90%;
+  }
+}
+
+.skill-card-responsive .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-responsive:hover .text-4xl {
+  animation: responsiveResize 3s infinite;
+}
+
+.skill-card-responsive h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-responsive p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Media query visualization */
+.skill-card-responsive p::before {
+  content: "@media";
+  font-family: monospace;
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-responsive:hover p::before {
+  opacity: 1;
+  transform: translateY(5px);
+}
+
+/* Breakpoints visualization */
+.skill-card-responsive p::after {
+  content: "mobile tablet desktop";
+  font-family: monospace;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-responsive:hover p::after {
+  opacity: 1;
+  transform: translateY(-5px);
+}

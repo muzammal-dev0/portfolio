@@ -4,14 +4,17 @@ import {
   databaseSkills,
   devOpsSkills,
 } from '../../constants/skills'
+import { Spotlight } from '../magicui/Spotlight'
 
 const SkillCard = ({ skill }) => (
-  <div className={`${skill.cardClass} p-8 hover:shadow-xl transition`}>
-    <div className={`text-4xl ${skill.iconColor} mb-4`}>
-      <i className={skill.icon}></i>
-    </div>
-    <h3 className={`text-xl font-bold mb-2 ${skill.textColor}`}>{skill.title}</h3>
-    <p className={skill.textColor}>{skill.description}</p>
+  <div className="relative group">
+    <Spotlight className={`${skill.cardClass} p-8 hover:shadow-xl transition relative`}>
+      <div className={`text-4xl ${skill.iconColor} mb-4 relative z-10`}>
+        <i className={skill.icon}></i>
+      </div>
+      <h3 className={`text-xl font-bold mb-2 ${skill.textColor} relative z-10`}>{skill.title}</h3>
+      <p className={`${skill.textColor} relative z-10`}>{skill.description}</p>
+    </Spotlight>
   </div>
 )
 

@@ -5,6 +5,16 @@ body {
   font-family: "Sansation", sans-serif;
 }
 
+/* MagicUI Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

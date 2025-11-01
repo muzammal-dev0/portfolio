@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { personalInfo } from '../../constants/personalInfo'
+import { ShimmerButton } from '../magicui/ShimmerButton'
 
 const ContactInfo = ({ icon, label, value }) => (
   <div className="flex items-center mb-4">
@@ -180,12 +181,13 @@ const Contact = () => {
                   required
                 ></textarea>
               </div>
-              <button
+              <ShimmerButton
                 type="submit"
-                className="w-full bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold transition shadow-lg"
+                className="w-full bg-blue-600 text-white hover:bg-blue-700 font-semibold"
+                background="rgba(37, 99, 235, 1)"
               >
                 Send Message
-              </button>
+              </ShimmerButton>
             </form>
           </div>
         </div>

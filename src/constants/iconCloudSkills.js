@@ -28,6 +28,9 @@ const skillToSlugMap = {
   'EC2': 'amazonec2',
   'S3': 'amazons3',
   'GitHub Actions': 'githubactions',
+  // Testing tools
+  'Jest': 'jest',
+  'Postman': 'postman',
 }
 
 // Combine all skills

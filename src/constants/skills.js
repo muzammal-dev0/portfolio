@@ -187,4 +187,24 @@ export const devOpsSkills = [
     iconColor: "text-green-600",
     textColor: "text-gray-800",
   },
+  {
+    icon: "fas fa-vial",
+    iconUrl: "https://cdn.simpleicons.org/jest/C21325",
+    title: "Jest",
+    description:
+      "Writing comprehensive unit and integration tests using Jest for reliable and maintainable code.",
+    cardClass: "skill-card-jest",
+    iconColor: "text-red-600",
+    textColor: "text-gray-800",
+  },
+  {
+    icon: "fas fa-cloud",
+    iconUrl: "https://cdn.simpleicons.org/postman/FF6C37",
+    title: "Postman",
+    description:
+      "Creating and managing API testing workflows using Postman for efficient API development and testing.",
+    cardClass: "skill-card-postman",
+    iconColor: "text-orange-500",
+    textColor: "text-gray-800",
+  },
 ];

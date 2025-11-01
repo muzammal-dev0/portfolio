@@ -1,4 +1,5 @@
 import { personalInfo } from '../../constants/personalInfo'
+import { PulsatingButton } from '../magicui/PulsatingButton'
 
 const About = () => {
   const infoItems = [
@@ -35,13 +36,15 @@ const About = () => {
                 </div>
               ))}
             </div>
-            <a
+            <PulsatingButton
+              as="a"
               href={personalInfo.cvPath}
               download="CV.pdf"
-              className="inline-block bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold transition shadow-lg"
+              className="inline-flex bg-blue-600 text-white hover:bg-blue-700 font-semibold shadow-lg no-underline"
+              pulseColor="37, 99, 235"
             >
               Download Resume
-            </a>
+            </PulsatingButton>
           </div>
         </div>
       </div>

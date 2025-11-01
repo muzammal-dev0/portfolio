@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { personalInfo } from '../../constants/personalInfo'
-import { ShimmerButton } from '../magicui/ShimmerButton'
+import { PulsatingButton } from '../magicui/PulsatingButton'
 import { Dock, DockIcon } from '@/components/ui/dock'
 import { Meteors } from '../magicui/Meteors'
 
@@ -211,13 +211,13 @@ const Contact = () => {
                 ></textarea>
               </div>
               <div className="relative z-10">
-                <ShimmerButton
+                <PulsatingButton
                   type="submit"
                   className="w-full bg-blue-600 text-white hover:bg-blue-700 font-semibold"
-                  background="rgba(37, 99, 235, 1)"
+                  pulseColor="37, 99, 235"
                 >
                   Send Message
-                </ShimmerButton>
+                </PulsatingButton>
               </div>
             </form>
           </div>

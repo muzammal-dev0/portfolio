@@ -24,7 +24,7 @@ const Header = () => {
           <span>Portfolio</span>
         </a>
         <div className="hidden md:flex space-x-8">
-          {['home', 'about', 'skills', 'projects', 'contact'].map((section) => (
+          {['home', 'about', 'experience', 'skills', 'projects', 'contact'].map((section) => (
             <a
               key={section}
               href={`#${section}`}
@@ -50,7 +50,7 @@ const Header = () => {
       <div
         className={`md:hidden bg-gray-800 p-4 mt-2 ${isMenuOpen ? 'block' : 'hidden'}`}
       >
-        {['home', 'about', 'skills', 'projects', 'contact'].map((section) => (
+        {['home', 'about', 'experience', 'skills', 'projects', 'contact'].map((section) => (
           <a
             key={section}
             href={`#${section}`}

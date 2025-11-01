@@ -1,0 +1,164 @@
+export const frontendSkills = [
+  {
+    icon: 'fab fa-html5',
+    title: 'HTML5',
+    description:
+      'Expert in creating semantic, accessible, and SEO-friendly HTML markup.',
+    cardClass: 'skill-card-html',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fab fa-css3-alt',
+    title: 'CSS3',
+    description:
+      'Proficient in CSS3, flexbox, grid, animations, and responsive design.',
+    cardClass: 'skill-card-css',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fab fa-js',
+    title: 'JavaScript',
+    description:
+      'Strong knowledge of JavaScript, ES6+, DOM manipulation, and modern APIs.',
+    cardClass: 'skill-card-js',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fab fa-react',
+    title: 'React',
+    description:
+      'Experience building dynamic and responsive UIs with React and its ecosystem.',
+    cardClass: 'skill-card-react',
+    iconColor: '',
+    textColor: '',
+  },
+  {
+    icon: 'fab fa-js',
+    title: 'TypeScript',
+    description:
+      'Using TypeScript to build type-safe and maintainable frontend applications.',
+    cardClass: 'skill-card-ts',
+    iconColor: '',
+    textColor: '',
+  },
+  {
+    icon: 'fas fa-mobile-alt',
+    title: 'Responsive Design',
+    description:
+      'Creating websites that work beautifully across all devices and screen sizes.',
+    cardClass: 'skill-card-responsive',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fab fa-css3',
+    title: 'Tailwind CSS',
+    description:
+      'Creating modern, responsive interfaces using Tailwind\'s utility-first CSS framework.',
+    cardClass: 'skill-card-tailwind',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fab fa-bootstrap',
+    title: 'Bootstrap',
+    description:
+      'Developing responsive, mobile-first websites using Bootstrap\'s component library and grid system.',
+    cardClass: 'skill-card-bootstrap',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fas fa-palette',
+    title: 'Shadcn UI',
+    description:
+      'Building accessible and customizable interfaces using Shadcn UI components.',
+    cardClass: 'skill-card-shadcn',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+]
+
+export const backendSkills = [
+  {
+    icon: 'fab fa-node-js',
+    title: 'Node.js',
+    description: 'Backend development with Node.js, Express, and various databases.',
+    cardClass: 'skill-card-node',
+    iconColor: '',
+    textColor: '',
+  },
+  {
+    icon: 'fab fa-node-js',
+    title: 'NestJS',
+    description:
+      'Building robust and scalable server-side applications using NestJS framework with TypeScript.',
+    cardClass: 'skill-card-nest',
+    iconColor: '',
+    textColor: '',
+  },
+]
+
+export const databaseSkills = [
+  {
+    icon: 'fas fa-database',
+    title: 'MongoDB',
+    description:
+      'Working with NoSQL databases to build flexible and scalable data storage solutions.',
+    cardClass: 'skill-card-mongo',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fas fa-database',
+    title: 'PostgreSQL',
+    description:
+      'Designing and optimizing relational databases for complex applications.',
+    cardClass: 'skill-card-postgres',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fas fa-database',
+    title: 'MySQL',
+    description:
+      'Working with MySQL for robust relational database management and efficient data querying.',
+    cardClass: 'skill-card-mysql',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+]
+
+export const devOpsSkills = [
+  {
+    icon: 'fab fa-git-alt',
+    title: 'Git & GitHub',
+    description:
+      'Proficient in version control with Git and collaborative development using GitHub workflows.',
+    cardClass: 'skill-card-git',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fab fa-docker',
+    title: 'Docker',
+    description:
+      'Containerizing applications with Docker for consistent development, testing, and deployment environments.',
+    cardClass: 'skill-card-docker',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fas fa-dharmachakra',
+    title: 'Kubernetes',
+    description:
+      'Orchestrating containerized applications with Kubernetes for automated deployment, scaling, and management of application containers.',
+    cardClass: 'skill-card-kubernetes',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+]
+

@@ -1,4 +1,29 @@
 import { useState } from 'react'
+import { personalInfo } from '../../constants/personalInfo'
+
+const ContactInfo = ({ icon, label, value }) => (
+  <div className="flex items-center mb-4">
+    <div className="text-xl text-blue-500 mr-4">
+      <i className={icon}></i>
+    </div>
+    <div>
+      <h4 className="font-bold text-gray-700">{label}</h4>
+      <p className="text-gray-600">{value}</p>
+    </div>
+  </div>
+)
+
+const SocialLink = ({ href, icon, className }) => (
+  <a
+    href={href}
+    className={className}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={icon}
+  >
+    <i className={icon}></i>
+  </a>
+)
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +50,6 @@ const Contact = () => {
     }
 
     // Here you would typically send the form data to a server
-    // For demo purposes, we'll just log it and show a success message
     console.log('Form submission:', formData)
 
     // Show success message
@@ -40,6 +64,33 @@ const Contact = () => {
     })
   }
 
+  const contactInfo = [
+    { icon: 'fas fa-map-marker-alt', label: 'Location:', value: personalInfo.location },
+    { icon: 'fas fa-envelope', label: 'Email:', value: personalInfo.email },
+    { icon: 'fas fa-phone', label: 'Phone:', value: personalInfo.phone },
+  ]
+
+  const socialLinks = [
+    {
+      href: personalInfo.socialLinks.linkedin,
+      icon: 'fab fa-linkedin-in',
+      className:
+        'h-12 w-12 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition',
+    },
+    {
+      href: personalInfo.socialLinks.github,
+      icon: 'fab fa-github',
+      className:
+        'h-12 w-12 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-black transition',
+    },
+    {
+      href: personalInfo.socialLinks.whatsapp,
+      icon: 'fab fa-whatsapp',
+      className:
+        'h-12 w-12 bg-green-600 text-white rounded-full flex items-center justify-center hover:bg-green-700 transition',
+    },
+  ]
+
   return (
     <section id="contact" className="py-20 bg-gray-100">
       <div className="container mx-auto px-4">
@@ -52,71 +103,22 @@ const Contact = () => {
               Contact Information
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              I'm interested in freelance opportunities – especially ambitious or large
-              projects. However, if you have other requests or questions, don't hesitate
-              to contact me.
-              <br />
-              <span className="block mt-2">
-                I can help you kick start your startup and build your project from
-                scratch.
-              </span>
+              {personalInfo.contactMessage}
             </p>
-            <div className="flex items-center mb-4">
-              <div className="text-xl text-blue-500 mr-4">
-                <i className="fas fa-map-marker-alt"></i>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-700">Location:</h4>
-                <p className="text-gray-600">Lahore, Pakistan</p>
-              </div>
-            </div>
-            <div className="flex items-center mb-4">
-              <div className="text-xl text-blue-500 mr-4">
-                <i className="fas fa-envelope"></i>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-700">Email:</h4>
-                <p className="text-gray-600">muzammal.dev0@gmail.com</p>
-              </div>
-            </div>
-            <div className="flex items-center mb-4">
-              <div className="text-xl text-blue-500 mr-4">
-                <i className="fas fa-phone"></i>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-700">Phone:</h4>
-                <p className="text-gray-600">+923074727093</p>
-              </div>
-            </div>
+            {contactInfo.map((info, index) => (
+              <ContactInfo key={index} {...info} />
+            ))}
             <div className="flex mt-8 space-x-4">
-              <a
-                href="https://www.linkedin.com/in/muzammal-hussain-836a96151/"
-                className="h-12 w-12 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a
-                href="https://github.com/muzammal-dev0"
-                className="h-12 w-12 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-black transition"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-github"></i>
-              </a>
-              <a
-                href="https://api.whatsapp.com/send?phone=923074727093"
-                className="h-12 w-12 bg-green-600 text-white rounded-full flex items-center justify-center hover:bg-green-700 transition"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-whatsapp"></i>
-              </a>
+              {socialLinks.map((link, index) => (
+                <SocialLink key={index} {...link} />
+              ))}
             </div>
           </div>
           <div className="md:w-1/2">
-            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white p-8 rounded-lg shadow-lg"
+            >
               <div className="mb-6">
                 <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
                   Name
@@ -128,6 +130,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                  required
                 />
               </div>
               <div className="mb-6">
@@ -141,6 +144,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                  required
                 />
               </div>
               <div className="mb-6">
@@ -173,6 +177,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                  required
                 ></textarea>
               </div>
               <button
@@ -190,4 +195,3 @@ const Contact = () => {
 }
 
 export default Contact
-

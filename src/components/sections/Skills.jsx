@@ -6,6 +6,7 @@ import {
 } from '../../constants/skills'
 import { IconCloud } from '@/components/ui/icon-cloud'
 import { iconCloudImages } from '../../constants/iconCloudSkills'
+import { BorderBeam } from '../magicui/BorderBeam'
 
 const Skills = () => {
   // Combine all skills into a single array
@@ -15,6 +16,12 @@ const Skills = () => {
     ...databaseSkills,
     ...devOpsSkills,
   ]
+
+  const handleImageError = (e, skill) => {
+    // Fallback to Font Awesome icon if image fails to load
+    e.target.style.display = 'none'
+    // We'll use state to track this, but for now just hide and show FA icon
+  }
 
   return (
     <section id="skills" className="py-20 bg-gray-100">
@@ -30,11 +37,40 @@ const Skills = () => {
               {allSkills.map((skill, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-lg px-4 py-3 shadow-md hover:shadow-lg transition-shadow text-center"
+                  className="relative bg-white rounded-lg px-4 py-3 shadow-md hover:shadow-lg transition-shadow overflow-hidden"
                 >
-                  <h3 className="text-sm md:text-base font-semibold text-gray-800">
-                    {skill.title}
-                  </h3>
+                  <div className="flex items-center justify-center gap-2 relative z-10">
+                    {skill.iconUrl ? (
+                      <>
+                        <img 
+                          src={skill.iconUrl} 
+                          alt={skill.title}
+                          className="w-5 h-5 md:w-6 md:h-6"
+                          onError={(e) => {
+                            e.target.style.display = 'none'
+                            e.target.nextElementSibling.style.display = 'inline'
+                          }}
+                        />
+                        <i 
+                          className={`${skill.icon} ${skill.iconColor || 'text-gray-600'} text-lg md:text-xl`}
+                          style={{ display: 'none' }}
+                        ></i>
+                      </>
+                    ) : (
+                      <i className={`${skill.icon} ${skill.iconColor || 'text-gray-600'} text-lg md:text-xl`}></i>
+                    )}
+                    <h3 className="text-sm md:text-base font-semibold text-gray-800">
+                      {skill.title}
+                    </h3>
+                  </div>
+                  <BorderBeam 
+                    size={60}
+                    duration={6}
+                    delay={index * 0.1}
+                    colorFrom="#ffaa40"
+                    colorTo="#9c40ff"
+                    borderWidth={2}
+                  />
                 </div>
               ))}
             </div>

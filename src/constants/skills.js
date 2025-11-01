@@ -143,6 +143,15 @@ export const devOpsSkills = [
     textColor: 'text-gray-800',
   },
   {
+    icon: 'fab fa-github',
+    title: 'GitHub Actions',
+    description:
+      'Automating workflows and CI/CD pipelines using GitHub Actions for continuous integration and deployment.',
+    cardClass: 'skill-card-github-actions',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
     icon: 'fab fa-docker',
     title: 'Docker',
     description:
@@ -152,11 +161,20 @@ export const devOpsSkills = [
     textColor: 'text-gray-800',
   },
   {
-    icon: 'fas fa-dharmachakra',
-    title: 'Kubernetes',
+    icon: 'fab fa-aws',
+    title: 'EC2',
     description:
-      'Orchestrating containerized applications with Kubernetes for automated deployment, scaling, and management of application containers.',
-    cardClass: 'skill-card-kubernetes',
+      'Deploying and managing scalable compute instances using Amazon EC2 for cloud infrastructure.',
+    cardClass: 'skill-card-ec2',
+    iconColor: 'text-blue-500',
+    textColor: 'text-gray-800',
+  },
+  {
+    icon: 'fab fa-aws',
+    title: 'S3',
+    description:
+      'Storing and managing data with Amazon S3 for scalable, secure cloud storage solutions.',
+    cardClass: 'skill-card-s3',
     iconColor: 'text-blue-500',
     textColor: 'text-gray-800',
   },

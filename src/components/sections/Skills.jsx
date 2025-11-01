@@ -23,7 +23,7 @@ const Skills = () => {
           My Skills
         </h2>
 
-        <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Left Side - Skill Names */}
           <div className="w-full lg:w-1/2">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -41,14 +41,10 @@ const Skills = () => {
           </div>
 
           {/* Right Side - Icon Cloud */}
-          <div className="w-full lg:w-1/2 flex justify-center items-center">
-            <div className="relative w-full h-[500px] flex items-center justify-center">
-              <IconCloud images={iconCloudImages} />
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-xs md:text-sm text-gray-500 px-4 py-2">
-                <p className="text-center whitespace-nowrap">
-                  <i className="fas fa-mouse mr-2"></i>
-                  Click and drag to rotate
-                </p>
+          <div className="w-full lg:w-1/2 flex justify-center items-start">
+            <div className="relative w-full h-[1000px]">
+              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center" style={{ alignItems: 'flex-start', paddingTop: '0' }}>
+                <IconCloud images={iconCloudImages} />
               </div>
             </div>
           </div>

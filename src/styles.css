@@ -1,0 +1,1799 @@
+/* Custom styles for portfolio */
+
+/* Font Family */
+body {
+  font-family: "Sansation", sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.8s ease-out;
+}
+
+/* Custom animations for skill cards */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes borderPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* HTML Skill Card */
+.skill-card-html {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.skill-card-html:hover {
+  transform: translateY(-15px) rotateY(10deg);
+  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+}
+
+.skill-card-html::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: rotate(30deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.skill-card-html:hover::before {
+  opacity: 1;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skill-card-html .text-4xl {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.skill-card-html:hover .text-4xl {
+  transform: scale(1.2);
+  animation: pulse 2s infinite;
+}
+
+.skill-card-html h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card-html p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* CSS Skill Card */
+.skill-card-css {
+  background: linear-gradient(135deg, #4158d0, #c850c0);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(192, 80, 192, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-css:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(192, 80, 192, 0.3);
+}
+
+.skill-card-css::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: all 0.8s ease;
+}
+
+.skill-card-css:hover::before {
+  left: 100%;
+}
+
+.skill-card-css .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.skill-card-css:hover .text-4xl {
+  animation: float 2s ease-in-out infinite;
+}
+
+.skill-card-css h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card-css p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Custom pseudo-elements for CSS card */
+.skill-card-css::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.skill-card-css:hover::after {
+  opacity: 1;
+  transform: scale(2);
+}
+
+/* JavaScript Skill Card */
+.skill-card-js {
+  background: linear-gradient(135deg, #f7df1e, #e6b800);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(247, 223, 30, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-js:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(247, 223, 30, 0.3);
+}
+
+.skill-card-js::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(247, 223, 30, 0.3), rgba(230, 184, 0, 0.3));
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-js:hover::before {
+  opacity: 1;
+}
+
+.skill-card-js .text-4xl {
+  color: #333;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-js:hover .text-4xl {
+  transform: rotate(360deg);
+  color: #000;
+}
+
+.skill-card-js h3 {
+  color: #333;
+  position: relative;
+  z-index: 2;
+  font-weight: bold;
+}
+
+.skill-card-js p {
+  color: #333;
+  position: relative;
+  z-index: 2;
+}
+
+/* JavaScript Code Pattern */
+.skill-card-js::after {
+  content: "{ }";
+  position: absolute;
+  font-size: 80px;
+  bottom: -20px;
+  right: -20px;
+  color: rgba(0, 0, 0, 0.1);
+  font-family: monospace;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.skill-card-js:hover::after {
+  transform: rotate(10deg);
+  opacity: 0.8;
+}
+
+/* React Skill Card */
+.skill-card-react {
+  background: linear-gradient(135deg, #282c34, #61dafb);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(97, 218, 251, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-react:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(97, 218, 251, 0.4);
+}
+
+/* Orbital effect for React */
+.skill-card-react::before,
+.skill-card-react::after {
+  content: "";
+  position: absolute;
+  border: 2px solid rgba(97, 218, 251, 0.3);
+  width: 120px;
+  height: 60px;
+  border-radius: 50%;
+  top: calc(50% - 30px);
+  left: calc(50% - 60px);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.skill-card-react::after {
+  transform: rotate(60deg);
+}
+
+.skill-card-react::before {
+  transform: rotate(-60deg);
+}
+
+.skill-card-react:hover::before,
+.skill-card-react:hover::after {
+  opacity: 1;
+  width: 140px;
+  height: 70px;
+  top: calc(50% - 35px);
+  left: calc(50% - 70px);
+}
+
+/* Animation for the orbits */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skill-card-react:hover::before {
+  animation: orbit 8s linear infinite;
+}
+
+.skill-card-react:hover::after {
+  animation: orbit 8s linear infinite reverse;
+}
+
+.skill-card-react .text-4xl {
+  color: #61dafb;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  background: rgba(40, 44, 52, 0.7);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(97, 218, 251, 0.5);
+}
+
+.skill-card-react:hover .text-4xl {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(97, 218, 251, 0.8);
+}
+
+.skill-card-react h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-react p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Node.js Skill Card */
+.skill-card-node {
+  background: linear-gradient(135deg, #333333, #68a063);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(104, 160, 99, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-node:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(104, 160, 99, 0.3);
+}
+
+.skill-card-node::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill='%2368a063' fill-opacity='0.1' d='M10 0L0 10h10v10L20 10H10V0z'/%3E%3C/svg%3E");
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.skill-card-node:hover::before {
+  opacity: 0.2;
+  transform: scale(1.2);
+}
+
+.skill-card-node .text-4xl {
+  color: #68a063;
+  position: relative;
+  z-index: 2;
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 0 5px rgba(104, 160, 99, 0.5));
+}
+
+.skill-card-node:hover .text-4xl {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(104, 160, 99, 0.7));
+}
+
+/* Connection effects */
+.skill-card-node::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(104, 160, 99, 0),
+    rgba(104, 160, 99, 1) 50%,
+    rgba(104, 160, 99, 0) 100%
+  );
+  transition: all 0.5s ease;
+}
+
+.skill-card-node:hover::after {
+  width: 100%;
+  animation: networkPulse 2s infinite;
+}
+
+@keyframes networkPulse {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(0.5);
+  }
+}
+
+.skill-card-node h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-node p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* TypeScript Skill Card */
+.skill-card-ts {
+  background: linear-gradient(135deg, #007acc, #2b5b84);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 122, 204, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-ts:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(0, 122, 204, 0.3);
+}
+
+.skill-card-ts::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-ts:hover::before {
+  opacity: 1;
+}
+
+/* TypeScript code effect */
+.skill-card-ts::after {
+  content: "interface";
+  position: absolute;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.1);
+  font-size: 20px;
+  right: 10px;
+  bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.skill-card-ts:hover::after {
+  content: "interface\ntype\nclass\nenum";
+  white-space: pre;
+  font-size: 14px;
+  opacity: 0.2;
+  transform: translateY(-5px);
+}
+
+.skill-card-ts .text-4xl {
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card-ts:hover .text-4xl {
+  transform: rotateY(360deg);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* TypeScript logo effect */
+.skill-card-ts .text-4xl::after {
+  content: "TS";
+  position: absolute;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.skill-card-ts:hover .text-4xl::after {
+  opacity: 1;
+}
+
+/* Type checking animation */
+@keyframes typingCursor {
+  0%,
+  100% {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.skill-card-ts h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-ts p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+.skill-card-ts p::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  bottom: 0;
+  height: 15px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.7);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-ts:hover p::after {
+  opacity: 1;
+  animation: typingCursor 0.8s infinite;
+}
+
+/* NestJS Skill Card */
+.skill-card-nest {
+  background: linear-gradient(135deg, #ed1543, #950c27);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(237, 21, 67, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-nest:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(237, 21, 67, 0.3);
+}
+
+/* Nest Logo Pattern */
+.skill-card-nest::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0.3;
+  transition: all 0.5s ease;
+}
+
+.skill-card-nest:hover::before {
+  transform: rotate(45deg) scale(1.2);
+}
+
+/* Nested modules effect */
+.skill-card-nest::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.skill-card-nest:hover::after {
+  opacity: 1;
+  animation: pulseAndRotate 2s infinite;
+}
+
+@keyframes pulseAndRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
+
+.skill-card-nest .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-nest:hover .text-4xl {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.skill-card-nest h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-nest p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Module decoration */
+.skill-card-nest::after {
+  content: "@";
+  font-family: monospace;
+  font-size: 60px;
+  color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  transform: rotate(15deg);
+}
+
+/* Custom styles for section transitions */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effects for project cards */
+.project-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Custom focus styles */
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Responsive Design Skill Card */
+.skill-card-responsive {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-responsive:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+}
+
+/* Device frames effect */
+.skill-card-responsive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  transform: translate(10px, 10px) scale(0.8);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.skill-card-responsive::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  transform: translate(-30px, -20px) scale(0.8);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.skill-card-responsive:hover::before {
+  transform: translate(20px, 10px) scale(1);
+  opacity: 0.8;
+}
+
+.skill-card-responsive:hover::after {
+  transform: translate(-40px, -30px) scale(1);
+  opacity: 0.8;
+}
+
+/* Responsive resize animation */
+@keyframes responsiveResize {
+  0%,
+  100% {
+    width: 80%;
+    height: 80%;
+  }
+  50% {
+    width: 60%;
+    height: 90%;
+  }
+}
+
+.skill-card-responsive .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-responsive:hover .text-4xl {
+  animation: responsiveResize 3s infinite;
+}
+
+.skill-card-responsive h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-responsive p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Media query visualization */
+.skill-card-responsive p::before {
+  content: "@media";
+  font-family: monospace;
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-responsive:hover p::before {
+  opacity: 1;
+  transform: translateY(5px);
+}
+
+/* Breakpoints visualization */
+.skill-card-responsive p::after {
+  content: "mobile tablet desktop";
+  font-family: monospace;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-responsive:hover p::after {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+/* Tailwind CSS Skill Card */
+.skill-card-tailwind {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-tailwind:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(56, 189, 248, 0.3);
+}
+
+.skill-card-tailwind::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'%3E%3C/path%3E%3Cpath d='M2 17l10 5 10-5'%3E%3C/path%3E%3Cpath d='M2 12l10 5 10-5'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: repeat;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.skill-card-tailwind:hover::before {
+  opacity: 0.2;
+  transform: scale(1.2);
+}
+
+.skill-card-tailwind .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-tailwind:hover .text-4xl {
+  transform: rotate(360deg);
+}
+
+.skill-card-tailwind h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-tailwind p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Bootstrap Skill Card */
+.skill-card-bootstrap {
+  background: linear-gradient(135deg, #7952b3, #5a3d86);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(121, 82, 179, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-bootstrap:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(121, 82, 179, 0.3);
+}
+
+.skill-card-bootstrap::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-bootstrap:hover::before {
+  opacity: 1;
+}
+
+/* Bootstrap component patterns */
+.skill-card-bootstrap::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  width: 100px;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 16 16' fill='rgba(255,255,255,0.1)'%3E%3Cpath fill-rule='evenodd' d='M6.375 7.125V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23H6.375zm0 3.762h1.898c1.184 0 1.81-.48 1.81-1.377 0-.885-.65-1.348-1.886-1.348H6.375v2.725z'/%3E%3Cpath d='M4.002 0a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4h-8zm1.06 12V3.545h3.399c1.587 0 2.543.809 2.543 2.11 0 .884-.65 1.675-1.483 1.816v.1c1.143.117 1.904.931 1.904 2.033 0 1.488-1.084 2.396-2.888 2.396H5.062z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  transform: rotate(15deg);
+  transition: all 0.3s ease;
+}
+
+.skill-card-bootstrap:hover::after {
+  transform: rotate(0deg) scale(1.2);
+  opacity: 0.3;
+}
+
+.skill-card-bootstrap .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-bootstrap:hover .text-4xl {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.skill-card-bootstrap h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-bootstrap p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Shadcn UI Skill Card */
+.skill-card-shadcn {
+  background: linear-gradient(135deg, #18181b, #27272a);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(24, 24, 27, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-shadcn:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(24, 24, 27, 0.3);
+}
+
+/* Abstract UI patterns */
+.skill-card-shadcn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 10%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 10%
+    );
+  opacity: 0.3;
+  transition: all 0.5s ease;
+}
+
+.skill-card-shadcn:hover::before {
+  background-position: 25% 35%, 85% 75%;
+  opacity: 0.5;
+}
+
+/* Component lines */
+.skill-card-shadcn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+        90deg,
+        transparent 49%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 51%
+      )
+      0 0 / 10px 10px,
+    linear-gradient(
+        0deg,
+        transparent 49%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 51%
+      )
+      0 0 / 10px 10px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.skill-card-shadcn:hover::after {
+  transform: scale(1.2);
+  opacity: 0.5;
+}
+
+.skill-card-shadcn .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-shadcn:hover .text-4xl {
+  filter: drop-shadow(0 0 8px rgba(119, 161, 255, 0.7));
+}
+
+@keyframes colorShift {
+  0% {
+    color: #4f46e5;
+  }
+  25% {
+    color: #2dd4bf;
+  }
+  50% {
+    color: #f97316;
+  }
+  75% {
+    color: #ec4899;
+  }
+  100% {
+    color: #4f46e5;
+  }
+}
+
+.skill-card-shadcn:hover .text-4xl i {
+  animation: colorShift 3s infinite;
+}
+
+.skill-card-shadcn h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-shadcn p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* MongoDB Skill Card */
+.skill-card-mongo {
+  background: linear-gradient(135deg, #4db33d, #3f9c35);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(77, 179, 61, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mongo:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(77, 179, 61, 0.3);
+}
+
+/* MongoDB document pattern */
+.skill-card-mongo::before {
+  content: "{...}";
+  position: absolute;
+  font-family: monospace;
+  font-size: 100px;
+  bottom: -30px;
+  right: -20px;
+  color: rgba(255, 255, 255, 0.1);
+  opacity: 0.2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mongo:hover::before {
+  transform: scale(1.2) rotate(10deg);
+  opacity: 0.3;
+}
+
+/* MongoDB leaf pattern */
+.skill-card-mongo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 30% 40%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mongo:hover::after {
+  transform: scale(1.3);
+}
+
+.skill-card-mongo .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-mongo:hover .text-4xl {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+}
+
+.skill-card-mongo h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-mongo p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* PostgreSQL Skill Card */
+.skill-card-postgres {
+  background: linear-gradient(135deg, #336791, #254c73);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(51, 103, 145, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-postgres:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(51, 103, 145, 0.3);
+}
+
+/* SQL query pattern */
+.skill-card-postgres::before {
+  content: "SELECT";
+  position: absolute;
+  font-family: monospace;
+  font-size: 16px;
+  top: 10px;
+  right: 10px;
+  color: rgba(255, 255, 255, 0.1);
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.skill-card-postgres:hover::before {
+  content: "SELECT *\nFROM table\nWHERE id = 1;";
+  white-space: pre;
+  opacity: 0.6;
+}
+
+/* PostgreSQL elephant pattern */
+.skill-card-postgres::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 100px;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,0.1)'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L12 14.17l-4.59-4.59L6 11l6 6 6-6-1.41-1.42z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+.skill-card-postgres:hover::after {
+  transform: rotate(0deg) translateY(-20px);
+  opacity: 0.3;
+}
+
+@keyframes queryExecution {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 80%;
+  }
+}
+
+.skill-card-postgres .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-postgres:hover .text-4xl {
+  animation: pulse 2s infinite;
+}
+
+.skill-card-postgres h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-postgres p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Query execution animation */
+.skill-card-postgres p::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  bottom: -5px;
+  left: 0;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.skill-card-postgres:hover p::after {
+  animation: queryExecution 2s infinite alternate;
+}
+
+/* MySQL Skill Card */
+.skill-card-mysql {
+  background: linear-gradient(135deg, #00758f, #00546b);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 117, 143, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mysql:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(0, 117, 143, 0.3);
+}
+
+/* Dolphin pattern */
+.skill-card-mysql::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at 70% 80%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mysql:hover::before {
+  transform: scale(1.2) translateX(-10px);
+  opacity: 0.5;
+}
+
+/* Database structure pattern */
+.skill-card-mysql::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg) translateX(-100%);
+  transition: all 0.5s ease;
+}
+
+.skill-card-mysql:hover::after {
+  transform: skewX(-20deg) translateX(100%);
+}
+
+@keyframes tableRows {
+  0% {
+    width: 30%;
+  }
+  20% {
+    width: 60%;
+  }
+  40% {
+    width: 45%;
+  }
+  60% {
+    width: 75%;
+  }
+  80% {
+    width: 55%;
+  }
+  100% {
+    width: 30%;
+  }
+}
+
+.skill-card-mysql .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-mysql:hover .text-4xl {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+}
+
+.skill-card-mysql h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-mysql p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Database row visualization */
+.skill-card-mysql p::before,
+.skill-card-mysql p::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-mysql p::before {
+  bottom: -10px;
+}
+
+.skill-card-mysql p::after {
+  bottom: -15px;
+  width: 40%;
+}
+
+.skill-card-mysql:hover p::before,
+.skill-card-mysql:hover p::after {
+  opacity: 1;
+}
+
+.skill-card-mysql:hover p::after {
+  animation: tableRows 3s infinite;
+}
+
+/* Git & GitHub Skill Card */
+.skill-card-git {
+  background: linear-gradient(135deg, #f05033, #bd2c00);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(240, 80, 51, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-git:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(240, 80, 51, 0.3);
+}
+
+/* Branch visualization */
+.skill-card-git::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 60%;
+  height: 40px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='rgba(255,255,255,0.1)'%3E%3Cpath d='M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z'/%3E%3Cpath d='M2 17l10 5 10-5'%3E%3C/path%3E%3Cpath d='M2 12l10 5 10-5'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.1;
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+.skill-card-git:hover::before {
+  transform: rotate(90deg) scale(1.2);
+  opacity: 0.2;
+}
+
+/* Commit dot pattern */
+.skill-card-git::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 50px;
+  background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 2%,
+        transparent 3%
+      )
+      0 0 / 20px 20px,
+    radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 2%,
+        transparent 3%
+      )
+      10px 10px / 20px 20px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.skill-card-git:hover::after {
+  transform: scale(1.3);
+  opacity: 0.4;
+}
+
+@keyframes branchMerge {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(10px);
+    opacity: 0.3;
+  }
+}
+
+.skill-card-git .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-git:hover .text-4xl {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+}
+
+.skill-card-git h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-git p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Branch line animation */
+.skill-card-git p::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 30px;
+  bottom: -10px;
+  left: 0;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.skill-card-git:hover p::after {
+  opacity: 1;
+  animation: branchMerge 3s infinite;
+}
+
+/* Docker Skill Card */
+.skill-card-docker {
+  background: linear-gradient(135deg, #0db7ed, #0769ad);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(13, 183, 237, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-docker:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(13, 183, 237, 0.3);
+}
+
+/* Container pattern */
+.skill-card-docker::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+        0deg,
+        transparent 80%,
+        rgba(255, 255, 255, 0.1) 81%,
+        transparent 82%
+      )
+      0 0 / 20px 30px,
+    linear-gradient(
+        0deg,
+        transparent 85%,
+        rgba(255, 255, 255, 0.1) 86%,
+        transparent 87%
+      )
+      10px 15px / 20px 30px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.skill-card-docker:hover::before {
+  background-position: 0 5px, 10px 20px;
+  opacity: 0.5;
+}
+
+/* Docker whale pattern */
+.skill-card-docker::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512' fill='rgba(255,255,255,0.1)'%3E%3Cpath d='M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.skill-card-docker:hover::after {
+  transform: translateY(-10px);
+  opacity: 0.2;
+}
+
+.skill-card-docker .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.skill-card-docker:hover .text-4xl {
+  animation: float 3s ease-in-out infinite;
+}
+
+.skill-card-docker h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-docker p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* Kubernetes Skill Card */
+.skill-card-kubernetes {
+  background: linear-gradient(135deg, #326ce5, #254aa5);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(50, 108, 229, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.skill-card-kubernetes:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(50, 108, 229, 0.3);
+}
+
+/* Pod pattern */
+.skill-card-kubernetes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 20%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 20%
+    ),
+    radial-gradient(
+      circle at 40% 70%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 20%
+    );
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.skill-card-kubernetes:hover::before {
+  background-position: 25% 25%, 85% 35%, 45% 75%;
+  opacity: 0.5;
+}
+
+/* Kubernetes wheel pattern */
+.skill-card-kubernetes::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  width: 100px;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512' fill='rgba(255,255,255,0.1)'%3E%3Cpath d='M512.1 191l-8.2 14.3c-3 5.3-9.4 7.5-15.1 5.4-11.8-4.4-22.6-10.7-32.1-18.6-4.6-3.8-5.8-10.5-2.8-15.7l8.2-14.3c-6.9-8-12.3-17.3-15.9-27.4h-16.5c-6 0-11.2-4.3-12.2-10.3-2-12-2.1-24.6 0-37.1 1-6 6.2-10.4 12.2-10.4h16.5c3.6-10.1 9-19.4 15.9-27.4l-8.2-14.3c-3-5.2-1.9-11.9 2.8-15.7 9.5-7.9 20.4-14.2 32.1-18.6 5.7-2.1 12.1.1 15.1 5.4l8.2 14.3c10.5-1.9 21.2-1.9 31.7 0l8.2-14.3c3-5.3 9.4-7.5 15.1-5.4 11.8 4.4 22.6 10.7 32.1 18.6 4.6 3.8 5.8 10.5 2.8 15.7l-8.2 14.3c6.9 8 12.3 17.3 15.9 27.4h16.5c6 0 11.2 4.3 12.2 10.3 2 12 2.1 24.6 0 37.1-1 6-6.2 10.4-12.2 10.4h-16.5c-3.6 10.1-9 19.4-15.9 27.4l8.2 14.3c3 5.2 1.9 11.9-2.8 15.7-9.5 7.9-20.4 14.2-32.1 18.6-5.7 2.1-12.1-.1-15.1-5.4l-8.2-14.3c-10.4 1.9-21.2 1.9-31.7 0zM501.6 431c38.5 29.6 82.4-14.3 52.8-52.8-38.5-29.6-82.4 14.3-52.8 52.8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.skill-card-kubernetes:hover::after {
+  transform: rotate(60deg);
+  opacity: 0.2;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skill-card-kubernetes .text-4xl {
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.skill-card-kubernetes:hover .text-4xl {
+  animation: rotate 4s linear infinite;
+}
+
+.skill-card-kubernetes h3 {
+  color: white;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card-kubernetes p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
+}

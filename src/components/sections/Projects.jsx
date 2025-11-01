@@ -1,11 +1,15 @@
 import { projects } from '../../constants/projects'
-import { AnimatedCard } from '../magicui/AnimatedCard'
-import { BorderBeam } from '../magicui/BorderBeam'
+import { ShineBorder } from '../magicui/ShineBorder'
 
 const ProjectCard = ({ project }) => (
-  <AnimatedCard className="relative group">
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition h-full">
-      <div className="relative">
+  <div className="relative group">
+    <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition h-full relative">
+      <ShineBorder 
+        shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']}
+        duration={14}
+        borderWidth={2}
+      />
+      <div className="relative z-10 overflow-hidden rounded-lg">
         <div className="bg-gray-300 h-48 flex items-center justify-center overflow-hidden">
           {project.image ? (
             <img
@@ -19,12 +23,8 @@ const ProjectCard = ({ project }) => (
             <i className={`${project.icon} text-5xl text-gray-500`}></i>
           )}
         </div>
-        <BorderBeam
-          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          size={150}
-        />
       </div>
-      <div className="p-6">
+      <div className="p-6 relative z-10">
         <h3 className="text-xl font-bold mb-2 text-gray-800">{project.title}</h3>
         {project.role && (
           <p className="text-gray-600 mb-2">
@@ -62,7 +62,7 @@ const ProjectCard = ({ project }) => (
         </div>
       </div>
     </div>
-  </AnimatedCard>
+  </div>
 )
 
 const Projects = () => {

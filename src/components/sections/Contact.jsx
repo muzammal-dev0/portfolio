@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { personalInfo } from '../../constants/personalInfo'
 import { ShimmerButton } from '../magicui/ShimmerButton'
 import { Dock, DockIcon } from '@/components/ui/dock'
+import { Meteors } from '../magicui/Meteors'
 
 const ContactInfo = ({ icon, label, value }) => (
   <div className="flex items-center mb-4">
@@ -145,9 +146,10 @@ const Contact = () => {
           <div className="md:w-1/2">
             <form
               onSubmit={handleSubmit}
-              className="bg-white p-8 rounded-lg shadow-lg"
+              className="relative bg-white p-8 rounded-lg shadow-lg overflow-hidden"
             >
-              <div className="mb-6">
+              <Meteors number={30} />
+              <div className="relative z-10 mb-6">
                 <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
                   Name
                 </label>
@@ -161,7 +163,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              <div className="mb-6">
+              <div className="relative z-10 mb-6">
                 <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
                   Email
                 </label>
@@ -175,7 +177,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              <div className="mb-6">
+              <div className="relative z-10 mb-6">
                 <label
                   htmlFor="subject"
                   className="block text-gray-700 font-bold mb-2"
@@ -191,7 +193,7 @@ const Contact = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
-              <div className="mb-6">
+              <div className="relative z-10 mb-6">
                 <label
                   htmlFor="message"
                   className="block text-gray-700 font-bold mb-2"
@@ -208,13 +210,15 @@ const Contact = () => {
                   required
                 ></textarea>
               </div>
-              <ShimmerButton
-                type="submit"
-                className="w-full bg-blue-600 text-white hover:bg-blue-700 font-semibold"
-                background="rgba(37, 99, 235, 1)"
-              >
-                Send Message
-              </ShimmerButton>
+              <div className="relative z-10">
+                <ShimmerButton
+                  type="submit"
+                  className="w-full bg-blue-600 text-white hover:bg-blue-700 font-semibold"
+                  background="rgba(37, 99, 235, 1)"
+                >
+                  Send Message
+                </ShimmerButton>
+              </div>
             </form>
           </div>
         </div>

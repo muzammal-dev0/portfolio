@@ -19,6 +19,7 @@ const skillToSlugMap = {
   'Shadcn UI': 'react', // Using React as closest match (shadcn uses React)
   'Node.js': 'nodedotjs',
   'NestJS': 'nestjs',
+  'GraphQL': 'graphql',
   'MongoDB': 'mongodb',
   'PostgreSQL': 'postgresql',
   'MySQL': 'mysql',

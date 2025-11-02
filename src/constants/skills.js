@@ -104,6 +104,16 @@ export const backendSkills = [
     iconColor: "",
     textColor: "",
   },
+  {
+    icon: "fas fa-code",
+    iconUrl: "https://cdn.simpleicons.org/graphql/E10098",
+    title: "GraphQL",
+    description:
+      "Designing and implementing flexible APIs using GraphQL for efficient data querying and manipulation.",
+    cardClass: "skill-card-graphql",
+    iconColor: "text-pink-600",
+    textColor: "text-gray-800",
+  },
 ];
 
 export const databaseSkills = [

@@ -114,6 +114,25 @@ export const backendSkills = [
     iconColor: "text-pink-600",
     textColor: "text-gray-800",
   },
+  {
+    icon: "fas fa-project-diagram",
+    iconUrl: "https://cdn.simpleicons.org/docker/2496ED",
+    title: "Microservices Architecture",
+    description:
+      "Designing and building scalable applications using microservices architecture for improved maintainability and scalability.",
+    cardClass: "skill-card-microservices",
+    iconColor: "text-blue-600",
+    textColor: "text-gray-800",
+  },
+  {
+    icon: "fas fa-network-wired",
+    title: "WebSocket",
+    description:
+      "Implementing real-time bidirectional communication using WebSocket protocol for live data updates and interactive applications.",
+    cardClass: "skill-card-websocket",
+    iconColor: "text-blue-500",
+    textColor: "text-gray-800",
+  },
 ];
 
 export const databaseSkills = [
@@ -145,6 +164,16 @@ export const databaseSkills = [
       "Working with MySQL for robust relational database management and efficient data querying.",
     cardClass: "skill-card-mysql",
     iconColor: "text-blue-500",
+    textColor: "text-gray-800",
+  },
+  {
+    icon: "fas fa-database",
+    iconUrl: "https://cdn.simpleicons.org/redis/DC382D",
+    title: "Redis",
+    description:
+      "Implementing Redis for high-performance caching, session management, and real-time data storage solutions.",
+    cardClass: "skill-card-redis",
+    iconColor: "text-red-600",
     textColor: "text-gray-800",
   },
 ];
@@ -215,6 +244,26 @@ export const devOpsSkills = [
       "Creating and managing API testing workflows using Postman for efficient API development and testing.",
     cardClass: "skill-card-postman",
     iconColor: "text-orange-500",
+    textColor: "text-gray-800",
+  },
+  {
+    icon: "fas fa-tasks",
+    iconUrl: "https://cdn.simpleicons.org/jira/0052CC",
+    title: "Jira",
+    description:
+      "Managing projects and tracking tasks using Jira for agile development workflows and team collaboration.",
+    cardClass: "skill-card-jira",
+    iconColor: "text-blue-600",
+    textColor: "text-gray-800",
+  },
+  {
+    icon: "fas fa-list-check",
+    iconUrl: "https://cdn.simpleicons.org/clickup/7B68EE",
+    title: "ClickUp",
+    description:
+      "Organizing projects and workflows using ClickUp for comprehensive project management and team productivity.",
+    cardClass: "skill-card-clickup",
+    iconColor: "text-purple-600",
     textColor: "text-gray-800",
   },
 ];

@@ -1,3 +1,4 @@
+// Frontend Skills
 export const frontendSkills = [
   {
     icon: "fab fa-html5",
@@ -82,8 +83,19 @@ export const frontendSkills = [
     iconColor: "text-blue-500",
     textColor: "text-gray-800",
   },
+  {
+    icon: "fab fa-react",
+    iconUrl: "https://cdn.simpleicons.org/react/61DAFB",
+    title: "Zustand",
+    description:
+      "Managing application state efficiently using Zustand for lightweight and scalable React state management.",
+    cardClass: "skill-card-zustand",
+    iconColor: "text-cyan-500",
+    textColor: "text-gray-800",
+  },
 ];
 
+// Backend Skills
 export const backendSkills = [
   {
     icon: "fab fa-node-js",
@@ -93,6 +105,16 @@ export const backendSkills = [
     cardClass: "skill-card-node",
     iconColor: "",
     textColor: "",
+  },
+  {
+    icon: "fab fa-node-js",
+    iconUrl: "https://cdn.simpleicons.org/express/000000",
+    title: "Express.js",
+    description:
+      "Building fast and minimalist web applications using Express.js framework for Node.js.",
+    cardClass: "skill-card-express",
+    iconColor: "text-gray-800",
+    textColor: "text-gray-800",
   },
   {
     icon: "fab fa-node-js",
@@ -135,6 +157,7 @@ export const backendSkills = [
   },
 ];
 
+// Database Skills
 export const databaseSkills = [
   {
     icon: "fas fa-database",
@@ -178,7 +201,8 @@ export const databaseSkills = [
   },
 ];
 
-export const devOpsSkills = [
+// Version Control & Collaboration
+export const versionControlSkills = [
   {
     icon: "fab fa-git-alt",
     title: "Git & GitHub",
@@ -197,6 +221,10 @@ export const devOpsSkills = [
     iconColor: "text-blue-500",
     textColor: "text-gray-800",
   },
+];
+
+// Cloud and Deployment
+export const cloudDeploymentSkills = [
   {
     icon: "fab fa-docker",
     title: "Docker",
@@ -226,6 +254,10 @@ export const devOpsSkills = [
     iconColor: "text-green-600",
     textColor: "text-gray-800",
   },
+];
+
+// Testing & Code Quality
+export const testingSkills = [
   {
     icon: "fas fa-vial",
     iconUrl: "https://cdn.simpleicons.org/jest/C21325",
@@ -246,6 +278,10 @@ export const devOpsSkills = [
     iconColor: "text-orange-500",
     textColor: "text-gray-800",
   },
+];
+
+// Project Management & Collaboration
+export const projectManagementSkills = [
   {
     icon: "fas fa-tasks",
     iconUrl: "https://cdn.simpleicons.org/jira/0052CC",
@@ -266,4 +302,15 @@ export const devOpsSkills = [
     iconColor: "text-purple-600",
     textColor: "text-gray-800",
   },
+];
+
+// Tools & Other Technologies (for future use)
+export const toolsAndOtherSkills = [];
+
+// Legacy export for backward compatibility
+export const devOpsSkills = [
+  ...versionControlSkills,
+  ...cloudDeploymentSkills,
+  ...testingSkills,
+  ...projectManagementSkills,
 ];

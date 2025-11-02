@@ -2,7 +2,11 @@ import {
   frontendSkills,
   backendSkills,
   databaseSkills,
-  devOpsSkills,
+  versionControlSkills,
+  cloudDeploymentSkills,
+  testingSkills,
+  projectManagementSkills,
+  toolsAndOtherSkills,
 } from "./skills";
 
 // Map skill titles to Simple Icons slugs
@@ -17,7 +21,9 @@ const skillToSlugMap = {
   "Tailwind CSS": "tailwindcss",
   Bootstrap: "bootstrap",
   "Shadcn UI": "react", // Using React as closest match (shadcn uses React)
+  Zustand: "react", // Using React as closest match (Zustand is a React state management library)
   "Node.js": "nodedotjs",
+  "Express.js": "express",
   NestJS: "nestjs",
   GraphQL: "graphql",
   "Microservices Architecture": "docker", // Using Docker icon as microservices often use containers
@@ -45,7 +51,11 @@ const allSkills = [
   ...frontendSkills,
   ...backendSkills,
   ...databaseSkills,
-  ...devOpsSkills,
+  ...versionControlSkills,
+  ...cloudDeploymentSkills,
+  ...testingSkills,
+  ...projectManagementSkills,
+  ...toolsAndOtherSkills,
 ];
 
 // Generate icon cloud slugs from all skills, removing duplicates

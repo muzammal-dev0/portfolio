@@ -1,5 +1,6 @@
 import { projects } from '../../constants/projects'
 import { ShineBorder } from '../magicui/ShineBorder'
+import { AnimatedImageCarousel } from '../magicui/AnimatedImageCarousel'
 
 const ProjectCard = ({ project }) => (
   <div className="relative group">
@@ -9,14 +10,20 @@ const ProjectCard = ({ project }) => (
         duration={14}
         borderWidth={2}
       />
-      <div className="relative z-10 overflow-hidden rounded-lg">
-        <div className="bg-gray-300 h-48 flex items-center justify-center overflow-hidden">
-          {project.image ? (
+      <div className="relative z-10 rounded-lg overflow-hidden">
+        <div className="bg-gray-300 h-48 flex items-center justify-center overflow-hidden rounded-t-lg">
+          {project.images && project.images.length > 0 ? (
+            <AnimatedImageCarousel 
+              images={project.images} 
+              interval={3000}
+              className="h-full w-full"
+            />
+          ) : project.image ? (
             <img
               src={project.image}
               alt={project.title}
               className={`h-full w-full ${
-                project.id === 4 ? 'object-contain' : 'object-cover'
+                project.id === 9 ? 'object-contain' : 'object-cover'
               }`}
             />
           ) : (

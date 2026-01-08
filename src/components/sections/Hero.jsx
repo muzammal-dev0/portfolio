@@ -37,44 +37,12 @@ const Hero = () => {
         <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-[#1e3a5f] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
-      {/* Vertical Social Media Icons - Left Side */}
-      <div className="hidden lg:flex fixed left-8 bottom-0 flex-col items-center space-y-6 z-20">
-        <div className="w-px h-32 bg-[#64ffda]"></div>
-        {socialLinks.map((link, index) => (
-          <a
-            key={index}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#8892b0] hover:text-[#ff6b9d] transition-colors transform hover:-translate-y-1"
-            aria-label={link.name}
-          >
-            <i className={`${link.icon} text-2xl`}></i>
-          </a>
-        ))}
-        <div className="w-px h-32 bg-[#64ffda]"></div>
-      </div>
-
-      {/* Vertical Email - Right Side */}
-      <div className="hidden lg:flex fixed right-8 bottom-0 flex-col items-center space-y-6 z-20">
-        <a
-          href={`mailto:${personalInfo.email}`}
-          className="text-[#8892b0] hover:text-[#ff6b9d] transition-colors text-sm tracking-wider"
-          style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
-        >
-          {personalInfo.email}
-        </a>
-        <div className="w-px h-32 bg-[#64ffda]"></div>
-      </div>
-
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           {/* Left Content */}
           <div className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
-            <p className="text-[#ff6b9d] text-lg mb-4 font-mono">
-              Hi There
-            </p>
+            <p className="text-[#ff6b9d] text-lg mb-4 font-mono">Hi There</p>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
               I'm{" "}
               <span className="text-[#ff6b9d] whitespace-nowrap">

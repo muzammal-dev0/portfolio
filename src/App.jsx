@@ -1,6 +1,7 @@
 import { useScrollAnimation } from './hooks/useScrollAnimation'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
+import Sidebar from './components/layout/Sidebar'
 import Hero from './components/sections/Hero'
 import About from './components/sections/About'
 import Experience from './components/sections/Experience'
@@ -28,6 +29,7 @@ function App() {
       >
         Skip to main content
       </a>
+      <Sidebar />
       <Header />
       <Hero />
       <About />

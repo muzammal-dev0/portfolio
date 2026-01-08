@@ -18,7 +18,7 @@ export const personalInfo = {
     long: [
       "Full-Stack Developer with 3+ years of experience in building scalable web applications using Node.js, NestJS, and React.js. Skilled in working with databases like PostgreSQL, MySQL, and MongoDB, and experienced in frontend tools such as Bootstrap, TailwindCSS, Zustand, and shadcn/ui.",
       "Expertise in designing efficient APIs, working with microservices, and using Docker for containerization. Focused on writing clean, reliable code, with strong experience in unit and integration testing using Jest for comprehensive test coverage and Postman for API testing workflows.",
-      "Proficient with Git, GitHub, GitLab, GitHub Actions for CI/CD, and Husky for code quality. Experienced with AWS, S3, and EC2. Committed to building scalable, maintainable solutions.",
+      "Proficient with Git, GitHub, GitLab, GitHub Actions for CI/CD, and Husky for code quality. Experienced with cloud platforms including AWS (S3, EC2) and Google Cloud Platform (GCP), with hands-on experience deploying applications on Google Cloud Run and working with Firestore for scalable NoSQL database solutions. Committed to building scalable, maintainable solutions.",
     ],
   },
   contactMessage:

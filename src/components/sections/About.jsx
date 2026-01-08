@@ -92,7 +92,6 @@ const About = () => {
             <div className="space-y-6 text-lg md:text-xl lg:text-2xl text-white leading-relaxed">
               <p>{personalInfo.bio.long[0]}</p>
               <p>{personalInfo.bio.long[1]}</p>
-              <p>{personalInfo.bio.long[2]}</p>
             </div>
 
             {/* Work Experience */}

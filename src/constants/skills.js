@@ -254,6 +254,36 @@ export const cloudDeploymentSkills = [
     iconColor: "text-green-600",
     textColor: "text-gray-800",
   },
+  {
+    icon: "fas fa-cloud",
+    iconUrl: "https://cdn.simpleicons.org/googlecloud/4285F4",
+    title: "Google Cloud Platform",
+    description:
+      "Building and deploying scalable applications on Google Cloud Platform with expertise in cloud infrastructure and services.",
+    cardClass: "skill-card-gcp",
+    iconColor: "text-blue-600",
+    textColor: "text-gray-800",
+  },
+  {
+    icon: "fas fa-server",
+    iconUrl: "https://cdn.simpleicons.org/googlecloud/4285F4",
+    title: "Google Cloud Run",
+    description:
+      "Deploying containerized applications on Google Cloud Run for serverless, auto-scaling, and fully managed compute platform.",
+    cardClass: "skill-card-cloudrun",
+    iconColor: "text-blue-600",
+    textColor: "text-gray-800",
+  },
+  {
+    icon: "fas fa-database",
+    iconUrl: "https://cdn.simpleicons.org/googlecloud/4285F4",
+    title: "Firestore",
+    description:
+      "Building real-time, scalable applications using Google Cloud Firestore for flexible NoSQL database solutions with automatic scaling.",
+    cardClass: "skill-card-firestore",
+    iconColor: "text-blue-600",
+    textColor: "text-gray-800",
+  },
 ];
 
 // Testing & Code Quality

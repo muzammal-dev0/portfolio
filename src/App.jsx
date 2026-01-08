@@ -17,6 +17,17 @@ function App() {
       className="bg-gray-100 font-sans leading-normal tracking-normal"
       style={{ fontFamily: "'Sansation', sans-serif" }}
     >
+      {/* Skip to main content link for accessibility */}
+      <a
+        href="#home"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
+        onClick={(e) => {
+          e.preventDefault()
+          document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })
+        }}
+      >
+        Skip to main content
+      </a>
       <Header />
       <Hero />
       <About />

@@ -38,6 +38,10 @@ const skillToSlugMap = {
   EC2: "amazonec2",
   S3: "amazons3",
   "GitHub Actions": "githubactions",
+  // Google Cloud Platform services
+  "Google Cloud Platform": "googlecloud",
+  "Google Cloud Run": "googlecloud",
+  Firestore: "googlecloud",
   // Testing tools
   Jest: "jest",
   Postman: "postman",
@@ -70,8 +74,8 @@ allSkills.forEach((skill) => {
   }
 });
 
-// Add additional AWS services if not already included
-const additionalSlugs = ["amazonec2", "amazons3", "githubactions"];
+// Add additional services if not already included
+const additionalSlugs = ["amazonec2", "amazons3", "githubactions", "googlecloud"];
 additionalSlugs.forEach((slug) => {
   if (!uniqueSlugs.has(slug)) {
     uniqueSlugs.add(slug);

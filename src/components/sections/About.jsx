@@ -17,8 +17,13 @@ const About = () => {
         </h2>
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2 mb-8 md:mb-0 pr-0 md:pr-8">
-            <div className="bg-gray-200 h-96 rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-gray-600 text-lg">About Image</span>
+            <div className="bg-gradient-to-br from-blue-500 to-purple-600 h-96 rounded-lg shadow-lg flex items-center justify-center overflow-hidden relative">
+              <img
+                src={personalInfo.profileImage}
+                alt={`${personalInfo.name} - ${personalInfo.title}`}
+                className="h-full w-full object-cover opacity-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
             </div>
           </div>
           <div className="md:w-1/2">

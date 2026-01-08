@@ -24,36 +24,85 @@ const Contact = () => {
     subject: '',
     message: '',
   })
+  const [errors, setErrors] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
   }
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({
+      ...formData,
+      [name]: value,
+    })
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: '',
+      })
+    }
+    setSubmitStatus(null)
+  }
+
+  const validateForm = () => {
+    const newErrors = {}
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required'
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required'
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address'
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required'
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters long'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      alert('Please fill out all required fields')
+    if (!validateForm()) {
       return
     }
 
-    // Here you would typically send the form data to a server
-    console.log('Form submission:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus(null)
 
-    // Show success message
-    alert('Thank you for your message! I will get back to you soon.')
+    try {
+      // Here you would typically send the form data to a server
+      // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
+      console.log('Form submission:', formData)
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    })
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      setSubmitStatus('success')
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      })
+    } catch (error) {
+      setSubmitStatus('error')
+      console.error('Form submission error:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactInfo = [
@@ -147,11 +196,12 @@ const Contact = () => {
             <form
               onSubmit={handleSubmit}
               className="relative bg-white p-8 rounded-lg shadow-lg overflow-hidden"
+              noValidate
             >
               <Meteors number={30} />
               <div className="relative z-10 mb-6">
                 <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
-                  Name
+                  Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -159,13 +209,21 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-                  required
+                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    errors.name ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                  aria-invalid={errors.name ? 'true' : 'false'}
+                  aria-describedby={errors.name ? 'name-error' : undefined}
                 />
+                {errors.name && (
+                  <p id="name-error" className="text-red-500 text-sm mt-1" role="alert">
+                    {errors.name}
+                  </p>
+                )}
               </div>
               <div className="relative z-10 mb-6">
                 <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
-                  Email
+                  Email <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -173,9 +231,17 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-                  required
+                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    errors.email ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                  aria-invalid={errors.email ? 'true' : 'false'}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
                 />
+                {errors.email && (
+                  <p id="email-error" className="text-red-500 text-sm mt-1" role="alert">
+                    {errors.email}
+                  </p>
+                )}
               </div>
               <div className="relative z-10 mb-6">
                 <label
@@ -190,7 +256,7 @@ const Contact = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div className="relative z-10 mb-6">
@@ -198,7 +264,7 @@ const Contact = () => {
                   htmlFor="message"
                   className="block text-gray-700 font-bold mb-2"
                 >
-                  Message
+                  Message <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -206,17 +272,38 @@ const Contact = () => {
                   rows="4"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-                  required
+                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    errors.message ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                  aria-invalid={errors.message ? 'true' : 'false'}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
                 ></textarea>
+                {errors.message && (
+                  <p id="message-error" className="text-red-500 text-sm mt-1" role="alert">
+                    {errors.message}
+                  </p>
+                )}
               </div>
+              {submitStatus === 'success' && (
+                <div className="relative z-10 mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg" role="alert">
+                  <p className="font-semibold">✓ Thank you for your message!</p>
+                  <p className="text-sm">I will get back to you soon.</p>
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="relative z-10 mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg" role="alert">
+                  <p className="font-semibold">✗ Something went wrong.</p>
+                  <p className="text-sm">Please try again or contact me directly via email.</p>
+                </div>
+              )}
               <div className="relative z-10">
                 <PulsatingButton
                   type="submit"
-                  className="w-full bg-blue-600 text-white hover:bg-blue-700 font-semibold"
+                  className="w-full bg-blue-600 text-white hover:bg-blue-700 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                   pulseColor="37, 99, 235"
+                  disabled={isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </PulsatingButton>
               </div>
             </form>

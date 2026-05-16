@@ -275,6 +275,26 @@ export const cloudDeploymentSkills = [
     textColor: "text-gray-800",
   },
   {
+    icon: "fas fa-box",
+    iconUrl: "https://cdn.simpleicons.org/googlecloud/4285F4",
+    title: "Artifact Registry",
+    description:
+      "Storing and managing container images and build artifacts on GCP with Artifact Registry.",
+    cardClass: "skill-card-artifact",
+    iconColor: "text-blue-600",
+    textColor: "text-gray-800",
+  },
+  {
+    icon: "fas fa-clock",
+    iconUrl: "https://cdn.simpleicons.org/googlecloud/4285F4",
+    title: "Cloud Scheduler",
+    description:
+      "Running automated tasks on a schedule with Google Cloud Scheduler for jobs and integrations.",
+    cardClass: "skill-card-scheduler",
+    iconColor: "text-blue-600",
+    textColor: "text-gray-800",
+  },
+  {
     icon: "fas fa-database",
     iconUrl: "https://cdn.simpleicons.org/googlecloud/4285F4",
     title: "Firestore",

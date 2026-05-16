@@ -1,141 +1,85 @@
-# Portfolio - React + Vite
+# Portfolio — React + Vite
 
-A modern portfolio website built with React, Vite, and Tailwind CSS.
+Personal portfolio for Muzammal Hussain: single-page home with **React Router** case-study routes, **Tailwind CSS**, **Framer Motion**, and a **Web3Forms** contact integration.
 
-## 🚀 Features
+## Features
 
-- **React 18** - Modern React with hooks
-- **Vite** - Lightning fast build tool
-- **Tailwind CSS** - Utility-first CSS framework
-- **Responsive Design** - Works beautifully on all devices
-- **Smooth Animations** - Scroll-triggered animations and transitions
-- **Component-Based Architecture** - Modular and maintainable code
+- React 18, Vite 5, Tailwind 3
+- Sections: Hero, About, Projects, Contact (layout: Header, Sidebar, Footer)
+- Project detail pages at `/project/:slug` (see `src/constants/projects.js`)
+- Contact form posts to [Web3Forms](https://web3forms.com/) when configured
 
-## 📦 Installation
+## Setup
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+npm run dev
+```
 
-2. **Start development server:**
-   ```bash
-   npm run dev
-   ```
+Copy environment variables:
 
-3. **Build for production:**
-   ```bash
-   npm run build
-   ```
+```bash
+cp .env.example .env
+```
 
-4. **Preview production build:**
-   ```bash
-   npm run preview
-   ```
+Edit `.env` and set `VITE_WEB3FORMS_ACCESS_KEY` (create a free access key on Web3Forms). Without it, the form shows a configuration notice instead of sending mail.
 
-## 📁 Project Structure
+Optional: set `VITE_SITE_URL` to your production origin and use it for absolute Open Graph image URLs in `index.html` if needed.
+
+## Project structure
 
 ```
 portfolio/
 ├── public/
-│   ├── assets/          # CV and project images
-│   └── images/          # Profile and other images
+│   ├── _redirects       # Netlify SPA fallback (/* → /index.html)
+│   ├── favicon.svg
+│   ├── assets/          # CV, project screenshots
+│   └── images/
 ├── src/
-│   ├── components/      # React components
-│   │   ├── Header.jsx
-│   │   ├── Hero.jsx
-│   │   ├── About.jsx
-│   │   ├── Skills.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Contact.jsx
-│   │   └── Footer.jsx
-│   ├── App.jsx          # Main App component
-│   ├── main.jsx         # React entry point
-│   ├── index.css        # Tailwind CSS imports
-│   └── styles.css       # Custom portfolio styles
-├── index.html           # HTML template
-├── package.json         # Dependencies
-├── vite.config.js       # Vite configuration
-├── tailwind.config.js   # Tailwind configuration
-└── postcss.config.js    # PostCSS configuration
+│   ├── App.jsx              # Home scroll page + hash / scroll state handling
+│   ├── main.jsx             # Router entry
+│   ├── constants/           # personalInfo, projects, skills, experience
+│   ├── components/
+│   │   ├── layout/          # Header, Footer, Sidebar
+│   │   ├── sections/        # Hero, About, Projects, Contact
+│   │   ├── magicui/         # Decorative UI
+│   │   └── ui/
+│   ├── hooks/
+│   ├── pages/
+│   │   └── ProjectDetail.jsx
+│   ├── styles/
+│   └── utils/
+├── index.html
+├── vite.config.js
+├── tailwind.config.js
+└── postcss.config.js
 ```
 
-## 🎨 Customization
+## Customization
 
-### Update Personal Information
+| What | Where |
+|------|--------|
+| Name, headline, bio, socials | `src/constants/personalInfo.js` |
+| Projects, slugs, bullets, links | `src/constants/projects.js` |
+| Work history | `src/constants/experience.js` |
+| Skill blurbs (About Dev Stack) | `src/constants/skills.js` |
 
-Edit the following files to update your information:
+## Build and preview
 
-- **Hero Section**: `src/components/Hero.jsx`
-- **About Section**: `src/components/About.jsx`
-- **Projects**: `src/components/Projects.jsx` - Update the projects array
-- **Contact**: `src/components/Contact.jsx`
-- **Footer**: `src/components/Footer.jsx`
-
-### Update Skills
-
-Edit `src/components/Skills.jsx` and modify the skills arrays:
-- `frontendSkills`
-- `backendSkills`
-- `databaseSkills`
-- `devOpsSkills`
-
-### Styling
-
-- **Tailwind CSS**: Modify `tailwind.config.js` for theme customization
-- **Custom Styles**: Edit `src/styles.css` for custom animations and effects
-
-## 🔧 Technologies Used
-
-- React 18.2.0
-- Vite 5.0.8
-- Tailwind CSS 3.4.0
-- Font Awesome 6.5.1
-- Sansation Font
-
-## 📝 Notes
-
-- The contact form currently shows an alert on submission. You'll need to integrate it with a backend service (e.g., Formspree, EmailJS) for actual form handling.
-- Project links are currently placeholders (`#`). Update them with actual URLs.
-- All images should be placed in the `public` folder to be accessible.
-
-## 🚢 Deployment
-
-### Build the project:
 ```bash
 npm run build
+npm run preview
 ```
 
-This creates a `dist` folder with optimized production files.
+## Performance checklist
 
-### Deploy to Vercel:
-```bash
-npm install -g vercel
-vercel
-```
+After deploying to a real URL, run **Lighthouse** (Chrome DevTools → Lighthouse) on mobile and desktop. This repo uses `loading="lazy"` on non-critical images, `preconnect` for CDN fonts/icons in `index.html`, and `fetchPriority="high"` on the hero profile image.
 
-### Deploy to Netlify:
-```bash
-npm install -g netlify-cli
-netlify deploy --prod
-```
+## Deployment
 
-### Deploy to GitHub Pages:
-1. Install gh-pages: `npm install --save-dev gh-pages`
-2. Add to package.json scripts:
-   ```json
-   "deploy": "npm run build && gh-pages -d dist"
-   ```
-3. Run: `npm run deploy`
+- **Vercel / Netlify**: connect the repo; SPA routes are handled automatically. For Netlify, `public/_redirects` is included for client-side routes such as `/project/:slug`.
+- **GitHub Pages**: you need a `404.html` copy of `index.html` or hash-based routing; simplest is Vercel/Netlify.
 
-## 📄 License
+## Author
 
-Feel free to use this template for your personal portfolio.
-
-## 👤 Author
-
-Muzammal Hussain - Senior Software Engineer
-
----
-
-Made with ❤️ using React and Vite
+Muzammal Hussain

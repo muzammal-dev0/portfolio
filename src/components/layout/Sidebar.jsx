@@ -2,90 +2,64 @@ import { useState, useEffect } from 'react'
 import { personalInfo } from '../../constants/personalInfo'
 
 const Sidebar = () => {
-  const [isAboutVisible, setIsAboutVisible] = useState(false)
+  const [pastHero, setPastHero] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      const aboutSection = document.getElementById('about')
-      if (aboutSection) {
-        const rect = aboutSection.getBoundingClientRect()
-        const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0
-        setIsAboutVisible(isVisible)
+      const hero = document.getElementById('home')
+      if (hero) {
+        const bottom = hero.getBoundingClientRect().bottom
+        setPastHero(bottom < 80)
       }
     }
-
     window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll() // Check on initial load
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const socialLinks = [
-    {
-      name: 'GitHub',
-      url: personalInfo.socialLinks.github,
-      icon: 'fab fa-github',
-    },
-    {
-      name: 'LinkedIn',
-      url: personalInfo.socialLinks.linkedin,
-      icon: 'fab fa-linkedin',
-    },
-    {
-      name: 'Email',
-      url: `mailto:${personalInfo.email}`,
-      icon: 'fas fa-envelope',
-    },
-    {
-      name: 'WhatsApp',
-      url: personalInfo.socialLinks.whatsapp,
-      icon: 'fab fa-whatsapp',
-    },
+    { name: 'GitHub', url: personalInfo.socialLinks.github, icon: 'fab fa-github' },
+    { name: 'LinkedIn', url: personalInfo.socialLinks.linkedin, icon: 'fab fa-linkedin' },
+    { name: 'Email', url: `mailto:${personalInfo.email}`, icon: 'fas fa-envelope' },
+    { name: 'WhatsApp', url: personalInfo.socialLinks.whatsapp, icon: 'fab fa-whatsapp' },
   ]
 
-  // Change colors based on About section visibility
-  const iconColor = isAboutVisible ? 'text-white' : 'text-[#8892b0]'
-  const iconHoverColor = isAboutVisible ? 'hover:text-white' : 'hover:text-[#ff6b9d]'
-  const lineColor = isAboutVisible ? 'bg-white' : 'bg-[#64ffda]'
-  const emailColor = isAboutVisible ? 'text-white' : 'text-[#8892b0]'
-  const emailHoverColor = isAboutVisible ? 'hover:text-white' : 'hover:text-[#ff6b9d]'
+  const iconClass = pastHero ? 'text-slate-500' : 'text-slate-600'
+  const iconHover = 'hover:text-rose-600'
+  const lineClass = pastHero ? 'bg-slate-300' : 'bg-slate-200'
+  const emailClass = pastHero ? 'text-slate-500' : 'text-slate-600'
 
   return (
     <>
-      {/* Vertical Social Media Icons - Left Side */}
-      <div className="hidden lg:flex fixed left-8 bottom-0 flex-col items-center space-y-6 z-20">
-        <div className={`w-px h-32 ${lineColor} transition-colors duration-300`}></div>
+      <div className="fixed bottom-0 left-8 z-20 hidden flex-col items-center space-y-5 lg:flex">
+        <div className={`h-24 w-px ${lineClass} transition-colors`} />
         {socialLinks.map((link, index) => (
           <a
             key={index}
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${iconColor} ${iconHoverColor} transition-colors transform hover:-translate-y-1`}
+            className={`${iconClass} ${iconHover} transition-colors`}
             aria-label={link.name}
           >
-            <i className={`${link.icon} text-2xl`}></i>
+            <i className={`${link.icon} text-xl`} />
           </a>
         ))}
-        <div className={`w-px h-32 ${lineColor} transition-colors duration-300`}></div>
+        <div className={`h-24 w-px ${lineClass} transition-colors`} />
       </div>
 
-      {/* Vertical Email - Right Side */}
-      <div className="hidden lg:flex fixed right-8 bottom-0 flex-col items-center space-y-6 z-20">
+      <div className="fixed bottom-0 right-8 z-20 hidden flex-col items-center space-y-5 lg:flex">
         <a
           href={`mailto:${personalInfo.email}`}
-          className={`${emailColor} ${emailHoverColor} transition-colors text-sm tracking-wider`}
+          className={`${emailClass} ${iconHover} text-xs tracking-widest transition-colors`}
           style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
         >
           {personalInfo.email}
         </a>
-        <div className={`w-px h-32 ${lineColor} transition-colors duration-300`}></div>
+        <div className={`h-24 w-px ${lineClass} transition-colors`} />
       </div>
     </>
   )
 }
 
 export default Sidebar
-

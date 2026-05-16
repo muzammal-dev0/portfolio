@@ -1,88 +1,110 @@
-import { useState } from "react";
-import { scrollToSection, handleNavClick } from "../../utils/scroll";
-import { personalInfo } from "../../constants/personalInfo";
+import { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { scrollToSection } from '../../utils/scroll'
+import { personalInfo } from '../../constants/personalInfo'
+
+const navIds = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
+]
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isHome = location.pathname === '/'
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleNavigation = (e, sectionId) => {
-    handleNavClick(e, sectionId);
-    setIsMenuOpen(false);
-  };
+  const goHomeSection = (e, sectionId) => {
+    e.preventDefault()
+    if (!isHome) {
+      navigate('/', { state: { scrollTo: sectionId } })
+    } else {
+      scrollToSection(sectionId)
+    }
+    setIsMenuOpen(false)
+  }
 
   return (
-    <nav className="bg-[#0a192f] p-4 sticky top-0 z-50 shadow-md backdrop-blur-sm bg-opacity-95">
-      <div className="container mx-auto flex flex-wrap items-center justify-between">
-        <a
-          href="#"
-          onClick={(e) => handleNavClick(e, "home")}
-          className="flex items-center text-2xl font-bold text-[#ff6b9d] hover:text-[#ff8fb3] transition-colors"
+    <nav className="sticky top-0 z-50 border-b border-violet-950/60 bg-slate-950/95 p-4 shadow-lg shadow-black/20 backdrop-blur-md">
+      <div className="container mx-auto flex flex-wrap items-center justify-between gap-4">
+        <Link
+          to="/"
+          onClick={(e) => {
+            if (isHome) {
+              e.preventDefault()
+              scrollToSection('home')
+            }
+            setIsMenuOpen(false)
+          }}
+          className="flex items-center gap-2 text-lg font-bold text-white transition hover:text-violet-200 md:text-xl"
         >
-          <span>&lt;/{personalInfo.name.split(" ")[0]}&gt;</span>
-        </a>
-        <div className="hidden md:flex items-center space-x-8">
-          {["home", "about", "projects"].map((section) => (
+          <span className="font-mono text-violet-400" aria-hidden>
+            &lt;/&gt;
+          </span>
+          <span>{personalInfo.name.split(' ')[0]}</span>
+        </Link>
+
+        <div className="hidden items-center gap-1 lg:flex">
+          {navIds.map(({ id, label }) => (
             <a
-              key={section}
-              href={`#${section}`}
-              onClick={(e) => handleNavClick(e, section)}
-              className="text-white hover:text-[#ff6b9d] transition capitalize focus:outline-none focus:ring-2 focus:ring-[#ff6b9d] focus:ring-offset-2 focus:ring-offset-[#0a192f] rounded px-2 py-1"
+              key={id}
+              href={isHome ? `#${id}` : `/#${id}`}
+              onClick={(e) => goHomeSection(e, id)}
+              className="rounded-lg px-3 py-2 text-sm font-medium capitalize text-violet-100/90 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
             >
-              {section === "projects" ? "Portfolio" : section}
+              {label}
             </a>
           ))}
           <button
-            onClick={(e) => handleNavClick(e, "contact")}
-            className="px-4 py-2 border-2 border-[#ff6b9d] text-white hover:bg-[#ff6b9d] transition-colors rounded focus:outline-none focus:ring-2 focus:ring-[#ff6b9d] focus:ring-offset-2 focus:ring-offset-[#0a192f]"
+            type="button"
+            onClick={(e) => goHomeSection(e, 'contact')}
+            className="ml-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-violet-950/40 transition hover:bg-violet-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
           >
-            Let's Talk
+            Let&apos;s Talk
           </button>
         </div>
-        {/* Mobile menu button */}
-        <div className="md:hidden">
-          <button
-            onClick={toggleMenu}
-            className="text-white focus:outline-none focus:ring-2 focus:ring-[#ff6b9d] focus:ring-offset-2 focus:ring-offset-[#0a192f] rounded p-2"
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            <i className="fas fa-bars text-xl"></i>
-          </button>
-        </div>
+
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="rounded-lg p-2 text-violet-100 hover:bg-white/10 lg:hidden"
+          aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+        >
+          <i className="fas fa-bars text-xl" />
+        </button>
       </div>
-      {/* Mobile menu */}
+
       <div
         id="mobile-menu"
-        className={`md:hidden bg-[#112240] p-4 mt-2 ${
-          isMenuOpen ? "block" : "hidden"
-        }`}
+        className={`border-t border-violet-950/50 bg-slate-950 px-4 py-3 lg:hidden ${isMenuOpen ? 'block' : 'hidden'}`}
         role="menu"
       >
-        {["home", "about", "projects"].map((section) => (
+        {navIds.map(({ id, label }) => (
           <a
-            key={section}
-            href={`#${section}`}
-            onClick={(e) => handleNavigation(e, section)}
-            className="block text-white py-2 capitalize hover:text-[#ff6b9d] focus:outline-none focus:ring-2 focus:ring-[#ff6b9d] focus:ring-inset rounded px-2"
+            key={id}
+            href={isHome ? `#${id}` : `/#${id}`}
+            onClick={(e) => goHomeSection(e, id)}
+            className="block rounded-lg py-2.5 capitalize text-violet-100/90 hover:bg-white/5 hover:text-white"
             role="menuitem"
           >
-            {section === "projects" ? "Portfolio" : section}
+            {label}
           </a>
         ))}
         <button
-          onClick={(e) => handleNavigation(e, "contact")}
-          className="mt-4 w-full px-4 py-2 border-2 border-[#ff6b9d] text-white hover:bg-[#ff6b9d] transition-colors rounded"
+          type="button"
+          onClick={(e) => goHomeSection(e, 'contact')}
+          className="mt-2 w-full rounded-lg bg-violet-600 py-3 font-semibold text-white"
         >
-          Let's Talk
+          Let&apos;s Talk
         </button>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

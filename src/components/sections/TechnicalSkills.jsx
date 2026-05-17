@@ -5,7 +5,7 @@ import {
   versionControlSkills,
   cloudDeploymentSkills,
   testingSkills,
-  projectManagementSkills,
+  aiSkills,
 } from '../../constants/skills'
 
 const categories = [
@@ -46,10 +46,10 @@ const categories = [
     iconBg: 'bg-pink-600',
   },
   {
-    title: 'Project management',
-    skills: projectManagementSkills,
-    icon: 'fas fa-wrench',
-    iconBg: 'bg-amber-500',
+    title: 'AI & automation',
+    skills: aiSkills,
+    icon: 'fas fa-brain',
+    iconBg: 'bg-fuchsia-600',
   },
 ].filter((c) => c.skills.length > 0)
 

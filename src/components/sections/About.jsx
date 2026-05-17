@@ -1,3 +1,4 @@
+import ProfileImage from '../ProfileImage'
 import { personalInfo } from '../../constants/personalInfo'
 import { projects } from '../../constants/projects'
 import {
@@ -7,7 +8,7 @@ import {
   versionControlSkills,
   cloudDeploymentSkills,
   testingSkills,
-  projectManagementSkills,
+  aiSkills,
 } from '../../constants/skills'
 
 const About = () => {
@@ -18,7 +19,7 @@ const About = () => {
     versionControlSkills.length +
     cloudDeploymentSkills.length +
     testingSkills.length +
-    projectManagementSkills.length
+    aiSkills.length
 
   const stats = [
     { value: `${projects.length}+`, label: 'Projects completed' },
@@ -54,12 +55,9 @@ const About = () => {
                 className="pointer-events-none absolute -inset-4 rounded-3xl bg-gradient-to-br from-violet-200/60 to-violet-400/20 blur-2xl"
                 aria-hidden
               />
-              <img
-                src={personalInfo.profileImage}
+              <ProfileImage
                 alt={personalInfo.name}
                 className="relative w-full rounded-2xl object-cover shadow-xl ring-1 ring-slate-200/80 aspect-[4/5] max-h-[480px]"
-                decoding="async"
-                loading="lazy"
               />
             </div>
           </div>

@@ -4,8 +4,6 @@ import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import { personalInfo } from '../constants/personalInfo'
 
-const isRealLink = (url) => Boolean(url && url !== '#' && String(url).trim() !== '')
-
 const ProjectDetail = () => {
   const { slug } = useParams()
   const project = slug ? getProjectBySlug(slug) : null
@@ -49,18 +47,12 @@ const ProjectDetail = () => {
         {project.bullets && project.bullets.length > 0 && (
           <section className="mb-10">
             <h2 className="mb-4 text-xl font-bold text-violet-600 md:text-2xl">Highlights</h2>
-            <ul className="list-inside list-disc space-y-2 text-slate-700 md:text-lg">
+            <ul className="list-disc space-y-2 pl-5 leading-relaxed text-slate-700 md:text-lg">
               {project.bullets.map((line, i) => (
                 <li key={i}>{line}</li>
               ))}
             </ul>
           </section>
-        )}
-
-        {project.note && (
-          <p className="mb-10 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-amber-950">
-            {project.note}
-          </p>
         )}
 
         <section className="mb-10">
@@ -78,28 +70,6 @@ const ProjectDetail = () => {
         </section>
 
         <div className="flex flex-wrap gap-3">
-          {isRealLink(project.github) && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-violet-400 hover:text-violet-700"
-            >
-              <i className="fab fa-github" aria-hidden />
-              View code
-            </a>
-          )}
-          {isRealLink(project.demo) && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-violet-600 bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-violet-500"
-            >
-              <i className="fas fa-external-link-alt" aria-hidden />
-              Live demo
-            </a>
-          )}
           <Link
             to="/#contact"
             className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition hover:border-violet-400"

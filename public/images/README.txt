@@ -1,6 +1,9 @@
 Place your images in this folder.
 
-Recommended images to add:
-1. Profile picture (recommended size: 500x500px, square ratio)
-2. Project screenshots (recommended size: 800x450px, 16:9 ratio)
-3. About section image (recommended size: 600x800px or similar) 
+Profile picture (About section):
+  - Name the file: profile.jpg, profile.png, profile.webp, etc.
+  - Any common extension works (jpg, jpeg, png, webp; uppercase also OK).
+  - Recommended size: 500x500px or similar, roughly 4:5 aspect for best crop.
+
+Other images:
+  - Project screenshots (recommended: 800x450px, 16:9)

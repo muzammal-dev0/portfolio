@@ -1,14 +1,14 @@
 export const personalInfo = {
   name: "Muzammal Hussain",
   title: "Full-Stack Developer",
-  /** Short line under the main role (Figma-style hero tagline). */
-  heroTagline: "Building modern web applications",
+  /** Short line under the main role (hero tagline). */
+  heroTagline: "Building scalable SaaS, AI, and cloud-native systems",
   /** One clear line: what you build and for whom (used in Hero + SEO alignment). */
   headline:
-    "Full-stack developer with 3+ years building scalable web apps and multi-tenant SaaS with Node.js, NestJS, and React—plus PostgreSQL, MongoDB, GCP, and HIPAA-aware features.",
+    "Full-stack developer with 3+ years building scalable SaaS platforms, AI-powered applications, and cloud systems with Node.js, NestJS, React.js, PostgreSQL, and TypeScript.",
   /** Supporting line: stack focus and availability. */
   subheadline:
-    "REST & GraphQL APIs · Docker · GCP (Cloud Run) · Tailwind · Zustand · shadcn/ui · Jest · GitHub Actions — E11, Islamabad, Pakistan · Freelance / full-time",
+    "Multi-tenant SaaS · LLM/RAG · GIS (ArcGIS, PostGIS) · FastAPI · AWS ECS · GCP · Stripe · HIPAA — E11, Islamabad, Pakistan · Freelance / full-time",
   email: "hussainhtp@gmail.com",
   phone: "+92 307 4727093",
   location: "E11, Islamabad, Pakistan",
@@ -16,7 +16,8 @@ export const personalInfo = {
   website: "https://portfolio-sigma-bice-58.vercel.app/",
   availability: "Freelance/Full-time",
   cvPath: "/assets/CV.pdf",
-  profileImage: "/images/profile.JPG",
+  /** Resolved at runtime — use `public/images/profile.{jpg|jpeg|png|webp}`. */
+  profileImage: "/images/profile",
   socialLinks: {
     linkedin: "https://www.linkedin.com/in/muzammal-hussain-836a96151/",
     github: "https://github.com/muzammal-dev0",
@@ -24,13 +25,13 @@ export const personalInfo = {
   },
   bio: {
     short:
-      "I build scalable web applications and multi-tenant SaaS with Node.js, NestJS, and React—clean REST/GraphQL APIs, Docker, and GCP (Cloud Run, Artifact Registry, Cloud Scheduler).",
+      "I build scalable SaaS platforms, AI-powered applications, and cloud-based systems with Node.js, NestJS, React.js, PostgreSQL, and TypeScript—across the full product lifecycle from frontend and APIs to LLM/RAG pipelines and cloud deployments.",
     long: [
-      "I work with PostgreSQL, MongoDB, MySQL, and Redis, and ship microservices and containerized deployments. On the frontend I use Tailwind CSS, Zustand, and shadcn/ui. I have experience with OpenAI + LangChain, HIPAA-compliant features, RBAC, and tests with Jest.",
-      "I'm comfortable with CI/CD (GitHub Actions, Husky), AWS EC2/S3, and GCP. I enjoy writing clean, reliable code and helping ship products that make business processes easier and more secure.",
+      "I've worked on multi-tenant platforms, RBAC, payment integrations, regulatory-intelligence workflows, and LLM/RAG pipelines using OpenAI and LangChain. I also build geospatial workflows with ArcGIS and PostGIS—planning and automation that combine structured backends with AI-driven analysis and document processing.",
+      "I enjoy building clean, maintainable systems, solving complex backend challenges, and collaborating with teams to turn ambitious product ideas into reliable real-world solutions.",
     ],
   },
   contactMessage:
-    "I'm interested in freelance opportunities—especially ambitious SaaS, healthcare-adjacent, or cloud-native projects. If you have other questions or need a hand kicking off a product, get in touch.",
+    "I'm interested in freelance and full-time opportunities—especially SaaS, AI/LLM, healthcare-adjacent, GIS, or cloud-native products. If you have a project in mind or want to discuss architecture and delivery, get in touch.",
   footerTagline: "Building the future, one line of code at a time.",
 };

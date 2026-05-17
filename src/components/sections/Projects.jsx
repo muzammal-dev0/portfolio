@@ -2,37 +2,8 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { projects } from '../../constants/projects'
 
-const isRealLink = (url) => Boolean(url && url !== '#' && String(url).trim() !== '')
-
-const solidDemoClass =
-  'inline-flex items-center justify-center gap-2 rounded-lg border border-violet-600 bg-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-violet-900/10 transition hover:bg-violet-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2'
-
-const outlineCodeClass =
-  'inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-violet-400 hover:text-violet-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2'
-
 const outlineDetailsClass =
   'inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-violet-400 hover:text-violet-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2'
-
-const disabledButtonClass =
-  'inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-100 px-4 py-2 text-sm font-medium text-slate-400'
-
-const ProjectCta = ({ href, iconClass, label, variant = 'solid' }) => {
-  const cls = variant === 'outline' ? outlineCodeClass : solidDemoClass
-  if (isRealLink(href)) {
-    return (
-      <a href={href} className={cls} target="_blank" rel="noopener noreferrer">
-        <i className={iconClass} aria-hidden />
-        {label}
-      </a>
-    )
-  }
-  return (
-    <span className={disabledButtonClass} aria-disabled="true" title="Not public or not configured">
-      <i className={iconClass} aria-hidden />
-      {label}
-    </span>
-  )
-}
 
 const ProjectCard = ({ project, index, prefersReducedMotion }) => (
   <motion.article
@@ -73,16 +44,11 @@ const ProjectCard = ({ project, index, prefersReducedMotion }) => (
         {project.description}
       </p>
       {project.bullets && project.bullets.length > 0 && (
-        <ul className="mb-4 list-inside list-disc space-y-1 text-sm text-slate-600">
+        <ul className="mb-4 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-slate-600">
           {project.bullets.map((line, i) => (
             <li key={i}>{line}</li>
           ))}
         </ul>
-      )}
-      {project.note && (
-        <p className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900 md:text-sm">
-          {project.note}
-        </p>
       )}
       <div className="mb-5 flex flex-wrap gap-2">
         {project.technologies.map((tech, techIndex) => (
@@ -94,9 +60,7 @@ const ProjectCard = ({ project, index, prefersReducedMotion }) => (
           </span>
         ))}
       </div>
-      <div className="mt-auto flex flex-wrap gap-2">
-        <ProjectCta href={project.github} iconClass="fab fa-github" label="Code" variant="outline" />
-        <ProjectCta href={project.demo} iconClass="fas fa-external-link-alt" label="Demo" variant="solid" />
+      <div className="mt-auto">
         <Link to={`/project/${project.slug}`} className={outlineDetailsClass}>
           Details
         </Link>

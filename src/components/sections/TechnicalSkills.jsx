@@ -1,90 +1,69 @@
 import {
-  frontendSkills,
-  backendSkills,
-  databaseSkills,
-  versionControlSkills,
-  cloudDeploymentSkills,
-  testingSkills,
-  aiSkills,
+  frontendSkills, backendSkills, databaseSkills,
+  versionControlSkills, cloudDeploymentSkills, testingSkills, aiSkills,
 } from '../../constants/skills'
 
 const categories = [
-  {
-    title: 'Frontend',
-    skills: frontendSkills,
-    icon: 'fas fa-code',
-    iconBg: 'bg-blue-600',
-  },
-  {
-    title: 'Backend',
-    skills: backendSkills,
-    icon: 'fas fa-server',
-    iconBg: 'bg-emerald-600',
-  },
-  {
-    title: 'Database',
-    skills: databaseSkills,
-    icon: 'fas fa-database',
-    iconBg: 'bg-violet-600',
-  },
-  {
-    title: 'Version control & collaboration',
-    skills: versionControlSkills,
-    icon: 'fas fa-code-branch',
-    iconBg: 'bg-indigo-600',
-  },
-  {
-    title: 'Cloud & DevOps',
-    skills: cloudDeploymentSkills,
-    icon: 'fas fa-cloud',
-    iconBg: 'bg-orange-500',
-  },
-  {
-    title: 'Testing & quality',
-    skills: testingSkills,
-    icon: 'fas fa-vial',
-    iconBg: 'bg-pink-600',
-  },
-  {
-    title: 'AI & automation',
-    skills: aiSkills,
-    icon: 'fas fa-brain',
-    iconBg: 'bg-fuchsia-600',
-  },
+  { title: 'Frontend', skills: frontendSkills, icon: 'fas fa-code' },
+  { title: 'Backend', skills: backendSkills, icon: 'fas fa-server' },
+  { title: 'Database', skills: databaseSkills, icon: 'fas fa-database' },
+  { title: 'AI & Automation', skills: aiSkills, icon: 'fas fa-brain' },
+  { title: 'Cloud & DevOps', skills: cloudDeploymentSkills, icon: 'fas fa-cloud' },
+  { title: 'Tooling & Testing', skills: [...testingSkills, ...versionControlSkills], icon: 'fas fa-tools' },
 ].filter((c) => c.skills.length > 0)
 
 const TechnicalSkills = () => {
   return (
-    <section id="skills" className="border-y border-slate-200 bg-slate-100 py-20 md:py-28">
-      <div className="container mx-auto max-w-7xl px-4">
-        <header className="mx-auto mb-14 max-w-3xl text-center md:mb-16">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl lg:text-5xl">
-            Technical Skills
-          </h2>
-          <p className="text-lg text-slate-600 md:text-xl">
-            A comprehensive toolkit for building modern, scalable applications.
-          </p>
-        </header>
+    <section id="skills" className="bg-stone-50 py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Section label */}
+        <div className="mb-3 flex items-center gap-3">
+          <span className="font-mono text-xs font-semibold text-[#FF3D00]">03</span>
+          <span className="h-px w-10 bg-stone-200" />
+        </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Heading with watermark */}
+        <div className="relative mb-14 overflow-hidden">
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -top-3 left-0 select-none font-display text-[7rem] font-bold leading-none text-stone-100 md:text-[10rem]"
+          >
+            03
+          </span>
+          <div className="relative flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <h2 className="font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl">
+              Technical Skills
+            </h2>
+            <p className="max-w-xs font-mono text-xs text-stone-400 md:pb-2">
+              Tools I use to build production systems.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((cat) => (
             <div
               key={cat.title}
-              className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-md shadow-slate-200/50 transition-shadow hover:shadow-lg"
+              className="group border border-stone-200 bg-white p-6 transition hover:border-[#FF3D00]/40"
             >
-              <div className="mb-4 flex items-start gap-3">
-                <div
-                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${cat.iconBg} text-white shadow-sm`}
-                >
-                  <i className={`${cat.icon} text-lg`} aria-hidden />
-                </div>
-                <h3 className="pt-1 text-lg font-bold text-slate-900">{cat.title}</h3>
+              {/* Category header */}
+              <div className="mb-5 flex items-center gap-3">
+                <span className="h-1 w-1 rounded-full bg-[#FF3D00]" aria-hidden />
+                <span className="font-mono text-xs font-medium uppercase tracking-widest text-stone-700">
+                  {cat.title}
+                </span>
+                <i className={`${cat.icon} ml-auto text-xs text-stone-300`} aria-hidden />
               </div>
+
+              {/* Divider */}
+              <div className="mb-5 h-px bg-stone-100 group-hover:bg-[#FF3D00]/20 transition" />
+
+              {/* Skills */}
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
                   <span
                     key={skill.title}
-                    className="rounded-full bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700"
+                    className="border border-stone-200 bg-stone-50 px-2.5 py-1 font-mono text-xs text-stone-600 transition group-hover:border-stone-300"
                   >
                     {skill.title}
                   </span>

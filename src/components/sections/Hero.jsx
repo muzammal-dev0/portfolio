@@ -1,87 +1,160 @@
+import { motion } from 'framer-motion'
 import { handleNavClick } from '../../utils/scroll'
 import { personalInfo } from '../../constants/personalInfo'
+import ProfileImage from '../ProfileImage'
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+}
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+}
+
+const imageVariant = {
+  hidden: { opacity: 0, x: 32 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.25 } },
+}
+
+const [firstName, lastName] = personalInfo.name.split(' ')
 
 const Hero = () => {
   const socialLinks = [
     { name: 'GitHub', url: personalInfo.socialLinks.github, icon: 'fab fa-github' },
-    { name: 'LinkedIn', url: personalInfo.socialLinks.linkedin, icon: 'fab fa-linkedin' },
+    { name: 'LinkedIn', url: personalInfo.socialLinks.linkedin, icon: 'fab fa-linkedin-in' },
     { name: 'Email', url: `mailto:${personalInfo.email}`, icon: 'fas fa-envelope' },
   ]
 
   return (
     <section
       id="home"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-24 pt-28 text-center text-white md:pb-32 md:pt-32"
+      className="relative flex min-h-screen items-center overflow-hidden bg-stone-50 px-6 pb-24 pt-16 md:py-24"
     >
-      {/* Deep purple radial background */}
+      {/* Subtle grid pattern */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-violet-950 via-violet-900 to-indigo-950"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-90"
+        className="pointer-events-none absolute inset-0 opacity-[0.025]"
         aria-hidden
         style={{
-          background:
-            'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(167, 139, 250, 0.35) 0%, transparent 55%), radial-gradient(ellipse 70% 50% at 50% 100%, rgba(76, 29, 149, 0.5) 0%, transparent 50%)',
+          backgroundImage: 'linear-gradient(#1c1917 1px, transparent 1px), linear-gradient(90deg, #1c1917 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
         }}
       />
-      {/* Decorative V lines toward badge */}
-      <div className="pointer-events-none absolute left-1/2 top-0 h-32 w-px -translate-x-[120px] bg-gradient-to-b from-violet-400/40 to-transparent md:h-40" aria-hidden />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-32 w-px translate-x-[120px] bg-gradient-to-b from-violet-400/40 to-transparent md:h-40" aria-hidden />
-      {/* Faint device frame */}
-      <div
-        className="pointer-events-none absolute bottom-0 left-1/2 h-[45vh] w-[min(90vw,520px)] -translate-x-1/2 rounded-t-3xl border border-violet-500/10 bg-violet-950/20 md:h-[42vh]"
-        aria-hidden
-      />
 
-      <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center">
-        <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-full bg-violet-600 shadow-lg shadow-violet-900/50 ring-4 ring-violet-500/30">
-          <span className="font-mono text-lg font-bold text-white" aria-hidden>
-            &lt;/&gt;
-          </span>
-        </div>
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-20">
+        {/* — Left: text — */}
+        <motion.div variants={container} initial="hidden" animate="show">
+          {/* Index label */}
+          <motion.div variants={item} className="mb-10 flex items-center gap-4">
+            <span className="font-mono text-xs font-semibold text-[#FF3D00]">01</span>
+            <span className="h-px w-14 bg-[#FF3D00]" />
+            <span className="font-mono text-xs text-stone-400 uppercase tracking-widest">
+              Full-Stack Developer
+            </span>
+          </motion.div>
 
-        <h1 className="mb-3 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-          {personalInfo.title}
-        </h1>
-        <p className="mb-6 text-xl font-semibold text-violet-100 md:text-2xl">
-          {personalInfo.heroTagline}
-        </p>
-        <p className="mb-10 max-w-2xl text-base leading-relaxed text-violet-200/90 md:text-lg">
-          {personalInfo.bio.short}
-        </p>
-
-        <div className="mb-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
-          <button
-            type="button"
-            onClick={(e) => handleNavClick(e, 'projects')}
-            className="rounded-lg bg-violet-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-violet-950/40 transition hover:bg-violet-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:ring-offset-2 focus-visible:ring-offset-violet-950"
+          {/* Name — the hero moment */}
+          <motion.h1
+            variants={item}
+            className="mb-8 font-display font-bold leading-[0.88] tracking-tight text-stone-900"
+            style={{ fontSize: 'clamp(3.8rem, 9.5vw, 8.5rem)' }}
           >
-            View My Work
-          </button>
-          <button
-            type="button"
-            onClick={(e) => handleNavClick(e, 'contact')}
-            className="rounded-lg border border-white/25 bg-white px-8 py-3.5 text-base font-semibold text-violet-950 shadow-sm transition hover:bg-violet-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-violet-950"
-          >
-            Contact Me
-          </button>
-        </div>
+            <span className="block">{firstName}</span>
+            <span className="block italic text-[#FF3D00]">{lastName}</span>
+          </motion.h1>
 
-        <div className="flex items-center justify-center gap-8">
-          {socialLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xl text-violet-200/80 transition hover:text-white"
-              aria-label={link.name}
+          {/* Divider */}
+          <motion.div variants={item} className="mb-8 h-px w-full max-w-lg bg-stone-200" />
+
+          {/* Bio */}
+          <motion.p
+            variants={item}
+            className="mb-10 max-w-lg text-base leading-relaxed text-stone-500 md:text-lg"
+          >
+            {personalInfo.bio.short}
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div variants={item} className="mb-12 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={(e) => handleNavClick(e, 'projects')}
+              className="bg-stone-900 px-7 py-3.5 font-mono text-sm font-medium text-white transition hover:bg-[#FF3D00] focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-900"
             >
-              <i className={link.icon} />
-            </a>
-          ))}
+              View Work →
+            </button>
+            <button
+              type="button"
+              onClick={(e) => handleNavClick(e, 'contact')}
+              className="border border-stone-300 px-7 py-3.5 font-mono text-sm text-stone-600 transition hover:border-stone-900 hover:text-stone-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400"
+            >
+              Contact Me
+            </button>
+          </motion.div>
+
+          {/* Social links */}
+          <motion.div variants={item} className="flex items-center gap-5">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-400 transition hover:text-[#FF3D00]"
+                aria-label={link.name}
+              >
+                <i className={`${link.icon} text-lg`} />
+              </a>
+            ))}
+            <span className="ml-1 h-px w-16 bg-stone-200" />
+            <span className="font-mono text-[11px] text-stone-400">{personalInfo.location}</span>
+          </motion.div>
+        </motion.div>
+
+        {/* — Right: profile image — */}
+        <motion.div
+          variants={imageVariant}
+          initial="hidden"
+          animate="show"
+          className="flex justify-center lg:justify-end"
+        >
+          <div className="relative">
+            {/* Offset border frame — the editorial touch */}
+            <div
+              className="absolute -bottom-3 -right-3 h-full w-full border-2 border-[#FF3D00]/25"
+              aria-hidden
+            />
+
+            {/* Image */}
+            <div className="relative w-64 overflow-hidden md:w-72 lg:w-80">
+              <ProfileImage
+                alt={personalInfo.name}
+                className="aspect-[4/5] w-full object-cover object-top"
+                loading="eager"
+                fetchPriority="high"
+              />
+              {/* Subtle warm overlay at bottom */}
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-stone-50/20 to-transparent"
+                aria-hidden
+              />
+            </div>
+
+            {/* Availability badge — floats bottom-left */}
+            <div className="absolute -bottom-5 -left-5 border border-stone-200 bg-stone-50 px-4 py-3 shadow-sm">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-stone-400">Available</p>
+              <p className="font-display text-sm font-bold text-stone-900">Freelance · Full-time</p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-stone-400">Scroll</span>
+          <div className="h-6 w-px bg-gradient-to-b from-stone-400 to-transparent" />
         </div>
       </div>
     </section>

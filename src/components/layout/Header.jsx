@@ -3,8 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { scrollToSection } from '../../utils/scroll'
 import { personalInfo } from '../../constants/personalInfo'
 
-const navIds = [
-  { id: 'home', label: 'Home' },
+const navItems = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
@@ -28,32 +27,29 @@ const Header = () => {
   }
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-violet-950/60 bg-slate-950/95 p-4 shadow-lg shadow-black/20 backdrop-blur-md">
-      <div className="container mx-auto flex flex-wrap items-center justify-between gap-4">
+    <nav className="sticky top-0 z-50 border-b border-stone-200 bg-stone-50/95 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        {/* Logo — editorial name in display serif */}
         <Link
           to="/"
           onClick={(e) => {
-            if (isHome) {
-              e.preventDefault()
-              scrollToSection('home')
-            }
+            if (isHome) { e.preventDefault(); scrollToSection('home') }
             setIsMenuOpen(false)
           }}
-          className="flex items-center gap-2 text-lg font-bold text-white transition hover:text-violet-200 md:text-xl"
+          className="font-display text-base font-bold tracking-wide text-stone-900 transition hover:text-[#FF3D00]"
         >
-          <span className="font-mono text-violet-400" aria-hidden>
-            &lt;/&gt;
-          </span>
-          <span>{personalInfo.name.split(' ')[0]}</span>
+          {personalInfo.name.split(' ')[0]}{' '}
+          <span className="italic text-[#FF3D00]">{personalInfo.name.split(' ')[1]}</span>
         </Link>
 
-        <div className="hidden items-center gap-1 lg:flex">
-          {navIds.map(({ id, label }) => (
+        {/* Desktop nav */}
+        <div className="hidden items-center gap-0.5 lg:flex">
+          {navItems.map(({ id, label }) => (
             <a
               key={id}
               href={isHome ? `#${id}` : `/#${id}`}
               onClick={(e) => goHomeSection(e, id)}
-              className="rounded-lg px-3 py-2 text-sm font-medium capitalize text-violet-100/90 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+              className="rounded px-4 py-2 font-mono text-xs text-stone-500 transition hover:text-stone-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00]"
             >
               {label}
             </a>
@@ -61,48 +57,48 @@ const Header = () => {
           <button
             type="button"
             onClick={(e) => goHomeSection(e, 'contact')}
-            className="ml-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-violet-950/40 transition hover:bg-violet-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+            className="ml-4 bg-[#FF3D00] px-5 py-2 font-mono text-xs font-medium text-white transition hover:bg-[#e53500] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00] focus-visible:ring-offset-2"
           >
-            Let&apos;s Talk
+            Let's Talk
           </button>
         </div>
 
+        {/* Mobile toggle */}
         <button
           type="button"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="rounded-lg p-2 text-violet-100 hover:bg-white/10 lg:hidden"
+          className="rounded p-2 text-stone-500 hover:text-stone-900 lg:hidden"
           aria-label="Toggle menu"
           aria-expanded={isMenuOpen}
-          aria-controls="mobile-menu"
         >
-          <i className="fas fa-bars text-xl" />
+          <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-base`} />
         </button>
       </div>
 
-      <div
-        id="mobile-menu"
-        className={`border-t border-violet-950/50 bg-slate-950 px-4 py-3 lg:hidden ${isMenuOpen ? 'block' : 'hidden'}`}
-        role="menu"
-      >
-        {navIds.map(({ id, label }) => (
-          <a
-            key={id}
-            href={isHome ? `#${id}` : `/#${id}`}
-            onClick={(e) => goHomeSection(e, id)}
-            className="block rounded-lg py-2.5 capitalize text-violet-100/90 hover:bg-white/5 hover:text-white"
-            role="menuitem"
-          >
-            {label}
-          </a>
-        ))}
-        <button
-          type="button"
-          onClick={(e) => goHomeSection(e, 'contact')}
-          className="mt-2 w-full rounded-lg bg-violet-600 py-3 font-semibold text-white"
-        >
-          Let&apos;s Talk
-        </button>
-      </div>
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="border-t border-stone-200 bg-stone-50 px-6 py-4 lg:hidden">
+          <div className="flex flex-col gap-1">
+            {navItems.map(({ id, label }) => (
+              <a
+                key={id}
+                href={isHome ? `#${id}` : `/#${id}`}
+                onClick={(e) => goHomeSection(e, id)}
+                className="rounded px-3 py-2.5 font-mono text-sm text-stone-500 hover:bg-stone-100 hover:text-stone-900"
+              >
+                {label}
+              </a>
+            ))}
+            <button
+              type="button"
+              onClick={(e) => goHomeSection(e, 'contact')}
+              className="mt-3 w-full bg-[#FF3D00] py-3 font-mono text-sm font-medium text-white transition hover:bg-[#e53500]"
+            >
+              Let's Talk
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   )
 }

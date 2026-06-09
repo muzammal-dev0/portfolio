@@ -1,315 +1,219 @@
 import { useState } from 'react'
 import { personalInfo } from '../../constants/personalInfo'
-import { PulsatingButton } from '../magicui/PulsatingButton'
 
-const ContactInfo = ({ icon, label, value, href }) => (
-  <div className="mb-6 flex items-start gap-4">
-    <div
-      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-violet-100 text-violet-600"
-      aria-hidden
-    >
-      <i className={`${icon} text-lg`} />
-    </div>
-    <div className="min-w-0 pt-0.5">
-      <h4 className="font-bold text-slate-900">{label}</h4>
-      {href ? (
-        <a
-          href={href}
-          className="break-all text-slate-600 transition hover:text-violet-600 hover:underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {value}
-        </a>
-      ) : (
-        <p className="text-slate-600">{value}</p>
-      )}
-    </div>
-  </div>
-)
+const contactDetails = [
+  { icon: 'fas fa-envelope', label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
+  { icon: 'fas fa-phone', label: 'Phone', value: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/\s/g, '')}` },
+  { icon: 'fas fa-map-marker-alt', label: 'Location', value: personalInfo.location, href: null },
+]
+
+const inputClass =
+  'w-full border border-stone-200 bg-white px-4 py-3 font-sans text-sm text-stone-900 placeholder:text-stone-400 transition focus:border-[#FF3D00] focus:outline-none focus:ring-0'
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData({
-      ...formData,
-      [name]: value,
-    })
-    if (errors[name]) {
-      setErrors({
-        ...errors,
-        [name]: '',
-      })
-    }
+    setFormData((prev) => ({ ...prev, [name]: value }))
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }))
     setSubmitStatus(null)
   }
 
   const validateForm = () => {
-    const newErrors = {}
-
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required'
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required'
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'Please enter a valid email address'
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required'
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters long'
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    const errs = {}
+    if (!formData.name.trim()) errs.name = 'Required'
+    if (!formData.email.trim()) errs.email = 'Required'
+    else if (!validateEmail(formData.email)) errs.email = 'Invalid email'
+    if (!formData.message.trim()) errs.message = 'Required'
+    else if (formData.message.trim().length < 10) errs.message = 'Too short (min 10 chars)'
+    setErrors(errs)
+    return Object.keys(errs).length === 0
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!validateForm()) return
 
-    if (!validateForm()) {
-      return
-    }
-
-    const formEl = e.currentTarget
-    const hp = formEl.elements.namedItem('botcheck')
-    if (hp && 'value' in hp && hp.value) {
-      return
-    }
+    const hp = e.currentTarget.elements.namedItem('botcheck')
+    if (hp?.value) return
 
     setIsSubmitting(true)
     setSubmitStatus(null)
 
     const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
-    if (!accessKey || String(accessKey).trim() === '') {
+    if (!accessKey?.trim()) {
       setSubmitStatus('config')
       setIsSubmitting(false)
       return
     }
 
     try {
-      const payload = {
-        access_key: accessKey,
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        subject: 'Portfolio contact',
-        message: formData.message.trim(),
-        from_name: formData.name.trim(),
-        botcheck: hp && 'value' in hp ? hp.value : '',
-      }
-
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: 'Portfolio contact',
+          message: formData.message.trim(),
+          from_name: formData.name.trim(),
+          botcheck: hp?.value ?? '',
+        }),
       })
-
-      const data = await response.json().catch(() => ({}))
-
-      if (response.ok && data.success) {
+      const data = await res.json().catch(() => ({}))
+      if (res.ok && data.success) {
         setSubmitStatus('success')
-        setFormData({
-          name: '',
-          email: '',
-          message: '',
-        })
+        setFormData({ name: '', email: '', message: '' })
       } else {
         setSubmitStatus('error')
-        if (import.meta.env.DEV) {
-          console.error('Web3Forms error:', data)
-        }
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
-      if (import.meta.env.DEV) {
-        console.error('Form submission error:', error)
-      }
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const contactInfo = [
-    {
-      icon: 'fas fa-envelope',
-      label: 'Email',
-      value: personalInfo.email,
-      href: `mailto:${personalInfo.email}`,
-    },
-    { icon: 'fas fa-phone', label: 'Phone', value: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/\s/g, '')}` },
-    { icon: 'fas fa-map-marker-alt', label: 'Location', value: personalInfo.location },
-  ]
-
-  const inputRing = 'focus:outline-none focus:ring-2 focus:ring-violet-500'
-
   return (
-    <section id="contact" className="border-t border-slate-200 bg-white py-20 md:py-28">
-      <div className="container mx-auto max-w-6xl px-4">
-        <header className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl lg:text-5xl">
+    <section id="contact" className="bg-white py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Section label */}
+        <div className="mb-3 flex items-center gap-3">
+          <span className="font-mono text-xs font-semibold text-[#FF3D00]">06</span>
+          <span className="h-px w-10 bg-stone-200" />
+        </div>
+
+        {/* Heading with watermark */}
+        <div className="relative mb-14 overflow-hidden">
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -top-3 left-0 select-none font-display text-[7rem] font-bold leading-none text-stone-100 md:text-[10rem]"
+          >
+            06
+          </span>
+          <h2 className="relative font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl">
             Get In Touch
           </h2>
-          <p className="text-lg text-slate-600">
-            Have a project in mind? Let&apos;s work together to create something amazing.
-          </p>
-        </header>
+        </div>
 
-        <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
-          <div className="lg:w-2/5">
-            <h3 className="mb-2 text-xl font-bold text-slate-900">Contact Information</h3>
-            <p className="mb-8 text-slate-600 leading-relaxed">{personalInfo.contactMessage}</p>
-            {contactInfo.map((info, index) => (
-              <ContactInfo key={index} {...info} />
-            ))}
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16">
+          {/* Left — info */}
+          <div className="lg:col-span-2">
+            <p className="mb-8 text-base leading-relaxed text-stone-500">
+              {personalInfo.contactMessage}
+            </p>
+
+            <div className="space-y-5">
+              {contactDetails.map((info) => (
+                <div key={info.label} className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-stone-200 bg-stone-50">
+                    <i className={`${info.icon} text-xs text-[#FF3D00]`} aria-hidden />
+                  </div>
+                  <div>
+                    <p className="mb-0.5 font-mono text-xs uppercase tracking-widest text-stone-400">{info.label}</p>
+                    {info.href ? (
+                      <a
+                        href={info.href}
+                        className="break-all text-sm text-stone-700 transition hover:text-[#FF3D00]"
+                        target={info.href.startsWith('http') ? '_blank' : undefined}
+                        rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      >
+                        {info.value}
+                      </a>
+                    ) : (
+                      <p className="text-sm text-stone-700">{info.value}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="lg:flex-1">
+          {/* Right — form */}
+          <div className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
-              className="relative rounded-2xl border border-slate-200/80 bg-slate-100 p-6 shadow-inner md:p-8"
+              className="border border-stone-200 bg-stone-50 p-6 md:p-8"
               noValidate
             >
               <div className="sr-only" aria-hidden>
-                <label htmlFor="website">Website</label>
-                <input type="text" id="website" name="botcheck" tabIndex={-1} autoComplete="off" />
+                <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" />
               </div>
-              <div className="relative z-10 mb-6">
-                <label htmlFor="name" className="mb-2 block font-semibold text-slate-800">
-                  Your Name <span className="text-red-500">*</span>
+
+              <div className="mb-5">
+                <label htmlFor="name" className="mb-2 block font-mono text-xs font-medium uppercase tracking-widest text-stone-500">
+                  Name <span className="text-[#FF3D00]">*</span>
                 </label>
                 <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={`w-full rounded-lg border bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 ${inputRing} ${
-                    errors.name ? 'border-red-400' : 'border-slate-200'
-                  }`}
+                  type="text" id="name" name="name"
+                  value={formData.name} onChange={handleChange}
                   placeholder="John Doe"
+                  className={`${inputClass} ${errors.name ? 'border-red-400' : ''}`}
                   aria-invalid={errors.name ? 'true' : 'false'}
-                  aria-describedby={errors.name ? 'name-error' : undefined}
                 />
-                {errors.name && (
-                  <p id="name-error" className="mt-1 text-sm text-red-600" role="alert">
-                    {errors.name}
-                  </p>
-                )}
+                {errors.name && <p className="mt-1.5 font-mono text-xs text-red-500" role="alert">{errors.name}</p>}
               </div>
-              <div className="relative z-10 mb-6">
-                <label htmlFor="email" className="mb-2 block font-semibold text-slate-800">
-                  Your Email <span className="text-red-500">*</span>
+
+              <div className="mb-5">
+                <label htmlFor="email" className="mb-2 block font-mono text-xs font-medium uppercase tracking-widest text-stone-500">
+                  Email <span className="text-[#FF3D00]">*</span>
                 </label>
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={`w-full rounded-lg border bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 ${inputRing} ${
-                    errors.email ? 'border-red-400' : 'border-slate-200'
-                  }`}
+                  type="email" id="email" name="email"
+                  value={formData.email} onChange={handleChange}
                   placeholder="you@example.com"
+                  className={`${inputClass} ${errors.email ? 'border-red-400' : ''}`}
                   aria-invalid={errors.email ? 'true' : 'false'}
-                  aria-describedby={errors.email ? 'email-error' : undefined}
                 />
-                {errors.email && (
-                  <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
-                    {errors.email}
-                  </p>
-                )}
+                {errors.email && <p className="mt-1.5 font-mono text-xs text-red-500" role="alert">{errors.email}</p>}
               </div>
-              <div className="relative z-10 mb-6">
-                <label htmlFor="message" className="mb-2 block font-semibold text-slate-800">
-                  Message <span className="text-red-500">*</span>
+
+              <div className="mb-6">
+                <label htmlFor="message" className="mb-2 block font-mono text-xs font-medium uppercase tracking-widest text-stone-500">
+                  Message <span className="text-[#FF3D00]">*</span>
                 </label>
                 <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className={`w-full rounded-lg border bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 ${inputRing} ${
-                    errors.message ? 'border-red-400' : 'border-slate-200'
-                  }`}
+                  id="message" name="message" rows={5}
+                  value={formData.message} onChange={handleChange}
                   placeholder="Tell me about your project..."
+                  className={`${inputClass} resize-none ${errors.message ? 'border-red-400' : ''}`}
                   aria-invalid={errors.message ? 'true' : 'false'}
-                  aria-describedby={errors.message ? 'message-error' : undefined}
                 />
-                {errors.message && (
-                  <p id="message-error" className="mt-1 text-sm text-red-600" role="alert">
-                    {errors.message}
-                  </p>
-                )}
+                {errors.message && <p className="mt-1.5 font-mono text-xs text-red-500" role="alert">{errors.message}</p>}
               </div>
+
               {submitStatus === 'success' && (
-                <div
-                  className="relative z-10 mb-4 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-emerald-900"
-                  role="alert"
-                >
-                  <p className="font-semibold">Thank you for your message.</p>
-                  <p className="text-sm text-emerald-800">I will get back to you soon.</p>
+                <div className="mb-5 border-l-4 border-emerald-500 bg-emerald-50 py-3 pl-4 pr-4" role="alert">
+                  <p className="font-mono text-sm text-emerald-700">Sent — I'll be in touch soon.</p>
                 </div>
               )}
               {submitStatus === 'error' && (
-                <div
-                  className="relative z-10 mb-4 rounded-lg border border-red-200 bg-red-50 p-4 text-red-900"
-                  role="alert"
-                >
-                  <p className="font-semibold">Something went wrong.</p>
-                  <p className="text-sm text-red-800">Please try again or email me directly.</p>
+                <div className="mb-5 border-l-4 border-red-500 bg-red-50 py-3 pl-4 pr-4" role="alert">
+                  <p className="font-mono text-sm text-red-700">Something went wrong. Try emailing me directly.</p>
                 </div>
               )}
               {submitStatus === 'config' && (
-                <div
-                  className="relative z-10 mb-4 rounded-lg border border-amber-300 bg-amber-50 p-4 text-amber-900"
-                  role="status"
-                >
-                  <p className="font-semibold">Form not configured</p>
-                  <p className="text-sm">
-                    Add <code className="rounded bg-amber-100 px-1">VITE_WEB3FORMS_ACCESS_KEY</code> to a{' '}
-                    <code className="rounded bg-amber-100 px-1">.env</code> file (see{' '}
-                    <code className="rounded bg-amber-100 px-1">.env.example</code>). Get a free key at{' '}
-                    <a
-                      href="https://web3forms.com/"
-                      className="font-medium underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      web3forms.com
-                    </a>
-                    .
+                <div className="mb-5 border-l-4 border-[#FF3D00] bg-orange-50 py-3 pl-4 pr-4" role="status">
+                  <p className="font-mono text-sm text-orange-700">
+                    Add <code className="bg-orange-100 px-1">VITE_WEB3FORMS_ACCESS_KEY</code> to <code className="bg-orange-100 px-1">.env</code>
                   </p>
                 </div>
               )}
-              <div className="relative z-10">
-                <PulsatingButton
-                  type="submit"
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-violet-600 py-3.5 font-semibold text-white hover:bg-violet-500 disabled:cursor-not-allowed disabled:opacity-50"
-                  pulseColor="124, 58, 237"
-                  disabled={isSubmitting}
-                >
-                  <i className="fas fa-paper-plane" aria-hidden />
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </PulsatingButton>
-              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-[#FF3D00] py-3.5 font-mono text-sm font-semibold text-white transition hover:bg-[#e53500] disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00] focus-visible:ring-offset-2"
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message →'}
+              </button>
             </form>
           </div>
         </div>

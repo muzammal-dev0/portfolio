@@ -1,61 +1,49 @@
 import { personalInfo } from '../../constants/personalInfo'
 
+const quickLinks = [
+  { href: '/#about', label: 'About' },
+  { href: '/#skills', label: 'Skills' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#contact', label: 'Contact' },
+]
+
+const connectLinks = [
+  { href: personalInfo.socialLinks.github, label: 'GitHub', icon: 'fab fa-github' },
+  { href: personalInfo.socialLinks.linkedin, label: 'LinkedIn', icon: 'fab fa-linkedin-in' },
+  { href: personalInfo.socialLinks.whatsapp, label: 'WhatsApp', icon: 'fab fa-whatsapp' },
+  { href: `mailto:${personalInfo.email}`, label: 'Email', icon: 'fas fa-envelope' },
+]
+
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
-
-  const quickLinks = [
-    { href: '/#about', label: 'About' },
-    { href: '/#skills', label: 'Skills' },
-    { href: '/#projects', label: 'Projects' },
-    { href: '/#contact', label: 'Contact' },
-  ]
-
-  const connectLinks = [
-    {
-      href: personalInfo.socialLinks.github,
-      label: 'GitHub',
-      icon: <i className="fab fa-github text-lg" aria-hidden />,
-    },
-    {
-      href: personalInfo.socialLinks.linkedin,
-      label: 'LinkedIn',
-      icon: <i className="fab fa-linkedin text-lg" aria-hidden />,
-    },
-    {
-      href: personalInfo.socialLinks.whatsapp,
-      label: 'WhatsApp',
-      icon: <i className="fab fa-whatsapp text-lg" aria-hidden />,
-    },
-    {
-      href: `mailto:${personalInfo.email}`,
-      label: 'Email',
-      icon: <i className="fas fa-envelope text-lg" aria-hidden />,
-    },
-  ]
+  const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-slate-900 py-14 text-slate-300">
-      <div className="container mx-auto max-w-6xl px-4">
-        <div className="grid gap-12 md:grid-cols-3 md:gap-8">
+    <footer className="bg-stone-900 py-14 text-stone-400">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+          {/* Brand */}
           <div>
-            <p className="mb-3 text-lg font-bold text-white">
-              <span className="font-mono text-violet-400" aria-hidden>
-                &lt;/&gt;
-              </span>{' '}
-              <span className="text-white">{personalInfo.title}</span>
+            <p className="mb-3 font-display text-base font-bold text-stone-100">
+              {personalInfo.name.split(' ')[0]}{' '}
+              <span className="italic text-[#FF3D00]">{personalInfo.name.split(' ')[1]}</span>
             </p>
-            <p className="max-w-xs text-sm leading-relaxed text-slate-400">
+            <p className="max-w-xs text-sm leading-relaxed text-stone-500">
               {personalInfo.footerTagline}
             </p>
           </div>
+
+          {/* Nav */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-white">Quick Links</h3>
+            <h3 className="mb-4 font-mono text-xs font-medium uppercase tracking-widest text-stone-500">
+              Navigation
+            </h3>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-slate-400 transition hover:text-violet-300"
+                    className="text-sm text-stone-500 transition hover:text-[#FF3D00]"
                   >
                     {link.label}
                   </a>
@@ -63,9 +51,13 @@ const Footer = () => {
               ))}
             </ul>
           </div>
+
+          {/* Connect */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-white">Connect</h3>
-            <div className="flex flex-wrap gap-3">
+            <h3 className="mb-4 font-mono text-xs font-medium uppercase tracking-widest text-stone-500">
+              Connect
+            </h3>
+            <div className="flex flex-wrap gap-2.5">
               {connectLinks.map((link) => (
                 <a
                   key={link.label}
@@ -73,17 +65,18 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-800 text-white transition hover:bg-violet-600 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center border border-stone-700 text-stone-500 transition hover:border-[#FF3D00] hover:text-[#FF3D00]"
                 >
-                  {link.icon}
+                  <i className={`${link.icon} text-sm`} aria-hidden />
                 </a>
               ))}
             </div>
           </div>
         </div>
-        <div className="mt-12 border-t border-slate-800 pt-8 text-center">
-          <p className="text-sm text-slate-500">
-            &copy; {currentYear} {personalInfo.title}. All rights reserved.
+
+        <div className="mt-12 border-t border-stone-800 pt-8 text-center">
+          <p className="font-mono text-xs text-stone-600">
+            &copy; {year} {personalInfo.name}
           </p>
         </div>
       </div>

@@ -1,25 +1,41 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { personalInfo } from '../../constants/personalInfo'
+import { useChatbot } from '../../hooks/useChatbot'
 import ChatInput from './ChatInput'
+import ChatMessage from './ChatMessage'
+import ChatTypingIndicator from './ChatTypingIndicator'
 
 const ChatWidget = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const {
+    isOpen,
+    messages,
+    isLoading,
+    sendMessage,
+    clearChat,
+    open,
+    close,
+  } = useChatbot()
+
   const fabRef = useRef(null)
   const closeButtonRef = useRef(null)
   const panelRef = useRef(null)
+  const messagesEndRef = useRef(null)
   const prefersReducedMotion = useReducedMotion()
 
-  const open = useCallback(() => setIsOpen(true), [])
-  const close = useCallback(() => {
-    setIsOpen(false)
+  const handleClose = useCallback(() => {
+    close()
     requestAnimationFrame(() => fabRef.current?.focus())
-  }, [])
+  }, [close])
 
   const toggle = useCallback(() => {
-    if (isOpen) close()
+    if (isOpen) handleClose()
     else open()
-  }, [isOpen, open, close])
+  }, [isOpen, handleClose, open])
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages, isLoading])
 
   useEffect(() => {
     if (!isOpen) return
@@ -29,7 +45,7 @@ const ChatWidget = () => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         e.preventDefault()
-        close()
+        handleClose()
         return
       }
 
@@ -54,7 +70,7 @@ const ChatWidget = () => {
 
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [isOpen, close])
+  }, [isOpen, handleClose])
 
   const panelMotion = prefersReducedMotion
     ? { initial: false, animate: { opacity: 1, y: 0 }, exit: { opacity: 0 } }
@@ -88,33 +104,50 @@ const ChatWidget = () => {
                 </h2>
                 <p className="text-xs text-stone-500">Ask me about my work</p>
               </div>
-              <button
-                ref={closeButtonRef}
-                type="button"
-                onClick={close}
-                aria-label="Close chat"
-                className="flex h-8 w-8 shrink-0 items-center justify-center text-stone-400 transition hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00]"
-              >
-                <i className="fas fa-times" aria-hidden />
-              </button>
+              <div className="flex shrink-0 items-center gap-1">
+                <button
+                  type="button"
+                  onClick={clearChat}
+                  aria-label="Clear chat"
+                  className="flex h-8 w-8 items-center justify-center text-stone-400 transition hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00]"
+                >
+                  <i className="fas fa-redo-alt text-xs" aria-hidden />
+                </button>
+                <button
+                  ref={closeButtonRef}
+                  type="button"
+                  onClick={handleClose}
+                  aria-label="Close chat"
+                  className="flex h-8 w-8 items-center justify-center text-stone-400 transition hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00]"
+                >
+                  <i className="fas fa-times" aria-hidden />
+                </button>
+              </div>
             </div>
 
-            {/* Messages — empty in Phase 2 */}
-            <div
-              className="flex flex-1 flex-col items-center justify-center gap-2 overflow-y-auto px-4 py-8"
-              aria-live="polite"
-            >
-              <div className="flex h-12 w-12 items-center justify-center border border-stone-200 bg-white">
-                <i className="fas fa-comments text-lg text-[#FF3D00]/70" aria-hidden />
-              </div>
-              <p className="max-w-[240px] text-center text-sm text-stone-500">
-                Ask about my experience, skills, or projects — messaging opens in the next update.
-              </p>
+            {/* Messages */}
+            <div className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 py-4" aria-live="polite">
+              {messages.map((msg) => (
+                <ChatMessage key={msg.id} role={msg.role}>
+                  {msg.content.split('\n').map((line, i, arr) => (
+                    <span key={i}>
+                      {line}
+                      {i < arr.length - 1 && <br />}
+                    </span>
+                  ))}
+                </ChatMessage>
+              ))}
+              {isLoading && <ChatTypingIndicator />}
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Footer */}
             <div className="border-t border-stone-200 bg-white p-3">
-              <ChatInput disabled placeholder="Chat coming soon…" />
+              <ChatInput
+                disabled={isLoading}
+                placeholder="Ask about my work…"
+                onSend={sendMessage}
+              />
             </div>
           </motion.div>
         )}

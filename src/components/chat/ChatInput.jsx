@@ -1,14 +1,28 @@
+import { useState } from 'react'
 import { cn } from '../../utils/cn'
 
 const ChatInput = ({
-  disabled = true,
-  placeholder = 'Chat coming soon…',
+  disabled = false,
+  placeholder = 'Ask about my work…',
   onSend,
   className,
 }) => {
+  const [value, setValue] = useState('')
+
+  const canSend = !disabled && value.trim().length > 0
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (disabled || !onSend) return
+    if (!canSend || !onSend) return
+    onSend(value.trim())
+    setValue('')
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      handleSubmit(e)
+    }
   }
 
   return (
@@ -19,6 +33,9 @@ const ChatInput = ({
       <input
         id="chat-input"
         type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={handleKeyDown}
         disabled={disabled}
         placeholder={placeholder}
         aria-disabled={disabled}
@@ -26,7 +43,7 @@ const ChatInput = ({
       />
       <button
         type="submit"
-        disabled={disabled}
+        disabled={!canSend}
         aria-label="Send message"
         className="flex h-[42px] w-[42px] shrink-0 items-center justify-center bg-[#FF3D00] text-white transition hover:bg-[#e63600] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
       >

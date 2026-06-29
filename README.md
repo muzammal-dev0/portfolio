@@ -1,13 +1,13 @@
 # Portfolio — React + Vite
 
-Personal portfolio for Muzammal Hussain: single-page home with **React Router** case-study routes, **Tailwind CSS**, **Framer Motion**, and a **Web3Forms** contact integration.
+Personal portfolio for Muzammal Hussain: single-page home with **React Router** case-study routes, **Tailwind CSS**, and **Framer Motion**. A portfolio chatbot (see `docs/chatbot-implementation.md`) will handle messaging and leads.
 
 ## Features
 
-- React 18, Vite 5, Tailwind 3
+- React 18, Vite 7, Tailwind 3
 - Sections: Hero, About, Projects, Contact (layout: Header, Sidebar, Footer)
 - Project detail pages at `/project/:slug` (see `src/constants/projects.js`)
-- Contact form posts to [Web3Forms](https://web3forms.com/) when configured
+- Contact section: email, phone, location, and social links (chatbot widget planned)
 
 ## Setup
 
@@ -16,15 +16,7 @@ npm install
 npm run dev
 ```
 
-Copy environment variables:
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` and set `VITE_WEB3FORMS_ACCESS_KEY` (create a free access key on Web3Forms). Without it, the form shows a configuration notice instead of sending mail.
-
-Optional: set `VITE_SITE_URL` to your production origin and use it for absolute Open Graph image URLs in `index.html` if needed.
+Optional: copy `.env.example` to `.env` and set `VITE_SITE_URL` for canonical Open Graph URLs if needed.
 
 ## Project structure
 

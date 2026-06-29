@@ -14,7 +14,7 @@ No test suite is configured.
 
 ## Environment
 
-Copy `.env.example` to `.env` and set `VITE_WEB3FORMS_ACCESS_KEY` for the contact form to work. Without it, the form renders a configuration notice instead of sending mail. All env vars must be prefixed `VITE_` to be accessible in the browser.
+Optional: copy `.env.example` to `.env` and set `VITE_SITE_URL` for Open Graph. Chatbot-related server env vars (OpenAI, Pushover) are documented in `docs/chatbot-implementation.md` — added in a later phase.
 
 ## Architecture
 

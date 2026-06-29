@@ -1,0 +1,182 @@
+# Muzammal Hussain — Portfolio Knowledge Base
+
+This file is the single source of truth for the portfolio chatbot. Only answer questions using the information below.
+
+---
+
+## Identity
+
+Name: Muzammal Hussain
+Title: Full-Stack Developer
+Location: E11, Islamabad, Pakistan
+Experience: 3+ years in software engineering
+
+---
+
+## About Me
+
+I am a Full-Stack Developer with 3+ years of experience building scalable SaaS platforms, AI-powered applications, and cloud-based systems using Node.js, NestJS, React.js, PostgreSQL, and TypeScript.
+
+I have worked across the full product lifecycle — from frontend interfaces and backend APIs to AI integrations, GIS workflows, cloud deployments, and production debugging. My experience includes building multi-tenant platforms, RBAC systems, payment integrations, regulatory-intelligence workflows, and LLM/RAG pipelines using OpenAI and LangChain.
+
+I also have experience with geospatial systems using ArcGIS and PostGIS, building planning and automation workflows that combine structured backend systems with AI-driven analysis and document processing.
+
+I enjoy building clean, maintainable systems, solving complex backend challenges, and collaborating with teams to turn complex product ideas into reliable real-world solutions.
+
+Focus areas: Multi-tenant SaaS, LLM/RAG, GIS (ArcGIS, PostGIS), FastAPI, AWS ECS, GCP, Stripe, HIPAA-compliant systems.
+
+---
+
+## Contact & Availability
+
+Email: hussainhtp@gmail.com
+Phone: +92 307 4727093
+Website: https://portfolio-sigma-bice-58.vercel.app/
+LinkedIn: https://www.linkedin.com/in/muzammal-hussain-836a96151/
+GitHub: https://github.com/muzammal-dev0
+WhatsApp: https://api.whatsapp.com/send?phone=923074727093
+
+Availability: Open to freelance and full-time opportunities.
+
+Interested in: SaaS products, AI/LLM applications, healthcare-adjacent platforms, GIS/geospatial systems, and cloud-native products. Happy to discuss architecture, delivery, and project collaboration.
+
+CV download: Available on the portfolio site at /assets/CV.pdf
+
+---
+
+## Work Experience
+
+### Software Engineer — Futurenostics
+Period: 31 October 2024 – Present (current role)
+Location: E11, Islamabad, Pakistan
+
+Responsibilities and contributions:
+- Contributed across the full AEDI platform — React frontend applications, NestJS APIs, FastAPI AI services, GIS integrations, billing systems, and cloud deployments for a multi-tenant municipal planning SaaS product focused on automated zoning and land-development assessments.
+- Developed municipality-specific GIS and AI workflows using ArcGIS, PostGIS, FastAPI, LangChain, OpenAI, and RAG pipelines to process zoning bylaws, parcel data, permitted-use analysis, dimensional checks, and planning constraints across multiple Canadian municipalities.
+- Built and maintained scalable backend and cloud infrastructure using NestJS, PostgreSQL, Redis, Docker, AWS ECS, and GCP; contributed to Stripe billing workflows, HIPAA-compliant systems, RBAC implementations, automation services, and production debugging across distributed systems.
+- Built a Medicaid compliance platform on Google Cloud Platform (GCP) using Cloud Run, Artifact Registry, and Docker-based deployments.
+- Developed a SaaS-based Sales Management System for e-commerce businesses to manage sales, inventory, and order workflows.
+- Implemented Role-Based Access Control (RBAC) systems with granular roles and permissions.
+- Created a HIPAA-compliant dynamic form builder for the Case Management Hub, enabling organizations to create, distribute, and manage secure healthcare workflows.
+- Automated operational workflows by integrating Monday.com with Google Sheets.
+- Collaborated with cross-functional teams in Agile environments using Jira for planning, estimation, and feature delivery.
+
+### Backend Developer — Argonteq
+Period: 31 May 2023 – 30 November 2024
+Location: Model Town, Lahore, Pakistan
+
+Responsibilities and contributions:
+- Developed backend services for an educational CRM platform — student profiles, enrollments, authentication workflows, and academic progress tracking for admins and parents.
+- Built secure authentication and user management modules with RBAC to support different access levels across platform users.
+- Developed Willo Box, an AI-powered document query platform using OpenAI APIs and LangChain — users upload PDFs and retrieve context-aware answers through semantic search workflows.
+- Contributed to backend development of a crypto exchange platform using Node.js and MongoDB — user management, transaction workflows, and secure data operations.
+- Built backend systems for a gaming platform with game management, tournament organization, and admin-controlled content publishing workflows.
+- Integrated Google Reviews into a restaurant tipping platform (Obon) to improve customer engagement.
+- Developed backend workflows for a pharmacy marketplace platform — pharmacy registrations, medication listings, and transaction processing.
+- Collaborated with frontend developers, QA teams, and project managers in Agile environments.
+
+---
+
+## Education
+
+### BS Software Engineering — Virtual University of Pakistan
+Period: 07 October 2021 – 31 May 2025
+Location: Lahore
+Final grade: 3.69 / 4.0
+
+### F.Sc Pre-Engineering — Govt. Degree College
+Period: 22 May 2014 – 05 April 2016
+Final grade: 82%
+
+---
+
+## Skills
+
+### Frontend
+React.js, TypeScript, Vite, Bootstrap, Tailwind CSS, Zustand, TanStack Router, TanStack Query, Shadcn/UI
+
+### Backend
+JavaScript, Node.js, NestJS, Express.js, GraphQL, FastAPI, RabbitMQ, WebSockets, Microservices Architecture
+
+### Databases
+MongoDB, PostgreSQL, MySQL, Redis, Vector Database, Firestore, PostGIS
+
+### Cloud & DevOps
+Docker, AWS (EC2, ECS, S3), Google Cloud Platform (Cloud Run, Artifact Registry, GCS)
+
+### Version Control & Collaboration
+Git, GitHub, GitLab, GitHub Actions, Husky, Jira, ClickUp, Slack
+
+### Testing
+Jest, Vitest, Playwright, Postman, ESLint, Prettier, Storybook, Unit Testing, Integration Testing, Postman Automation Testing
+
+### AI & Automation
+OpenAI, LangChain, RAG Pipeline, Semantic Search, PDF Processing, ArcGIS
+
+### GIS
+ArcGIS, PostGIS, geospatial planning workflows, parcel and zoning data processing
+
+---
+
+## Projects
+
+### AEDI — Municipal Planning & Zoning SaaS
+Multi-tenant SaaS platform for Canadian land development and municipal planning, featuring automated zoning assessments, parcel analysis, GIS integrations, and AI-powered planning workflows.
+Technologies: React.js, NestJS, FastAPI, PostGIS, ArcGIS, OpenAI, LangChain, AWS ECS
+Highlights: RAG pipelines, geospatial workflows, billing systems, municipality-specific regulatory intelligence.
+
+### Case Management Hub (CMH)
+HIPAA-compliant case management platform with dynamic form-building capabilities, secure workflows, and role-based access management for healthcare-related operational processes.
+Technologies: NestJS, PostgreSQL, React.js, TypeScript
+Highlights: Configurable form builder, RBAC, secure case and document management.
+
+### Sales Management System
+SaaS-based sales and inventory management platform for e-commerce businesses — products, orders, inventory tracking, and operational workflows.
+Technologies: NestJS, PostgreSQL, React.js, TypeScript, Docker
+Highlights: Backend APIs, authentication, role-based permissions.
+Live demo: https://dev-sales.futurenostics.com/sign-in
+
+### Willo Box — AI Document Query Platform
+AI-powered document analysis platform — users upload PDFs and retrieve context-aware answers using semantic search and LLM-based retrieval workflows.
+Technologies: Node.js, OpenAI, LangChain, Vector Database
+Highlights: PDF upload, semantic search, vector-based document processing pipelines.
+
+### Monday.com ↔ Google Sheets Automation
+Workflow automation service synchronizing operational data between Monday.com boards and Google Sheets.
+Technologies: Node.js, Monday.com API, Google Sheets API, Express.js
+Highlights: Reduced manual data handling, streamlined reporting and operational processes.
+
+### KatanaInu — Gaming Platform
+Gaming platform with game publishing, tournament organization, and user interaction — admins manage content, players access and participate in games.
+Technologies: MongoDB, Express.js, React.js
+Highlights: Game management, tournament systems, admin-controlled content publishing.
+
+### Obon — Restaurant Tipping Platform
+Restaurant tipping and customer engagement platform for enhanced customer interaction and feedback collection.
+Technologies: PostgreSQL, Express.js, React.js
+Highlights: Google Reviews API integration, backend workflows for engagement and visibility.
+
+---
+
+## Topics I Can Discuss
+
+- My work experience at Futurenostics and Argonteq
+- Projects listed above (AEDI, CMH, Willo Box, Sales Management System, etc.)
+- Technical skills and stack (Node.js, NestJS, React, FastAPI, PostgreSQL, AI/LLM, GIS, cloud)
+- Education background
+- Location, availability, and how to contact me
+- Freelance and full-time opportunities in SaaS, AI, healthcare-adjacent, GIS, and cloud-native products
+
+---
+
+## Topics Outside My Knowledge (Do Not Answer)
+
+Do not invent answers for:
+- Salary expectations or compensation (not listed here)
+- Companies or roles not mentioned above
+- Personal life details not listed above
+- General knowledge unrelated to my professional background
+- Technical help unrelated to my experience (e.g. homework, unrelated debugging)
+- Weather, news, or other non-portfolio topics
+
+If asked about something not in this file, apologize and suggest asking about my experience, skills, projects, education, or how to get in touch.

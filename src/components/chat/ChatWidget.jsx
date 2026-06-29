@@ -11,6 +11,7 @@ const ChatWidget = () => {
     isOpen,
     messages,
     isLoading,
+    error,
     sendMessage,
     clearChat,
     open,
@@ -19,8 +20,10 @@ const ChatWidget = () => {
 
   const fabRef = useRef(null)
   const closeButtonRef = useRef(null)
+  const inputRef = useRef(null)
   const panelRef = useRef(null)
   const messagesEndRef = useRef(null)
+  const wasLoadingRef = useRef(false)
   const prefersReducedMotion = useReducedMotion()
 
   const handleClose = useCallback(() => {
@@ -36,6 +39,13 @@ const ChatWidget = () => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, isLoading])
+
+  useEffect(() => {
+    if (wasLoadingRef.current && !isLoading && isOpen) {
+      requestAnimationFrame(() => inputRef.current?.focus())
+    }
+    wasLoadingRef.current = isLoading
+  }, [isLoading, isOpen])
 
   useEffect(() => {
     if (!isOpen) return
@@ -127,6 +137,11 @@ const ChatWidget = () => {
 
             {/* Messages */}
             <div className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 py-4" aria-live="polite">
+              {error && (
+                <p className="rounded border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700" role="alert">
+                  {error}
+                </p>
+              )}
               {messages.map((msg) => (
                 <ChatMessage key={msg.id} role={msg.role}>
                   {msg.content.split('\n').map((line, i, arr) => (
@@ -144,6 +159,7 @@ const ChatWidget = () => {
             {/* Footer */}
             <div className="border-t border-stone-200 bg-white p-3">
               <ChatInput
+                ref={inputRef}
                 disabled={isLoading}
                 placeholder="Ask about my work…"
                 onSend={sendMessage}

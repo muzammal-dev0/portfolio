@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { forwardRef, useState } from 'react'
 import { cn } from '../../utils/cn'
 
-const ChatInput = ({
-  disabled = false,
-  placeholder = 'Ask about my work…',
-  onSend,
-  className,
-}) => {
+const ChatInput = forwardRef(function ChatInput(
+  {
+    disabled = false,
+    placeholder = 'Ask about my work…',
+    onSend,
+    className,
+  },
+  ref
+) {
   const [value, setValue] = useState('')
 
   const canSend = !disabled && value.trim().length > 0
@@ -31,12 +34,14 @@ const ChatInput = ({
         Message
       </label>
       <input
+        ref={ref}
         id="chat-input"
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleKeyDown}
         disabled={disabled}
+        maxLength={500}
         placeholder={placeholder}
         aria-disabled={disabled}
         className="min-h-[42px] flex-1 border border-stone-200 bg-stone-50 px-3 py-2 text-sm text-stone-900 placeholder:text-stone-400 focus:border-[#FF3D00]/50 focus:outline-none focus:ring-2 focus:ring-[#FF3D00]/20 disabled:cursor-not-allowed disabled:opacity-60"
@@ -51,6 +56,6 @@ const ChatInput = ({
       </button>
     </form>
   )
-}
+})
 
 export default ChatInput

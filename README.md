@@ -1,22 +1,43 @@
 # Portfolio — React + Vite
 
-Personal portfolio for Muzammal Hussain: single-page home with **React Router** case-study routes, **Tailwind CSS**, and **Framer Motion**. A portfolio chatbot (see `docs/chatbot-implementation.md`) will handle messaging and leads.
+Personal portfolio for Muzammal Hussain: single-page home with **React Router** case-study routes, **Tailwind CSS**, **Framer Motion**, and an **AI chatbot** grounded in `data/chatbot-knowledge.txt`.
 
 ## Features
 
 - React 18, Vite 7, Tailwind 3
 - Sections: Hero, About, Projects, Contact (layout: Header, Sidebar, Footer)
 - Project detail pages at `/project/:slug` (see `src/constants/projects.js`)
-- Contact section: email, phone, location, and social links (chatbot widget planned)
+- Contact section: email, phone, location, and social links
+- Portfolio chatbot with OpenAI + Pushover (see `docs/chatbot-implementation.md`)
 
 ## Setup
 
 ```bash
 npm install
-npm run dev
+npm run dev          # UI only — chat API requires vercel dev (below)
+npm run dev:full     # UI + /api/chat (recommended for chatbot)
 ```
 
-Optional: copy `.env.example` to `.env` and set `VITE_SITE_URL` for canonical Open Graph URLs if needed.
+### Chatbot environment (Phase 4+)
+
+Copy `.env.example` to `.env` and set server-only variables (never prefix with `VITE_`):
+
+| Variable | Description |
+|----------|-------------|
+| `OPENAI_API_KEY` | OpenAI API key |
+| `OPENAI_MODEL` | Optional, default `gpt-4o-mini` |
+| `PUSHOVER_APP_TOKEN` | App token from [pushover.net/apps/build](https://pushover.net/apps/build) |
+| `PUSHOVER_USER_KEY` | User key from your Pushover dashboard |
+
+Run locally with API routes:
+
+```bash
+npm run dev:full   # uses vercel dev — requires Vercel CLI (`npm i -g vercel`)
+```
+
+On Vercel, add the same env vars under Project → Settings → Environment Variables.
+
+Optional: set `VITE_SITE_URL` for canonical Open Graph URLs.
 
 ## Project structure
 

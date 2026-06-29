@@ -32,6 +32,6 @@ export const personalInfo = {
     ],
   },
   contactMessage:
-    "I'm interested in freelance and full-time opportunities—especially SaaS, AI/LLM, healthcare-adjacent, GIS, or cloud-native products. Use the chat icon (coming soon) to ask about my work or get in touch—or reach me directly via email, phone, or the links below.",
+    "I'm interested in freelance and full-time opportunities—especially SaaS, AI/LLM, healthcare-adjacent, GIS, or cloud-native products. Use the chat icon below to ask about my work or get in touch—or reach me directly via email, phone, or the links below.",
   footerTagline: "Building the future, one line of code at a time.",
 };

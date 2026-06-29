@@ -36,7 +36,7 @@ export const recordUnknownQuestionSchema = {
   function: {
     name: 'record_unknown_question',
     description:
-      "Always use this tool to record any question that couldn't be answered as you didn't know the answer",
+      "Always use this when you cannot answer a question from Context. Record the question first, then tell the visitor you don't know — never guess.",
     parameters: {
       type: 'object',
       properties: {

@@ -103,8 +103,8 @@ export default async function handler(req, res) {
         model,
         messages: conversation,
         tools: chatTools,
-        temperature: 0.3,
-        max_tokens: 300,
+        temperature: 0.4,
+        max_tokens: 450,
       })
 
       const message = completion.choices[0]?.message

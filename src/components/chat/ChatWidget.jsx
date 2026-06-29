@@ -143,14 +143,7 @@ const ChatWidget = () => {
                 </p>
               )}
               {messages.map((msg) => (
-                <ChatMessage key={msg.id} role={msg.role}>
-                  {msg.content.split('\n').map((line, i, arr) => (
-                    <span key={i}>
-                      {line}
-                      {i < arr.length - 1 && <br />}
-                    </span>
-                  ))}
-                </ChatMessage>
+                <ChatMessage key={msg.id} role={msg.role} content={msg.content} />
               ))}
               {isLoading && <ChatTypingIndicator />}
               <div ref={messagesEndRef} />

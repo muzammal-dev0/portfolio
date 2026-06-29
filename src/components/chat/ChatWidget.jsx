@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { personalInfo } from '../../constants/personalInfo'
+import { CHATBOT_NAME, CHATBOT_SUBTITLE } from '../../constants/chatbot'
 import { useChatbot } from '../../hooks/useChatbot'
 import ChatInput from './ChatInput'
 import ChatMessage from './ChatMessage'
+import ChatSuggestedQuestions from './ChatSuggestedQuestions'
 import ChatTypingIndicator from './ChatTypingIndicator'
 
 const ChatWidget = () => {
@@ -91,6 +92,8 @@ const ChatWidget = () => {
         transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
       }
 
+  const showSuggestions = !isLoading && !messages.some((m) => m.role === 'user')
+
   return (
     <>
       <AnimatePresence>
@@ -110,9 +113,9 @@ const ChatWidget = () => {
                   id="chat-title"
                   className="truncate font-display text-sm font-bold text-stone-900"
                 >
-                  Chat with {personalInfo.name.split(' ')[0]}
+                  {CHATBOT_NAME}
                 </h2>
-                <p className="text-xs text-stone-500">Ask me about my work</p>
+                <p className="text-xs text-stone-500">{CHATBOT_SUBTITLE}</p>
               </div>
               <div className="flex shrink-0 items-center gap-1">
                 <button
@@ -151,6 +154,13 @@ const ChatWidget = () => {
 
             {/* Footer */}
             <div className="border-t border-stone-200 bg-white p-3">
+              {showSuggestions && (
+                <ChatSuggestedQuestions
+                  className="mb-3"
+                  disabled={isLoading}
+                  onSelect={sendMessage}
+                />
+              )}
               <ChatInput
                 ref={inputRef}
                 disabled={isLoading}

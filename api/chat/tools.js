@@ -7,7 +7,7 @@ export const recordUserDetailsSchema = {
   function: {
     name: 'record_user_details',
     description:
-      'Use this tool to record that a user is interested in being in touch and provided an email address',
+      'Call only when the user wants to connect AND you have both their name and a valid email address. Do not call if only name or only email was provided.',
     parameters: {
       type: 'object',
       properties: {
@@ -17,7 +17,7 @@ export const recordUserDetailsSchema = {
         },
         name: {
           type: 'string',
-          description: "The user's name, if they provided it",
+          description: "The user's name",
         },
         notes: {
           type: 'string',
@@ -25,7 +25,7 @@ export const recordUserDetailsSchema = {
             "Any additional information about the conversation that's worth recording to give context",
         },
       },
-      required: ['email'],
+      required: ['email', 'name'],
       additionalProperties: false,
     },
   },
@@ -62,9 +62,13 @@ export async function record_user_details(
     return { recorded: 'error', message: 'Invalid email address' }
   }
 
+  if (!name?.trim() || name.trim().length < 2) {
+    return { recorded: 'error', message: 'Name is required — ask the user for their name before recording' }
+  }
+
   await pushLeadNotification({
     email: email.trim(),
-    name: name?.trim() || 'Name not provided',
+    name: name.trim(),
     notes: notes?.trim() || 'not provided',
   })
 

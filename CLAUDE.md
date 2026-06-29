@@ -14,7 +14,7 @@ No test suite is configured.
 
 ## Environment
 
-Optional: copy `.env.example` to `.env` and set `VITE_SITE_URL` for Open Graph. Chatbot-related server env vars (OpenAI, Pushover) are documented in `docs/chatbot-implementation.md` — added in a later phase.
+Optional: copy `.env.example` to `.env` and set `VITE_SITE_URL` for Open Graph. Chatbot server env vars (`OPENAI_API_KEY`, `PUSHOVER_*`) are documented in `README.md`.
 
 ## Architecture
 

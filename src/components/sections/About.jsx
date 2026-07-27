@@ -52,6 +52,7 @@ const About = () => {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={personalInfo.cvPath}
+                download="Muzammal-Hussain-CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-stone-300 px-5 py-2.5 font-mono text-sm text-stone-600 transition hover:border-stone-900 hover:text-stone-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400"

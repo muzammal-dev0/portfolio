@@ -1,14 +1,14 @@
 export const personalInfo = {
   name: "Muzammal Hussain",
-  title: "Full-Stack Developer",
+  title: "Full-Stack Software Engineer | Agentic AI Engineer",
   /** Short line under the main role (hero tagline). */
-  heroTagline: "Building scalable SaaS, AI, and cloud-native systems",
+  heroTagline: "Building scalable SaaS, Agentic AI, and cloud-native systems",
   /** One clear line: what you build and for whom (used in Hero + SEO alignment). */
   headline:
-    "Full-stack developer with 3+ years building scalable SaaS platforms, AI-powered applications, and cloud systems with Node.js, NestJS, React.js, PostgreSQL, and TypeScript.",
+    "Full-stack and Agentic AI engineer with 3+ years building scalable SaaS platforms, multi-agent AI systems, and cloud-native apps with Node.js, NestJS, React.js, PostgreSQL, and Python.",
   /** Supporting line: stack focus and availability. */
   subheadline:
-    "Multi-tenant SaaS · LLM/RAG · GIS (ArcGIS, PostGIS) · FastAPI · AWS ECS · GCP · Stripe · HIPAA — E11, Islamabad, Pakistan · Freelance / full-time",
+    "Multi-tenant SaaS · Agentic AI / MCP · LLM/RAG · GIS (ArcGIS) · FastAPI · AWS ECS · GCP · Stripe · HIPAA — E11, Islamabad, Pakistan · Freelance / full-time",
   email: "hussainhtp@gmail.com",
   phone: "+92 307 4727093",
   location: "E11, Islamabad, Pakistan",
@@ -25,13 +25,13 @@ export const personalInfo = {
   },
   bio: {
     short:
-      "I build scalable SaaS platforms, AI-powered applications, and cloud-based systems with Node.js, NestJS, React.js, PostgreSQL, and TypeScript—across the full product lifecycle from frontend and APIs to LLM/RAG pipelines and cloud deployments.",
+      "I build scalable SaaS platforms, Agentic AI systems, and cloud-native applications with TypeScript, Node.js, NestJS, React.js, PostgreSQL, and Python—from production APIs and multi-tenant products to multi-agent workflows with LangGraph, CrewAI, and MCP.",
     long: [
-      "I've worked on multi-tenant platforms, RBAC, payment integrations, regulatory-intelligence workflows, and LLM/RAG pipelines using OpenAI and LangChain. I also build geospatial workflows with ArcGIS and PostGIS—planning and automation that combine structured backends with AI-driven analysis and document processing.",
-      "I enjoy building clean, maintainable systems, solving complex backend challenges, and collaborating with teams to turn ambitious product ideas into reliable real-world solutions.",
+      "I've delivered multi-tenant SaaS, HIPAA-compliant healthcare workflows, GIS-backed municipal planning platforms, and LLM/RAG pipelines. At Futurenostics I also built Sidekick (LangChain/LangGraph) and Autonomous Trading Floor (OpenAI Agents SDK + MCP) for agentic, tool-calling experiences.",
+      "I enjoy building clean, maintainable systems, solving complex backend and AI orchestration challenges, and collaborating with teams to turn ambitious product ideas into reliable real-world solutions.",
     ],
   },
   contactMessage:
-    "I'm interested in freelance and full-time opportunities—especially SaaS, AI/LLM, healthcare-adjacent, GIS, or cloud-native products. Use the chat icon below to ask about my work or get in touch—or reach me directly via email, phone, or the links below.",
+    "I'm interested in freelance and full-time opportunities—especially SaaS, Agentic AI/LLM, healthcare-adjacent, GIS, or cloud-native products. Use the chat icon below to ask about my work or get in touch—or reach me directly via email, phone, or the links below.",
   footerTagline: "Building the future, one line of code at a time.",
 };

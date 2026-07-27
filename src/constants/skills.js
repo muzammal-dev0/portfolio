@@ -19,6 +19,7 @@ export const backendSkills = [
   skill('NestJS'),
   skill('Express.js'),
   skill('GraphQL'),
+  skill('Python'),
   skill('FastAPI'),
   skill('RabbitMQ'),
   skill('WebSockets'),
@@ -32,7 +33,6 @@ export const databaseSkills = [
   skill('Redis'),
   skill('Vector Database'),
   skill('Firestore'),
-  skill('PostGIS'),
 ]
 
 export const versionControlSkills = [
@@ -71,10 +71,13 @@ export const testingSkills = [
 export const aiSkills = [
   skill('OpenAI'),
   skill('LangChain'),
+  skill('LangGraph'),
+  skill('CrewAI'),
+  skill('OpenAI Agents SDK'),
+  skill('MCP'),
+  skill('Agentic AI'),
+  skill('Multi-Agent Systems'),
   skill('RAG Pipeline'),
-  skill('Semantic Search'),
-  skill('PDF Processing'),
-  skill('ArcGIS'),
 ]
 
 export const projectManagementSkills = []

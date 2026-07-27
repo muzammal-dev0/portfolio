@@ -9,6 +9,7 @@ export const SUGGESTED_QUESTIONS = [
   { label: 'Introduction', message: 'Tell me about yourself and your background.' },
   { label: 'About my work', message: 'What kind of work do you do?' },
   { label: 'Tech stack', message: 'What technologies do you use?' },
+  { label: 'Agentic AI', message: 'Tell me about your Agentic AI and multi-agent work.' },
   { label: 'Projects', message: 'What projects have you worked on?' },
   { label: 'Contact me', message: "I'd like to get in touch." },
 ]

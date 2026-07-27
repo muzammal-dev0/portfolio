@@ -7,7 +7,7 @@ This file is the single source of truth for the portfolio chatbot. Only answer q
 ## Identity
 
 Name: Muzammal Hussain
-Title: Full-Stack Developer
+Title: Full-Stack Software Engineer | Agentic AI Engineer
 Location: E11, Islamabad, Pakistan
 Experience: 3+ years in software engineering
 
@@ -15,15 +15,13 @@ Experience: 3+ years in software engineering
 
 ## About Me
 
-I am a Full-Stack Developer with 3+ years of experience building scalable SaaS platforms, AI-powered applications, and cloud-based systems using Node.js, NestJS, React.js, PostgreSQL, and TypeScript.
+I am a Full-Stack Software Engineer and Agentic AI Engineer with 3+ years of professional experience building scalable SaaS platforms, cloud-native applications, and intelligent software solutions. I design and develop modern web applications using TypeScript, Node.js, NestJS, React.js, PostgreSQL, and Python across the full software development lifecycle.
 
-I have worked across the full product lifecycle — from frontend interfaces and backend APIs to AI integrations, GIS workflows, cloud deployments, and production debugging. My experience includes building multi-tenant platforms, RBAC systems, payment integrations, regulatory-intelligence workflows, and LLM/RAG pipelines using OpenAI and LangChain.
+I specialize in integrating Agentic AI and LLM-powered capabilities into production applications using OpenAI APIs, OpenAI Agents SDK, LangChain, LangGraph, CrewAI, and Model Context Protocol (MCP). I build multi-agent systems, Retrieval-Augmented Generation (RAG) pipelines, AI workflow automation, and tool-calling architectures that enable intelligent, context-aware user experiences.
 
-I also have experience with geospatial systems using ArcGIS and PostGIS, building planning and automation workflows that combine structured backend systems with AI-driven analysis and document processing.
+I have proven experience delivering secure, scalable backend systems, multi-tenant SaaS platforms, GIS-based applications, cloud deployments on AWS and Google Cloud Platform, and production-ready APIs. I am passionate about building reliable software that combines modern engineering practices with practical AI to solve complex real-world problems.
 
-I enjoy building clean, maintainable systems, solving complex backend challenges, and collaborating with teams to turn complex product ideas into reliable real-world solutions.
-
-Focus areas: Multi-tenant SaaS, LLM/RAG, GIS (ArcGIS, PostGIS), FastAPI, AWS ECS, GCP, Stripe, HIPAA-compliant systems.
+Focus areas: Multi-tenant SaaS, Agentic AI / multi-agent systems, LLM/RAG, GIS (ArcGIS, PostGIS), FastAPI, AWS ECS, GCP, Stripe, HIPAA-compliant systems.
 
 ---
 
@@ -38,7 +36,7 @@ WhatsApp: https://api.whatsapp.com/send?phone=923074727093
 
 Availability: Open to freelance and full-time opportunities.
 
-Interested in: SaaS products, AI/LLM applications, healthcare-adjacent platforms, GIS/geospatial systems, and cloud-native products. Happy to discuss architecture, delivery, and project collaboration.
+Interested in: SaaS products, Agentic AI / LLM applications, healthcare-adjacent platforms, GIS/geospatial systems, and cloud-native products. Happy to discuss architecture, delivery, and project collaboration.
 
 CV download: Available on the portfolio site at /assets/CV.pdf
 
@@ -51,29 +49,28 @@ Period: 31 October 2024 – Present (current role)
 Location: E11, Islamabad, Pakistan
 
 Responsibilities and contributions:
-- Contributed across the full AEDI platform — React frontend applications, NestJS APIs, FastAPI AI services, GIS integrations, billing systems, and cloud deployments for a multi-tenant municipal planning SaaS product focused on automated zoning and land-development assessments.
-- Developed municipality-specific GIS and AI workflows using ArcGIS, PostGIS, FastAPI, LangChain, OpenAI, and RAG pipelines to process zoning bylaws, parcel data, permitted-use analysis, dimensional checks, and planning constraints across multiple Canadian municipalities.
-- Built and maintained scalable backend and cloud infrastructure using NestJS, PostgreSQL, Redis, Docker, AWS ECS, and GCP; contributed to Stripe billing workflows, HIPAA-compliant systems, RBAC implementations, automation services, and production debugging across distributed systems.
-- Built a Medicaid compliance platform on Google Cloud Platform (GCP) using Cloud Run, Artifact Registry, and Docker-based deployments.
-- Developed a SaaS-based Sales Management System for e-commerce businesses to manage sales, inventory, and order workflows.
-- Implemented Role-Based Access Control (RBAC) systems with granular roles and permissions.
-- Created a HIPAA-compliant dynamic form builder for the Case Management Hub, enabling organizations to create, distribute, and manage secure healthcare workflows.
-- Automated operational workflows by integrating Monday.com with Google Sheets.
-- Collaborated with cross-functional teams in Agile environments using Jira for planning, estimation, and feature delivery.
+- Design and develop scalable backend services and modern frontend features for AEDI, a multi-tenant municipal planning SaaS platform used by Canadian municipalities for zoning and land development assessments.
+- Build HIPAA-compliant healthcare solutions, including dynamic form builders, workflow automation, secure case management platforms, and enterprise-grade backend services for healthcare organizations.
+- Engineer cloud-native applications using NestJS, React.js, FastAPI, PostgreSQL, Redis, Docker, AWS ECS, and Google Cloud Platform (GCP), ensuring scalability, reliability, and high availability.
+- Design and implement secure authentication, authorization, and Role-Based Access Control (RBAC) across enterprise SaaS applications.
+- Integrate third-party services including Stripe, GIS platforms, payment providers, and external APIs to extend platform capabilities and streamline business workflows.
+- Collaborate with product managers, designers, and engineering teams in Agile environments, contributing to architecture decisions, code reviews, and the delivery of production-ready software.
+- Developed the Sales Management System, a SaaS platform for managing products, inventory, customers, orders, and sales operations by designing scalable backend APIs and business workflow automation.
+- Developed Sidekick, an Agentic AI assistant using Python, LangChain, and LangGraph, capable of planning multi-step tasks, invoking external tools, supporting human-in-the-loop interactions, and evaluating responses through graph-based workflows.
+- Built Autonomous Trading Floor, a multi-agent AI platform using Python, OpenAI Agents SDK, and Model Context Protocol (MCP), enabling specialized AI agents to collaborate on financial research, market analysis, and custom MCP server integration through autonomous agent orchestration.
 
 ### Backend Developer — Argonteq
 Period: 31 May 2023 – 30 November 2024
 Location: Model Town, Lahore, Pakistan
 
 Responsibilities and contributions:
-- Developed backend services for an educational CRM platform — student profiles, enrollments, authentication workflows, and academic progress tracking for admins and parents.
-- Built secure authentication and user management modules with RBAC to support different access levels across platform users.
-- Developed Willo Box, an AI-powered document query platform using OpenAI APIs and LangChain — users upload PDFs and retrieve context-aware answers through semantic search workflows.
-- Contributed to backend development of a crypto exchange platform using Node.js and MongoDB — user management, transaction workflows, and secure data operations.
-- Built backend systems for a gaming platform with game management, tournament organization, and admin-controlled content publishing workflows.
-- Integrated Google Reviews into a restaurant tipping platform (Obon) to improve customer engagement.
-- Developed backend workflows for a pharmacy marketplace platform — pharmacy registrations, medication listings, and transaction processing.
-- Collaborated with frontend developers, QA teams, and project managers in Agile environments.
+- Developed scalable backend services and RESTful APIs using Node.js, NestJS, Express.js, MongoDB, and PostgreSQL for SaaS, fintech, healthcare, gaming, and education platforms.
+- Built Willo Box, an AI-powered document intelligence platform using OpenAI API, LangChain, vector embeddings, and semantic search, enabling users to retrieve context-aware insights from uploaded documents.
+- Designed secure authentication, authorization, and Role-Based Access Control (RBAC) systems for enterprise applications.
+- Contributed to backend development of a cryptocurrency exchange platform, implementing user management, transaction processing, and secure API integrations.
+- Developed backend services for pharmacy marketplace, restaurant engagement, gaming, and educational CRM platforms, delivering scalable business solutions across multiple industries.
+- Integrated third-party services including Google Reviews, payment gateways, and external APIs to enhance application functionality.
+- Worked closely with frontend developers, QA engineers, and product managers to deliver high-quality software through Agile development practices.
 
 ---
 
@@ -93,13 +90,13 @@ Final grade: 82%
 ## Skills
 
 ### Frontend
-React.js, TypeScript, Vite, Bootstrap, Tailwind CSS, Zustand, TanStack Router, TanStack Query, Shadcn/UI
+React.js, TypeScript, Vite, Bootstrap, Tailwind CSS, Zustand, TanStack Router/Query, Shadcn/UI
 
 ### Backend
-JavaScript, Node.js, NestJS, Express.js, GraphQL, FastAPI, RabbitMQ, WebSockets, Microservices Architecture
+JavaScript, Express.js, Node.js, NestJS, GraphQL, Python, FastAPI, RabbitMQ, WebSockets, Microservices Architecture
 
 ### Databases
-MongoDB, PostgreSQL, MySQL, Redis, Vector Database, Firestore, PostGIS
+MongoDB, PostgreSQL, MySQL, Redis, Vector Database, Firestore
 
 ### Cloud & DevOps
 Docker, AWS (EC2, ECS, S3), Google Cloud Platform (Cloud Run, Artifact Registry, GCS)
@@ -108,64 +105,61 @@ Docker, AWS (EC2, ECS, S3), Google Cloud Platform (Cloud Run, Artifact Registry,
 Git, GitHub, GitLab, GitHub Actions, Husky, Jira, ClickUp, Slack
 
 ### Testing
-Jest, Vitest, Playwright, Postman, ESLint, Prettier, Storybook, Unit Testing, Integration Testing, Postman Automation Testing
+Jest, ESLint, Prettier, Storybook, Unit Testing, Integration Testing, Postman Automation Testing, Playwright
 
 ### AI & Automation
-OpenAI, LangChain, RAG Pipeline, Semantic Search, PDF Processing, ArcGIS
+OpenAI, LangChain, LangGraph, CrewAI, OpenAI Agents SDK, Model Context Protocol (MCP), Agentic AI, Multi-Agent Systems, AI Agent Orchestration, Retrieval-Augmented Generation (RAG)
 
 ### GIS
-ArcGIS, PostGIS, geospatial planning workflows, parcel and zoning data processing
+ArcGIS, PostGIS, geospatial planning workflows (used on AEDI and related municipal planning work)
 
 ---
 
 ## Projects
 
 ### AEDI — Municipal Planning & Zoning SaaS
-Multi-tenant SaaS platform for Canadian land development and municipal planning, featuring automated zoning assessments, parcel analysis, GIS integrations, and AI-powered planning workflows.
-Technologies: React.js, NestJS, FastAPI, PostGIS, ArcGIS, OpenAI, LangChain, AWS ECS
-Highlights: RAG pipelines, geospatial workflows, billing systems, municipality-specific regulatory intelligence.
+Multi-tenant SaaS platform for Canadian municipalities to automate zoning and land development assessments. Built scalable backend services, AI-powered regulatory analysis workflows, GIS integrations, and cloud-native infrastructure using OpenAI, RAG, and ArcGIS.
+Technologies: React.js, NestJS, FastAPI, PostgreSQL, ArcGIS, OpenAI, AWS ECS, Docker
 
 ### Case Management Hub (CMH)
-HIPAA-compliant case management platform with dynamic form-building capabilities, secure workflows, and role-based access management for healthcare-related operational processes.
-Technologies: NestJS, PostgreSQL, React.js, TypeScript
-Highlights: Configurable form builder, RBAC, secure case and document management.
+HIPAA-compliant case management platform with configurable dynamic forms, role-based access control, workflow automation, and scalable APIs for healthcare organizations.
+Technologies: NestJS, PostgreSQL, Google Cloud Platform
 
 ### Sales Management System
-SaaS-based sales and inventory management platform for e-commerce businesses — products, orders, inventory tracking, and operational workflows.
-Technologies: NestJS, PostgreSQL, React.js, TypeScript, Docker
-Highlights: Backend APIs, authentication, role-based permissions.
+SaaS-based sales and inventory management platform for e-commerce businesses — product management, inventory tracking, order processing, and sales operations with secure backend APIs, authentication, and RBAC.
+Technologies: React.js, NestJS, PostgreSQL, TypeScript
 Live demo: https://dev-sales.futurenostics.com/sign-in
 
-### Willo Box — AI Document Query Platform
-AI-powered document analysis platform — users upload PDFs and retrieve context-aware answers using semantic search and LLM-based retrieval workflows.
-Technologies: Node.js, OpenAI, LangChain, Vector Database
-Highlights: PDF upload, semantic search, vector-based document processing pipelines.
+### Willo Box — AI Document Intelligence Platform
+LLM-powered document intelligence platform — users upload PDF documents and retrieve accurate, context-aware answers using RAG, semantic search, and vector embeddings.
+Technologies: Node.js, OpenAI API, LangChain, Vector Database
 
-### Monday.com ↔ Google Sheets Automation
-Workflow automation service synchronizing operational data between Monday.com boards and Google Sheets.
-Technologies: Node.js, Monday.com API, Google Sheets API, Express.js
-Highlights: Reduced manual data handling, streamlined reporting and operational processes.
+### Monday.com Automation Platform
+Backend services and custom integrations for the Monday.com platform — event-driven webhooks, custom applications, and third-party API integrations to synchronize data, automate repetitive processes, and improve operational efficiency.
+Technologies: Node.js, TypeScript, NestJS, Monday.com API, Webhooks
 
-### KatanaInu — Gaming Platform
-Gaming platform with game publishing, tournament organization, and user interaction — admins manage content, players access and participate in games.
-Technologies: MongoDB, Express.js, React.js
-Highlights: Game management, tournament systems, admin-controlled content publishing.
+### Obon — Easy Tipping Platform
+Digital tipping platform that enables businesses to accept cashless tips through secure online payments. Scalable backend APIs, Stripe payment processing, authentication, RBAC, and responsive frontend features.
+Technologies: Node.js, NestJS, React.js, PostgreSQL, Stripe
 
-### Obon — Restaurant Tipping Platform
-Restaurant tipping and customer engagement platform for enhanced customer interaction and feedback collection.
-Technologies: PostgreSQL, Express.js, React.js
-Highlights: Google Reviews API integration, backend workflows for engagement and visibility.
+### Sidekick — Agentic AI Assistant
+Intelligent AI assistant capable of planning tasks, invoking external tools, evaluating responses against success criteria, and supporting human-in-the-loop interactions through graph-based agent workflows.
+Technologies: LangChain, LangGraph, Python
+
+### Autonomous Trading Floor — Multi-Agent AI Platform
+Multi-agent trading platform where specialized AI agents collaborate on market research, financial data analysis, and access to custom MCP servers for account management and market intelligence using autonomous agent orchestration.
+Technologies: Python, OpenAI Agents SDK, MCP (Model Context Protocol)
 
 ---
 
 ## Topics I Can Discuss
 
 - My work experience at Futurenostics and Argonteq
-- Projects listed above (AEDI, CMH, Willo Box, Sales Management System, etc.)
-- Technical skills and stack (Node.js, NestJS, React, FastAPI, PostgreSQL, AI/LLM, GIS, cloud)
+- Projects listed above (AEDI, CMH, Willo Box, Sales Management System, Sidekick, Autonomous Trading Floor, Obon, Monday.com Automation, etc.)
+- Technical skills and stack (Node.js, NestJS, React, Python, FastAPI, PostgreSQL, Agentic AI, LangGraph, CrewAI, MCP, RAG, GIS, cloud)
 - Education background
 - Location, availability, and how to contact me
-- Freelance and full-time opportunities in SaaS, AI, healthcare-adjacent, GIS, and cloud-native products
+- Freelance and full-time opportunities in SaaS, Agentic AI / LLM, healthcare-adjacent, GIS, and cloud-native products
 
 ---
 

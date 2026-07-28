@@ -10,7 +10,7 @@ Live site: [portfolio-sigma-bice-58.vercel.app](https://portfolio-sigma-bice-58.
 - Sections: Hero, About, Projects, Work Experience, Contact
 - Project detail pages at `/project/:slug` (see `src/constants/projects.js`)
 - Contact section: email, phone, location, and social links
-- Floating chat widget — OpenAI answers in first person, Pushover alerts for leads and unknown questions
+- Floating chat widget — OpenAI answers in first person; email alerts for leads and unknown questions
 
 ## Setup
 
@@ -24,7 +24,7 @@ Optional: copy `.env.example` to `.env` for local chatbot testing and set `VITE_
 
 ## Chatbot
 
-The chatbot answers as Muzammal using only `data/chatbot-knowledge.txt`. Out-of-scope questions are refused. When someone wants to connect or asks something not in the knowledge file, you get a **Pushover** notification.
+The chatbot answers as Muzammal using only `data/chatbot-knowledge.txt`. Out-of-scope questions are refused. When someone wants to connect or asks something not in the knowledge file, you get an **email** alert via Gmail SMTP.
 
 ### Architecture
 
@@ -34,8 +34,8 @@ Browser (ChatWidget → useChatbot)
     ▼
 Vercel serverless (api/chat.js)
     │  OpenAI gpt-4o-mini + tool calling
-    ├── record_user_details  → Pushover (lead)
-    └── record_unknown_question → Pushover (unknown question)
+    ├── record_user_details  → Email (lead)
+    └── record_unknown_question → Email (unknown question)
 ```
 
 Key files:
@@ -45,7 +45,7 @@ Key files:
 | `data/chatbot-knowledge.txt` | Single source of truth for AI answers |
 | `api/chat.js` | Vercel handler, rate limiting, OpenAI loop |
 | `api/chat/tools.js` | Tool schemas + lead / unknown-question handlers |
-| `api/chat/notify.js` | Pushover notifications |
+| `api/chat/notify.js` | Gmail SMTP email alerts |
 | `src/components/chat/` | Chat widget UI |
 | `src/hooks/useChatbot.js` | Client message state + API calls |
 
@@ -57,11 +57,17 @@ Server-only — **never** prefix with `VITE_` (keeps keys out of the browser bun
 |----------|----------|-------------|
 | `OPENAI_API_KEY` | Yes | OpenAI API key |
 | `OPENAI_MODEL` | No | Default `gpt-4o-mini` |
-| `PUSHOVER_APP_TOKEN` | Yes | App token from [pushover.net/apps/build](https://pushover.net/apps/build) |
-| `PUSHOVER_USER_KEY` | Yes | User key from your Pushover dashboard |
+| `SMTP_HOST` | No | Default `smtp.gmail.com` |
+| `SMTP_PORT` | No | Default `587` |
+| `SMTP_USER` | Yes | Gmail account that **sends** (needs App Password) |
+| `SMTP_PASS` | Yes | Google App Password for `SMTP_USER` |
+| `NOTIFY_EMAIL_TO` | Yes | Inbox that **receives** alerts |
+| `NOTIFY_EMAIL_FROM` | No | Defaults to `SMTP_USER` |
 | `CHAT_RATE_LIMIT_PER_MIN` | No | Default `10` requests per IP per minute |
 
 Copy `.env.example` to `.env` for local development.
+
+**Gmail App Password:** enable 2-Step Verification on the sender account → Google Account → Security → App passwords → create one for “Mail”.
 
 ### Local development
 
@@ -75,8 +81,9 @@ npm run dev:full   # vercel dev — UI + API
 ### Deploy to Vercel
 
 1. Connect the repo to Vercel (framework: Vite, output: `dist`).
-2. **Settings → Environment Variables** — add `OPENAI_API_KEY`, `PUSHOVER_APP_TOKEN`, `PUSHOVER_USER_KEY` (and optional `OPENAI_MODEL`, `CHAT_RATE_LIMIT_PER_MIN`) for Production, Preview, and Development.
-3. **Redeploy** after adding or changing env vars.
+2. **Settings → Environment Variables** — add `OPENAI_API_KEY`, `SMTP_USER`, `SMTP_PASS`, `NOTIFY_EMAIL_TO` (and optional SMTP/OpenAI vars) for Production, Preview, and Development.
+3. Remove any old `PUSHOVER_*` vars.
+4. **Redeploy** after adding or changing env vars.
 
 Set a monthly usage cap in the [OpenAI dashboard](https://platform.openai.com/settings/organization/limits) to control cost.
 
@@ -92,7 +99,7 @@ Keep portfolio constants (`src/constants/`) in sync manually if you want the sit
 |---------|----------------|
 | “Chat is not configured” | `OPENAI_API_KEY` missing on Vercel — add it and redeploy |
 | Chat works locally but not in production | Env vars not set for Production, or deploy happened before vars were added |
-| No Pushover alerts | Check `PUSHOVER_APP_TOKEN` and `PUSHOVER_USER_KEY`; confirm the Pushover app is registered |
+| No email alerts | Check `SMTP_USER`, `SMTP_PASS` (App Password), `NOTIFY_EMAIL_TO`; confirm 2FA + App Password on the sender Gmail |
 | “Too many messages” | Rate limit (`CHAT_RATE_LIMIT_PER_MIN`) — wait a minute |
 | API errors in dev with `npm run dev` | Use `npm run dev:full` instead — Vite alone does not run serverless functions |
 

@@ -4,7 +4,8 @@ import { buildSystemPrompt } from './chat/systemPrompt.js'
 import { chatTools } from './chat/tools.js'
 import { handleToolCalls } from './chat/handleToolCalls.js'
 
-const MAX_MESSAGE_LENGTH = 500
+const MAX_USER_MESSAGE_LENGTH = 500
+const MAX_ASSISTANT_MESSAGE_LENGTH = 4000
 const MAX_HISTORY_TURNS = 10
 const MAX_TOOL_ROUNDS = 3
 
@@ -44,8 +45,17 @@ function validateMessages(messages) {
     if (typeof msg.content !== 'string' || !msg.content.trim()) {
       return { ok: false, error: 'each message must have non-empty content' }
     }
-    if (msg.content.length > MAX_MESSAGE_LENGTH) {
-      return { ok: false, error: `message exceeds ${MAX_MESSAGE_LENGTH} characters` }
+
+    // Only enforce the short limit on user input — assistant replies are often longer
+    if (msg.role === 'user' && msg.content.length > MAX_USER_MESSAGE_LENGTH) {
+      return {
+        ok: false,
+        error: `message exceeds ${MAX_USER_MESSAGE_LENGTH} characters`,
+      }
+    }
+
+    if (msg.role === 'assistant' && msg.content.length > MAX_ASSISTANT_MESSAGE_LENGTH) {
+      return { ok: false, error: 'assistant message too long' }
     }
   }
 

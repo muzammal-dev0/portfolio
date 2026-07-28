@@ -6,8 +6,9 @@ import { personalInfo } from '../../constants/personalInfo'
 const navItems = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Work' },
+  { id: 'experience', label: 'Path' },
+  { id: 'contact', label: 'Contact' },
 ]
 
 const Header = () => {
@@ -27,79 +28,94 @@ const Header = () => {
   }
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-stone-200 bg-stone-50/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        {/* Logo — editorial name in display serif */}
+    <>
+      {/* Desktop left rail */}
+      <aside className="fixed inset-y-0 left-0 z-50 hidden w-16 flex-col items-center justify-between border-r border-night-200/10 bg-night/80 py-6 backdrop-blur-md lg:flex">
         <Link
           to="/"
           onClick={(e) => {
-            if (isHome) { e.preventDefault(); scrollToSection('home') }
-            setIsMenuOpen(false)
+            if (isHome) {
+              e.preventDefault()
+              scrollToSection('home')
+            }
           }}
-          className="font-display text-base font-bold tracking-wide text-stone-900 transition hover:text-[#FF3D00]"
+          className="font-display text-sm font-extrabold tracking-tight text-signal"
+          aria-label="Home"
         >
-          {personalInfo.name.split(' ')[0]}{' '}
-          <span className="italic text-[#FF3D00]">{personalInfo.name.split(' ')[1]}</span>
+          MH
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden items-center gap-0.5 lg:flex">
+        <nav className="flex flex-col items-center gap-6" aria-label="Primary">
           {navItems.map(({ id, label }) => (
             <a
               key={id}
               href={isHome ? `#${id}` : `/#${id}`}
               onClick={(e) => goHomeSection(e, id)}
-              className="rounded px-4 py-2 font-mono text-xs text-stone-500 transition hover:text-stone-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00]"
+              className="group relative flex h-8 w-8 items-center justify-center"
+              aria-label={label}
             >
-              {label}
+              <span className="h-1.5 w-1.5 rounded-full bg-night-400 transition group-hover:scale-150 group-hover:bg-signal" />
+              <span className="pointer-events-none absolute left-10 whitespace-nowrap rounded bg-night-800 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-night-100 opacity-0 transition group-hover:opacity-100">
+                {label}
+              </span>
             </a>
           ))}
-          <button
-            type="button"
-            onClick={(e) => goHomeSection(e, 'contact')}
-            className="ml-4 bg-[#FF3D00] px-5 py-2 font-mono text-xs font-medium text-white transition hover:bg-[#e53500] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00] focus-visible:ring-offset-2"
-          >
-            Let's Talk
-          </button>
-        </div>
+        </nav>
 
-        {/* Mobile toggle */}
+        <a
+          href={personalInfo.cvPath}
+          download="Muzammal-Hussain-CV.pdf"
+          className="rotate-180 font-mono text-[9px] uppercase tracking-[0.35em] text-night-300 transition hover:text-signal"
+          style={{ writingMode: 'vertical-rl' }}
+        >
+          CV
+        </a>
+      </aside>
+
+      {/* Mobile top bar */}
+      <header className="sticky top-0 z-50 flex items-center justify-between border-b border-night-200/10 bg-night/90 px-5 py-4 backdrop-blur-md lg:hidden">
+        <Link
+          to="/"
+          onClick={(e) => {
+            if (isHome) {
+              e.preventDefault()
+              scrollToSection('home')
+            }
+            setIsMenuOpen(false)
+          }}
+          className="font-display text-lg font-bold text-night-50"
+        >
+          {personalInfo.name.split(' ')[0]}
+          <span className="text-signal">.</span>
+        </Link>
         <button
           type="button"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="rounded p-2 text-stone-500 hover:text-stone-900 lg:hidden"
+          className="p-2 text-night-200"
           aria-label="Toggle menu"
           aria-expanded={isMenuOpen}
         >
-          <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-base`} />
+          <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`} />
         </button>
-      </div>
+      </header>
 
-      {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="border-t border-stone-200 bg-stone-50 px-6 py-4 lg:hidden">
-          <div className="flex flex-col gap-1">
+        <div className="fixed inset-0 z-40 bg-night px-6 pt-24 lg:hidden">
+          <nav className="flex flex-col gap-2">
             {navItems.map(({ id, label }) => (
               <a
                 key={id}
                 href={isHome ? `#${id}` : `/#${id}`}
                 onClick={(e) => goHomeSection(e, id)}
-                className="rounded px-3 py-2.5 font-mono text-sm text-stone-500 hover:bg-stone-100 hover:text-stone-900"
+                className="border-b border-night-700 py-4 font-display text-3xl font-bold text-night-50"
               >
                 {label}
               </a>
             ))}
-            <button
-              type="button"
-              onClick={(e) => goHomeSection(e, 'contact')}
-              className="mt-3 w-full bg-[#FF3D00] py-3 font-mono text-sm font-medium text-white transition hover:bg-[#e53500]"
-            >
-              Let's Talk
-            </button>
-          </div>
+          </nav>
         </div>
       )}
-    </nav>
+    </>
   )
 }
 

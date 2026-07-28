@@ -1,161 +1,107 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { handleNavClick } from '../../utils/scroll'
 import { personalInfo } from '../../constants/personalInfo'
 import ProfileImage from '../ProfileImage'
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-}
-
-const imageVariant = {
-  hidden: { opacity: 0, x: 32 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.25 } },
-}
-
 const [firstName, lastName] = personalInfo.name.split(' ')
 
 const Hero = () => {
-  const socialLinks = [
-    { name: 'GitHub', url: personalInfo.socialLinks.github, icon: 'fab fa-github' },
-    { name: 'LinkedIn', url: personalInfo.socialLinks.linkedin, icon: 'fab fa-linkedin-in' },
-    { name: 'Email', url: `mailto:${personalInfo.email}`, icon: 'fas fa-envelope' },
-  ]
+  const prefersReducedMotion = useReducedMotion()
 
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-stone-50 px-6 pb-24 pt-16 md:py-24"
+      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-night"
     >
-      {/* Subtle grid pattern */}
+      {/* Full-bleed photo plane */}
+      <div className="absolute inset-0">
+        <ProfileImage
+          alt=""
+          className="h-full w-full object-cover object-[center_20%] opacity-45 grayscale md:object-top"
+          loading="eager"
+          fetchPriority="high"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-night via-night/85 to-night/30"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-night/40"
+          aria-hidden
+        />
+      </div>
+
+      {/* Soft signal glow */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        className={`pointer-events-none absolute right-[10%] top-[20%] h-64 w-64 rounded-full bg-signal/20 blur-[100px] ${prefersReducedMotion ? '' : 'animate-drift'}`}
         aria-hidden
-        style={{
-          backgroundImage: 'linear-gradient(#1c1917 1px, transparent 1px), linear-gradient(90deg, #1c1917 1px, transparent 1px)',
-          backgroundSize: '64px 64px',
-        }}
       />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-20">
-        {/* — Left: text — */}
-        <motion.div variants={container} initial="hidden" animate="show">
-          {/* Index label */}
-          <motion.div variants={item} className="mb-10 flex items-center gap-4">
-            <span className="font-mono text-xs font-semibold text-[#FF3D00]">01</span>
-            <span className="h-px w-14 bg-[#FF3D00]" />
-            <span className="font-mono text-xs text-stone-400 uppercase tracking-widest">
-              Full-Stack Developer
-            </span>
-          </motion.div>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-28 lg:pl-8 lg:pb-20">
+        <motion.div
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8 inline-flex items-center gap-2 rounded-full border border-signal/30 bg-signal/10 px-4 py-1.5"
+        >
+          <span className="h-1.5 w-1.5 animate-blink rounded-full bg-signal" aria-hidden />
+          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-signal">
+            Open to opportunities
+          </span>
+        </motion.div>
 
-          {/* Name — the hero moment */}
-          <motion.h1
-            variants={item}
-            className="mb-8 font-display font-bold leading-[0.88] tracking-tight text-stone-900"
-            style={{ fontSize: 'clamp(3.8rem, 9.5vw, 8.5rem)' }}
-          >
-            <span className="block">{firstName}</span>
-            <span className="block italic text-[#FF3D00]">{lastName}</span>
-          </motion.h1>
+        <motion.h1
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          className="font-display font-extrabold leading-[0.88] tracking-tight text-night-50"
+          style={{ fontSize: 'clamp(3.4rem, 11vw, 8.5rem)' }}
+        >
+          <span className="block">{firstName}</span>
+          <span className="block text-signal">{lastName}</span>
+        </motion.h1>
 
-          {/* Divider */}
-          <motion.div variants={item} className="mb-8 h-px w-full max-w-lg bg-stone-200" />
+        <motion.div
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mt-8 flex max-w-2xl flex-col gap-6 md:flex-row md:items-end md:justify-between"
+        >
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-night-300">
+              {personalInfo.title}
+            </p>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-night-200 md:text-lg">
+              {personalInfo.heroTagline}
+            </p>
+          </div>
 
-          {/* Bio */}
-          <motion.p
-            variants={item}
-            className="mb-10 max-w-lg text-base leading-relaxed text-stone-500 md:text-lg"
-          >
-            {personalInfo.bio.short}
-          </motion.p>
-
-          {/* CTA buttons */}
-          <motion.div variants={item} className="mb-12 flex flex-wrap gap-3">
+          <div className="flex shrink-0 flex-wrap gap-3">
             <button
               type="button"
               onClick={(e) => handleNavClick(e, 'projects')}
-              className="bg-stone-900 px-7 py-3.5 font-mono text-sm font-medium text-white transition hover:bg-[#FF3D00] focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-900"
+              className="rounded-full bg-signal px-7 py-3.5 font-mono text-xs font-semibold uppercase tracking-wider text-night transition hover:bg-night-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-signal"
             >
-              View Work →
+              See work
             </button>
             <button
               type="button"
               onClick={(e) => handleNavClick(e, 'contact')}
-              className="border border-stone-300 px-7 py-3.5 font-mono text-sm text-stone-600 transition hover:border-stone-900 hover:text-stone-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400"
+              className="rounded-full border border-night-200/30 px-7 py-3.5 font-mono text-xs uppercase tracking-wider text-night-100 transition hover:border-signal hover:text-signal focus:outline-none focus-visible:ring-2 focus-visible:ring-signal"
             >
-              Contact Me
+              Contact
             </button>
-          </motion.div>
-
-          {/* Social links */}
-          <motion.div variants={item} className="flex items-center gap-5">
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-stone-400 transition hover:text-[#FF3D00]"
-                aria-label={link.name}
-              >
-                <i className={`${link.icon} text-lg`} />
-              </a>
-            ))}
-            <span className="ml-1 h-px w-16 bg-stone-200" />
-            <span className="font-mono text-[11px] text-stone-400">{personalInfo.location}</span>
-          </motion.div>
-        </motion.div>
-
-        {/* — Right: profile image — */}
-        <motion.div
-          variants={imageVariant}
-          initial="hidden"
-          animate="show"
-          className="flex justify-center lg:justify-end"
-        >
-          <div className="relative">
-            {/* Offset border frame — the editorial touch */}
-            <div
-              className="absolute -bottom-3 -right-3 h-full w-full border-2 border-[#FF3D00]/25"
-              aria-hidden
-            />
-
-            {/* Image */}
-            <div className="relative w-64 overflow-hidden md:w-72 lg:w-80">
-              <ProfileImage
-                alt={personalInfo.name}
-                className="aspect-[4/5] w-full object-cover object-top"
-                loading="eager"
-                fetchPriority="high"
-              />
-              {/* Subtle warm overlay at bottom */}
-              <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-stone-50/20 to-transparent"
-                aria-hidden
-              />
-            </div>
-
-            {/* Availability badge — floats bottom-left */}
-            <div className="absolute -bottom-5 -left-5 border border-stone-200 bg-stone-50 px-4 py-3 shadow-sm">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-stone-400">Available</p>
-              <p className="font-display text-sm font-bold text-stone-900">Freelance · Full-time</p>
-            </div>
           </div>
         </motion.div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-stone-400">Scroll</span>
-          <div className="h-6 w-px bg-gradient-to-b from-stone-400 to-transparent" />
-        </div>
+        <motion.p
+          initial={prefersReducedMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.45 }}
+          className="mt-12 font-mono text-[11px] uppercase tracking-[0.2em] text-night-400"
+        >
+          {personalInfo.location} · {personalInfo.availability}
+        </motion.p>
       </div>
     </section>
   )

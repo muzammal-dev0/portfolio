@@ -2,17 +2,34 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --bg: #071018;
+  --bg-soft: #0d1b24;
+  --ink: #eef6f8;
+  --muted: #6a9aab;
+  --line: rgba(168, 201, 214, 0.18);
+  --signal: #3dffd8;
+  --ember: #f5c56b;
+}
+
 body {
-  font-family: 'Epilogue', system-ui, sans-serif;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
 }
 
-/* MagicUI shimmer */
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+.site-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.035;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px;
 }
 
-/* Scroll-triggered section animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -23,7 +40,7 @@ body {
 }
 
 @keyframes slideUp {
-  from { transform: translateY(40px); opacity: 0; }
+  from { transform: translateY(36px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
@@ -31,7 +48,6 @@ body {
   animation: slideUp 0.7s ease-out;
 }
 
-/* Pulse ring (used by PulsatingButton) */
 @keyframes pulse-ring {
   0% { transform: scale(1); opacity: 1; }
   100% { transform: scale(1.5); opacity: 0; }
@@ -43,7 +59,6 @@ body {
   border-radius: inherit;
 }
 
-/* Meteor effect */
 @keyframes meteor {
   0% { transform: rotate(var(--angle, 215deg)) translateX(0); opacity: 1; }
   70% { opacity: 1; }
@@ -55,15 +70,47 @@ body {
   pointer-events: none;
 }
 
-/* Section overflow clip */
-section {
-  position: relative;
-  overflow: hidden;
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-/* Grain overlay utility */
-.grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 200px;
+.animate-marquee {
+  animation: marquee 95s linear infinite;
+}
+
+@keyframes marquee-rev {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.animate-marquee-rev {
+  animation: marquee-rev 110s linear infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.animate-blink {
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(12px, -18px); }
+}
+
+.animate-drift {
+  animation: drift 12s ease-in-out infinite;
+}
+
+section {
+  position: relative;
+}
+
+::selection {
+  background: #3dffd8;
+  color: #071018;
 }

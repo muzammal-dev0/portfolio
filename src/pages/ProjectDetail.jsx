@@ -11,64 +11,51 @@ const ProjectDetail = () => {
   if (!project) return <Navigate to="/" replace />
 
   return (
-    <div className="min-h-screen bg-stone-50 font-sans text-stone-900 antialiased">
+    <div className="min-h-screen bg-night font-sans text-night-50 antialiased lg:pl-16">
+      <div className="site-grain" aria-hidden />
       <Header />
 
-      <main className="mx-auto max-w-4xl px-6 py-16 md:py-24">
-        {/* Back link */}
+      <main className="mx-auto max-w-3xl px-6 py-16 md:py-24">
         <Link
           to="/#projects"
-          className="mb-12 inline-flex items-center gap-2 font-mono text-xs text-stone-400 transition hover:text-[#FF3D00] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00]"
+          className="mb-12 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-night-400 transition hover:text-signal focus:outline-none focus-visible:ring-2 focus-visible:ring-signal"
         >
           <i className="fas fa-arrow-left text-[10px]" aria-hidden />
-          Back to projects
+          Back to work
         </Link>
 
-        {/* Section label */}
-        <div className="mb-3 flex items-center gap-3">
-          <span className="font-mono text-xs font-semibold text-[#FF3D00]">Project</span>
-          <span className="h-px w-10 bg-stone-200" />
-        </div>
+        <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-signal">
+          Project
+        </p>
 
-        {/* Title */}
-        <h1 className="mb-4 font-display text-3xl font-bold leading-tight text-stone-900 md:text-5xl">
+        <h1 className="mb-4 font-display text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">
           {project.title}
         </h1>
 
         {project.role && (
-          <p className="mb-10 font-mono text-sm text-stone-400">
-            Role:{' '}
-            <span className="text-[#FF3D00]">{project.role}</span>
+          <p className="mb-10 font-mono text-sm text-night-400">
+            Role: <span className="text-signal">{project.role}</span>
           </p>
         )}
 
-        {/* Icon banner */}
-        <div className="mb-10 overflow-hidden border border-stone-200 bg-white">
-          <div className="relative flex aspect-video items-center justify-center bg-stone-50">
-            <i
-              className={`${project.icon ?? 'fas fa-code'} text-6xl text-[#FF3D00]/30 md:text-7xl`}
-              aria-hidden
-            />
-            {/* Offset decorative frame */}
-            <div className="pointer-events-none absolute inset-4 border border-[#FF3D00]/10" aria-hidden />
-          </div>
+        <div className="mb-10 flex aspect-video items-center justify-center rounded-2xl border border-night-200/10 bg-night-800">
+          <i
+            className={`${project.icon ?? 'fas fa-code'} text-6xl text-signal/25 md:text-7xl`}
+            aria-hidden
+          />
         </div>
 
-        {/* Description */}
-        <p className="mb-10 text-base leading-relaxed text-stone-500 md:text-lg">
+        <p className="mb-10 text-base leading-relaxed text-night-200 md:text-lg">
           {project.description}
         </p>
 
-        {/* Highlights */}
         {project.bullets?.length > 0 && (
           <section className="mb-10">
-            <h2 className="mb-5 font-display text-xl font-bold text-stone-900 md:text-2xl">
-              Highlights
-            </h2>
+            <h2 className="mb-5 font-display text-xl font-bold md:text-2xl">Highlights</h2>
             <ul className="space-y-3">
               {project.bullets.map((line, i) => (
-                <li key={i} className="flex gap-3 text-sm leading-relaxed text-stone-500 md:text-base">
-                  <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[#FF3D00]/50" aria-hidden />
+                <li key={i} className="flex gap-3 text-sm leading-relaxed text-night-200 md:text-base">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-signal" aria-hidden />
                   <span>{line}</span>
                 </li>
               ))}
@@ -76,16 +63,13 @@ const ProjectDetail = () => {
           </section>
         )}
 
-        {/* Stack */}
         <section className="mb-12">
-          <h2 className="mb-5 font-display text-xl font-bold text-stone-900 md:text-2xl">
-            Tech Stack
-          </h2>
+          <h2 className="mb-5 font-display text-xl font-bold md:text-2xl">Tech Stack</h2>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="border border-stone-200 bg-white px-3 py-1.5 font-mono text-xs text-stone-600"
+                className="rounded-full border border-night-200/15 bg-night-800 px-3 py-1.5 font-mono text-xs text-night-200"
               >
                 {tech}
               </span>
@@ -93,22 +77,20 @@ const ProjectDetail = () => {
           </div>
         </section>
 
-        {/* CTA row */}
-        <div className="flex flex-wrap gap-3 border-t border-stone-200 pt-10">
+        <div className="flex flex-wrap gap-3 border-t border-night-200/10 pt-10">
           <Link
             to="/#contact"
-            className="inline-flex items-center gap-2 bg-[#FF3D00] px-5 py-2.5 font-mono text-sm font-semibold text-white transition hover:bg-[#e53500] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00]"
+            className="inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 font-mono text-xs font-semibold uppercase tracking-wider text-night transition hover:bg-night-50"
           >
-            Discuss this project →
+            Discuss this project
           </Link>
           {project.demo && (
             <a
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-stone-300 px-5 py-2.5 font-mono text-sm text-stone-600 transition hover:border-stone-900 hover:text-stone-900"
+              className="inline-flex items-center gap-2 rounded-full border border-night-200/20 px-6 py-3 font-mono text-xs uppercase tracking-wider text-night-200 transition hover:border-signal hover:text-signal"
             >
-              <i className="fas fa-external-link-alt text-xs" aria-hidden />
               Live Demo
             </a>
           )}
@@ -117,20 +99,16 @@ const ProjectDetail = () => {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-stone-300 px-5 py-2.5 font-mono text-sm text-stone-600 transition hover:border-stone-900 hover:text-stone-900"
+              className="inline-flex items-center gap-2 rounded-full border border-night-200/20 px-6 py-3 font-mono text-xs uppercase tracking-wider text-night-200 transition hover:border-signal hover:text-signal"
             >
-              <i className="fab fa-github text-xs" aria-hidden />
               GitHub
             </a>
           )}
         </div>
 
-        <p className="mt-12 font-mono text-xs text-stone-400">
+        <p className="mt-12 font-mono text-xs text-night-400">
           Questions?{' '}
-          <a
-            href={`mailto:${personalInfo.email}`}
-            className="text-[#FF3D00] transition hover:underline"
-          >
+          <a href={`mailto:${personalInfo.email}`} className="text-signal transition hover:underline">
             {personalInfo.email}
           </a>
         </p>

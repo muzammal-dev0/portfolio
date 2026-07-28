@@ -1,7 +1,8 @@
+import { useState } from 'react'
 import { workExperience } from '../../constants/experience'
 
 const formatDate = (dateString) => {
-  if (dateString === 'CURRENT') return 'Present'
+  if (dateString === 'CURRENT') return 'Now'
   const parts = dateString.split('/')
   if (parts.length === 3) {
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
@@ -13,80 +14,69 @@ const formatDate = (dateString) => {
 const formatPosition = (position) => position.replace(/ASSOCIATE\s+/i, '').trim()
 
 const WorkExperience = () => {
+  const [openId, setOpenId] = useState(workExperience[0]?.id ?? null)
+
   return (
-    <section id="experience" className="bg-stone-50 py-24 md:py-32">
-      <div className="mx-auto max-w-4xl px-6">
-        {/* Section label */}
-        <div className="mb-3 flex items-center gap-3">
-          <span className="font-mono text-xs font-semibold text-[#FF3D00]">05</span>
-          <span className="h-px w-10 bg-stone-200" />
-        </div>
+    <section id="experience" className="bg-night py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:pl-8">
+        <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-signal">
+          Path
+        </p>
+        <h2 className="mb-14 max-w-lg font-display text-4xl font-extrabold tracking-tight text-night-50 md:text-5xl">
+          Places I&apos;ve built and shipped from.
+        </h2>
 
-        {/* Heading with watermark */}
-        <div className="relative mb-14 overflow-hidden">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -top-3 left-0 select-none font-display text-[7rem] font-bold leading-none text-stone-100 md:text-[10rem]"
-          >
-            05
-          </span>
-          <h2 className="relative font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl">
-            Experience
-          </h2>
-        </div>
-
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div
-            className="absolute bottom-0 left-[19px] top-2 w-0.5 bg-gradient-to-b from-[#FF3D00]/60 via-stone-200 to-transparent md:left-[23px]"
-            aria-hidden
-          />
-
-          <ul className="space-y-10">
-            {workExperience.map((exp) => (
-              <li key={exp.id} className="relative flex gap-8 md:gap-10">
-                {/* Dot */}
-                <div className="relative z-10 flex w-10 shrink-0 justify-center pt-6">
-                  <span
-                    className="h-3 w-3 shrink-0 rounded-full border-2 border-[#FF3D00] bg-stone-50 shadow-[0_0_0_3px_rgba(255,61,0,0.12)]"
-                    aria-hidden
-                  />
-                </div>
-
-                {/* Card */}
-                <article className="min-w-0 flex-1 border border-stone-200 bg-white p-6 md:p-8">
-                  {/* Header */}
-                  <div className="mb-5 flex flex-col gap-3 border-b border-stone-100 pb-5 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <h3 className="font-display text-xl font-bold text-stone-900 sm:text-2xl">
-                        {formatPosition(exp.position)}
-                      </h3>
-                      <p className="mt-1 font-mono text-sm font-semibold text-[#FF3D00]">
-                        {exp.company}
-                      </p>
-                      <p className="mt-0.5 font-mono text-xs text-stone-400">{exp.location}</p>
-                    </div>
-                    <div className="shrink-0 border border-stone-200 bg-stone-50 px-3 py-1.5">
-                      <span className="font-mono text-xs text-stone-500">
-                        {formatDate(exp.startDate)} — {formatDate(exp.endDate)}
-                      </span>
-                    </div>
+        <div className="space-y-3">
+          {workExperience.map((exp) => {
+            const isOpen = openId === exp.id
+            return (
+              <div
+                key={exp.id}
+                className={`overflow-hidden rounded-2xl border transition ${
+                  isOpen
+                    ? 'border-signal/40 bg-night-800/80'
+                    : 'border-night-200/10 bg-night-800/40 hover:border-night-200/25'
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenId(isOpen ? null : exp.id)}
+                  className="flex w-full flex-col gap-3 px-6 py-5 text-left md:flex-row md:items-center md:justify-between md:px-8 md:py-6"
+                  aria-expanded={isOpen}
+                >
+                  <div>
+                    <h3 className="font-display text-xl font-bold text-night-50 md:text-2xl">
+                      {formatPosition(exp.position)}
+                    </h3>
+                    <p className="mt-1 font-mono text-xs uppercase tracking-wider text-signal">
+                      {exp.company}
+                      <span className="text-night-400"> · {exp.location}</span>
+                    </p>
                   </div>
+                  <div className="flex items-center gap-4">
+                    <span className="font-mono text-xs text-night-300">
+                      {formatDate(exp.startDate)} — {formatDate(exp.endDate)}
+                    </span>
+                    <i
+                      className={`fas fa-chevron-${isOpen ? 'up' : 'down'} text-xs text-night-400`}
+                      aria-hidden
+                    />
+                  </div>
+                </button>
 
-                  {/* Responsibilities */}
-                  <ul className="space-y-3">
+                {isOpen && (
+                  <ul className="space-y-3 border-t border-night-200/10 px-6 pb-6 pt-4 md:px-8 md:pb-8">
                     {exp.responsibilities.slice(0, 5).map((resp, i) => (
-                      <li key={i} className="flex gap-3 text-sm leading-relaxed text-stone-500 md:text-base">
-                        <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[#FF3D00]/50" aria-hidden />
+                      <li key={i} className="flex gap-3 text-sm leading-relaxed text-night-200 md:text-base">
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-signal" aria-hidden />
                         <span>{resp}</span>
                       </li>
                     ))}
                   </ul>
-                </article>
-              </li>
-            ))}
-          </ul>
+                )}
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

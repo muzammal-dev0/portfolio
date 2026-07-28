@@ -1,64 +1,52 @@
 import { personalInfo } from '../../constants/personalInfo'
 
-const contactDetails = [
-  { icon: 'fas fa-envelope', label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
-  { icon: 'fas fa-phone', label: 'Phone', value: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/\s/g, '')}` },
-  { icon: 'fas fa-map-marker-alt', label: 'Location', value: personalInfo.location, href: null },
-  { icon: 'fab fa-linkedin-in', label: 'LinkedIn', value: 'LinkedIn profile', href: personalInfo.socialLinks.linkedin },
-  { icon: 'fab fa-github', label: 'GitHub', value: 'GitHub profile', href: personalInfo.socialLinks.github },
-  { icon: 'fab fa-whatsapp', label: 'WhatsApp', value: 'Message on WhatsApp', href: personalInfo.socialLinks.whatsapp },
+const links = [
+  { label: 'Email', href: `mailto:${personalInfo.email}`, value: personalInfo.email },
+  { label: 'Phone', href: `tel:${personalInfo.phone.replace(/\s/g, '')}`, value: personalInfo.phone },
+  { label: 'LinkedIn', href: personalInfo.socialLinks.linkedin, value: 'Connect' },
+  { label: 'GitHub', href: personalInfo.socialLinks.github, value: 'Code' },
+  { label: 'WhatsApp', href: personalInfo.socialLinks.whatsapp, value: 'Chat' },
 ]
 
 const Contact = () => {
   return (
-    <section id="contact" className="bg-white py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-3 flex items-center gap-3">
-          <span className="font-mono text-xs font-semibold text-[#FF3D00]">06</span>
-          <span className="h-px w-10 bg-stone-200" />
-        </div>
+    <section id="contact" className="relative overflow-hidden bg-night-50 py-24 text-night md:py-32">
+      <div
+        className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-signal/30 blur-[100px]"
+        aria-hidden
+      />
 
-        <div className="relative mb-14 overflow-hidden">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -top-3 left-0 select-none font-display text-[7rem] font-bold leading-none text-stone-100 md:text-[10rem]"
-          >
-            06
-          </span>
-          <h2 className="relative font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl">
-            Get In Touch
-          </h2>
-        </div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:pl-8">
+        <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-signal-dim">
+          Contact
+        </p>
+        <h2 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+          Got a product to ship?
+          <span className="block text-signal-dim"> Let&apos;s talk.</span>
+        </h2>
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-night-400 md:text-lg">
+          {personalInfo.contactMessage}
+        </p>
 
-        <div className="max-w-2xl border border-stone-200 bg-stone-50 p-6 md:p-8">
-          <p className="mb-8 text-base leading-relaxed text-stone-500">
-            {personalInfo.contactMessage}
-          </p>
+        <a
+          href={`mailto:${personalInfo.email}`}
+          className="mt-12 block break-all font-display text-2xl font-bold tracking-tight text-night transition hover:text-signal-dim md:text-4xl lg:text-5xl"
+        >
+          {personalInfo.email}
+        </a>
 
-          <div className="space-y-5">
-            {contactDetails.map((info) => (
-              <div key={info.label} className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-stone-200 bg-white">
-                  <i className={`${info.icon} text-xs text-[#FF3D00]`} aria-hidden />
-                </div>
-                <div>
-                  <p className="mb-0.5 font-mono text-xs uppercase tracking-widest text-stone-400">{info.label}</p>
-                  {info.href ? (
-                    <a
-                      href={info.href}
-                      className="break-all text-sm text-stone-700 transition hover:text-[#FF3D00]"
-                      target={info.href.startsWith('http') ? '_blank' : undefined}
-                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    >
-                      {info.value}
-                    </a>
-                  ) : (
-                    <p className="text-sm text-stone-700">{info.value}</p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="mt-14 flex flex-wrap gap-3">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              className="rounded-full border border-night-200 bg-white/60 px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-night-600 transition hover:border-night hover:text-night"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
       </div>
     </section>

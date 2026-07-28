@@ -22,7 +22,7 @@ export const recordUserDetailsSchema = {
         notes: {
           type: 'string',
           description:
-            "Any additional information about the conversation that's worth recording to give context",
+            "Optional note from the visitor (project interest, role, timeline) or useful conversation context",
         },
       },
       required: ['email', 'name'],

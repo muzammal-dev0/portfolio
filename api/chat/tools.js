@@ -36,7 +36,7 @@ export const recordUnknownQuestionSchema = {
   function: {
     name: 'record_unknown_question',
     description:
-      "Always use this when you cannot answer a question from Context. Record the question first, then tell the visitor you don't know — never guess.",
+      "Always use this when the question is out of scope or cannot be answered from Context (e.g. general trivia, unrelated topics). Record the question first, then tell the visitor you only answer about Muzammal's skills, projects, and experience — never answer the off-topic question.",
     parameters: {
       type: 'object',
       properties: {

@@ -29,7 +29,7 @@ const MarqueeRow = ({ items, reverse, reduced }) => {
         {loop.map((skill, i) => (
           <span
             key={`${skill}-${i}`}
-            className="shrink-0 rounded-full border border-night-200/15 bg-night-800/60 px-5 py-2.5 font-mono text-sm text-night-100"
+            className="shrink-0 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 font-mono text-sm text-ink-100"
           >
             {skill}
           </span>
@@ -43,17 +43,17 @@ const TechnicalSkills = () => {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <section id="skills" className="overflow-hidden bg-night py-24 md:py-28">
-      <div className="mx-auto mb-12 max-w-7xl px-6 lg:pl-8">
-        <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-signal">
-          Toolkit
+    <section id="skills" className="overflow-hidden bg-ink py-24 text-ink-50 md:py-28">
+      <div className="mx-auto mb-12 max-w-6xl px-6">
+        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-mark">
+          Skills
         </p>
-        <h2 className="max-w-xl font-display text-4xl font-extrabold tracking-tight text-night-50 md:text-5xl">
-          What I reach for when shipping real systems.
+        <h2 className="max-w-xl font-display text-4xl font-bold tracking-tight md:text-5xl">
+          The stack I trust in production.
         </h2>
       </div>
 
-      <div className="space-y-2 border-y border-night-200/10 py-4">
+      <div className="space-y-2 border-y border-white/10 py-4">
         <MarqueeRow items={rowA} reduced={prefersReducedMotion} />
         <MarqueeRow items={rowB} reverse reduced={prefersReducedMotion} />
       </div>

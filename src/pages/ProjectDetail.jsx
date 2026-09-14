@@ -11,41 +11,38 @@ const ProjectDetail = () => {
   if (!project) return <Navigate to="/" replace />
 
   return (
-    <div className="min-h-screen bg-night font-sans text-night-50 antialiased lg:pl-16">
+    <div className="min-h-screen bg-ink-50 font-sans text-ink antialiased">
       <div className="site-grain" aria-hidden />
       <Header />
 
       <main className="mx-auto max-w-3xl px-6 py-16 md:py-24">
         <Link
           to="/#projects"
-          className="mb-12 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-night-400 transition hover:text-signal focus:outline-none focus-visible:ring-2 focus-visible:ring-signal"
+          className="mb-12 inline-flex items-center gap-2 text-sm font-medium text-ink-400 transition hover:text-mark"
         >
           <i className="fas fa-arrow-left text-[10px]" aria-hidden />
           Back to work
         </Link>
 
-        <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-signal">
+        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-mark">
           Project
         </p>
 
-        <h1 className="mb-4 font-display text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">
+        <h1 className="mb-4 font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
           {project.title}
         </h1>
 
         {project.role && (
-          <p className="mb-10 font-mono text-sm text-night-400">
-            Role: <span className="text-signal">{project.role}</span>
+          <p className="mb-10 text-sm text-ink-400">
+            Role: <span className="font-semibold text-mark">{project.role}</span>
           </p>
         )}
 
-        <div className="mb-10 flex aspect-video items-center justify-center rounded-2xl border border-night-200/10 bg-night-800">
-          <i
-            className={`${project.icon ?? 'fas fa-code'} text-6xl text-signal/25 md:text-7xl`}
-            aria-hidden
-          />
+        <div className="mb-10 flex aspect-video items-center justify-center rounded-[1.75rem] bg-ink text-mark/40">
+          <i className={`${project.icon ?? 'fas fa-code'} text-6xl md:text-7xl`} aria-hidden />
         </div>
 
-        <p className="mb-10 text-base leading-relaxed text-night-200 md:text-lg">
+        <p className="mb-10 text-base leading-relaxed text-ink-500 md:text-lg">
           {project.description}
         </p>
 
@@ -54,8 +51,8 @@ const ProjectDetail = () => {
             <h2 className="mb-5 font-display text-xl font-bold md:text-2xl">Highlights</h2>
             <ul className="space-y-3">
               {project.bullets.map((line, i) => (
-                <li key={i} className="flex gap-3 text-sm leading-relaxed text-night-200 md:text-base">
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-signal" aria-hidden />
+                <li key={i} className="flex gap-3 text-sm leading-relaxed text-ink-500 md:text-base">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mark" aria-hidden />
                   <span>{line}</span>
                 </li>
               ))}
@@ -69,7 +66,7 @@ const ProjectDetail = () => {
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="rounded-full border border-night-200/15 bg-night-800 px-3 py-1.5 font-mono text-xs text-night-200"
+                className="rounded-full bg-white px-3 py-1.5 font-mono text-xs text-ink-500 shadow-sm ring-1 ring-ink/10"
               >
                 {tech}
               </span>
@@ -77,10 +74,10 @@ const ProjectDetail = () => {
           </div>
         </section>
 
-        <div className="flex flex-wrap gap-3 border-t border-night-200/10 pt-10">
+        <div className="flex flex-wrap gap-3 border-t border-ink/10 pt-10">
           <Link
             to="/#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 font-mono text-xs font-semibold uppercase tracking-wider text-night transition hover:bg-night-50"
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-ink-50 transition hover:bg-mark"
           >
             Discuss this project
           </Link>
@@ -89,7 +86,7 @@ const ProjectDetail = () => {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-night-200/20 px-6 py-3 font-mono text-xs uppercase tracking-wider text-night-200 transition hover:border-signal hover:text-signal"
+              className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-ink"
             >
               Live Demo
             </a>
@@ -99,16 +96,16 @@ const ProjectDetail = () => {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-night-200/20 px-6 py-3 font-mono text-xs uppercase tracking-wider text-night-200 transition hover:border-signal hover:text-signal"
+              className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-ink"
             >
               GitHub
             </a>
           )}
         </div>
 
-        <p className="mt-12 font-mono text-xs text-night-400">
+        <p className="mt-12 text-sm text-ink-400">
           Questions?{' '}
-          <a href={`mailto:${personalInfo.email}`} className="text-signal transition hover:underline">
+          <a href={`mailto:${personalInfo.email}`} className="font-semibold text-mark hover:underline">
             {personalInfo.email}
           </a>
         </p>

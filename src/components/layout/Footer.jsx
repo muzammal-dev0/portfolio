@@ -4,13 +4,13 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-night-200/10 bg-night py-10">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 sm:flex-row sm:items-center sm:justify-between lg:pl-8">
-        <p className="font-display text-lg font-bold text-night-50">
+    <footer className="border-t border-ink/10 bg-ink-50 px-6 py-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="font-display text-lg font-bold text-ink">
           {personalInfo.name.split(' ')[0]}
-          <span className="text-signal">.</span>
+          <span className="text-mark">.</span>
         </p>
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-night-400">
+        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-400">
           &copy; {year} · {personalInfo.location}
         </p>
         <div className="flex gap-4">
@@ -25,7 +25,7 @@ const Footer = () => {
               target={l.href.startsWith('http') ? '_blank' : undefined}
               rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               aria-label={l.label}
-              className="text-night-400 transition hover:text-signal"
+              className="text-ink-400 transition hover:text-mark"
             >
               <i className={l.icon} aria-hidden />
             </a>

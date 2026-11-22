@@ -1,12 +1,11 @@
-/** Portfolio skill tags — aligned with CV */
+/** Portfolio skill tags — aligned with CV (public/assets/CV.pdf) */
 
 const skill = (title) => ({ title })
 
 export const frontendSkills = [
-  skill('React.js'),
   skill('TypeScript'),
+  skill('React.js'),
   skill('Vite'),
-  skill('Bootstrap'),
   skill('Tailwind CSS'),
   skill('Zustand'),
   skill('TanStack Router/Query'),
@@ -14,13 +13,14 @@ export const frontendSkills = [
 ]
 
 export const backendSkills = [
-  skill('JavaScript'),
   skill('Node.js'),
+  skill('JavaScript'),
   skill('NestJS'),
   skill('Express.js'),
-  skill('GraphQL'),
   skill('Python'),
   skill('FastAPI'),
+  skill('REST APIs'),
+  skill('GraphQL'),
   skill('RabbitMQ'),
   skill('WebSockets'),
   skill('Microservices'),
@@ -31,7 +31,8 @@ export const databaseSkills = [
   skill('PostgreSQL'),
   skill('MySQL'),
   skill('Redis'),
-  skill('Vector Database'),
+  skill('pgvector'),
+  skill('Pinecone'),
   skill('Firestore'),
 ]
 
@@ -40,10 +41,6 @@ export const versionControlSkills = [
   skill('GitHub'),
   skill('GitLab'),
   skill('GitHub Actions'),
-  skill('Husky'),
-  skill('Jira'),
-  skill('ClickUp'),
-  skill('Slack'),
 ]
 
 export const cloudDeploymentSkills = [
@@ -58,14 +55,18 @@ export const cloudDeploymentSkills = [
 
 export const testingSkills = [
   skill('Jest'),
-  skill('Vitest'),
-  skill('Playwright'),
-  skill('Postman'),
   skill('ESLint'),
   skill('Prettier'),
   skill('Storybook'),
   skill('Unit Testing'),
   skill('Integration Testing'),
+  skill('Postman'),
+  skill('Playwright'),
+]
+
+export const integrationSkills = [
+  skill('Stripe'),
+  skill('ArcGIS'),
 ]
 
 export const aiSkills = [
@@ -75,18 +76,5 @@ export const aiSkills = [
   skill('CrewAI'),
   skill('OpenAI Agents SDK'),
   skill('MCP'),
-  skill('Agentic AI'),
-  skill('Multi-Agent Systems'),
-  skill('RAG Pipeline'),
+  skill('RAG'),
 ]
-
-export const projectManagementSkills = []
-
-/** @deprecated Legacy merge — kept for any external imports */
-export const devOpsSkills = [
-  ...versionControlSkills,
-  ...cloudDeploymentSkills,
-  ...testingSkills,
-]
-
-export const toolsAndOtherSkills = []

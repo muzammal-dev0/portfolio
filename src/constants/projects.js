@@ -74,38 +74,6 @@ export const projects = [
   },
   {
     id: 5,
-    slug: "sidekick",
-    title: "Sidekick — Agentic AI Assistant",
-    description:
-      "Intelligent AI assistant that plans multi-step tasks, invokes external tools, evaluates responses against success criteria, and supports human-in-the-loop interactions through graph-based agent workflows.",
-    bullets: [
-      "Multi-step task planning and tool calling with LangGraph.",
-      "Human-in-the-loop interactions and response evaluation.",
-      "Graph-based agent workflows built with Python and LangChain.",
-    ],
-    technologies: ["Python", "LangChain", "LangGraph"],
-    icon: "fas fa-comments",
-    github: null,
-    demo: null,
-  },
-  {
-    id: 6,
-    slug: "autonomous-trading-floor",
-    title: "Autonomous Trading Floor — Multi-Agent AI Platform",
-    description:
-      "Multi-agent trading platform where specialized AI agents collaborate on market research, financial analysis, and custom MCP server access using autonomous agent orchestration.",
-    bullets: [
-      "Specialized agents for research and market intelligence.",
-      "Custom MCP server integration for account and market data.",
-      "Autonomous orchestration with OpenAI Agents SDK.",
-    ],
-    technologies: ["Python", "OpenAI Agents SDK", "MCP"],
-    icon: "fas fa-chart-area",
-    github: null,
-    demo: null,
-  },
-  {
-    id: 7,
     slug: "monday-automation",
     title: "Monday.com Automation Platform",
     description:
@@ -127,7 +95,7 @@ export const projects = [
     demo: null,
   },
   {
-    id: 8,
+    id: 6,
     slug: "obon",
     title: "Obon — Easy Tipping Platform",
     description:

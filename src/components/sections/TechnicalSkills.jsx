@@ -1,7 +1,7 @@
 import { useReducedMotion } from 'framer-motion'
 import {
   frontendSkills, backendSkills, databaseSkills,
-  versionControlSkills, cloudDeploymentSkills, testingSkills, aiSkills,
+  versionControlSkills, cloudDeploymentSkills, testingSkills, integrationSkills, aiSkills,
 } from '../../constants/skills'
 
 const allSkills = [
@@ -10,6 +10,7 @@ const allSkills = [
   ...frontendSkills,
   ...databaseSkills,
   ...cloudDeploymentSkills,
+  ...integrationSkills,
   ...testingSkills,
   ...versionControlSkills,
 ].map((s) => s.title)

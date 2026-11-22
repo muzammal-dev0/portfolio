@@ -2,16 +2,16 @@ import { personalInfo } from '../../constants/personalInfo'
 import { projects } from '../../constants/projects'
 import {
   frontendSkills, backendSkills, databaseSkills,
-  versionControlSkills, cloudDeploymentSkills, testingSkills, aiSkills,
+  versionControlSkills, cloudDeploymentSkills, testingSkills, integrationSkills, aiSkills,
 } from '../../constants/skills'
 
 const techCount =
   frontendSkills.length + backendSkills.length + databaseSkills.length +
-  versionControlSkills.length + cloudDeploymentSkills.length + testingSkills.length + aiSkills.length
+  versionControlSkills.length + cloudDeploymentSkills.length + testingSkills.length + integrationSkills.length + aiSkills.length
 
 const highlights = [
   { value: `${projects.length}+`, label: 'Products shipped' },
-  { value: '3+', label: 'Years building' },
+  { value: '6+', label: 'Years building' },
   { value: `${techCount}+`, label: 'Tools in use' },
 ]
 

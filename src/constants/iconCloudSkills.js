@@ -5,8 +5,6 @@ import {
   versionControlSkills,
   cloudDeploymentSkills,
   testingSkills,
-  projectManagementSkills,
-  toolsAndOtherSkills,
 } from "./skills";
 
 // Map skill titles to Simple Icons slugs
@@ -58,8 +56,6 @@ const allSkills = [
   ...versionControlSkills,
   ...cloudDeploymentSkills,
   ...testingSkills,
-  ...projectManagementSkills,
-  ...toolsAndOtherSkills,
 ];
 
 // Generate icon cloud slugs from all skills, removing duplicates

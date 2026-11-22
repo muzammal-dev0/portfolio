@@ -7,21 +7,19 @@ This file is the single source of truth for the portfolio chatbot. Only answer q
 ## Identity
 
 Name: Muzammal Hussain
-Title: Full-Stack Software Engineer | Agentic AI Engineer
+Title: Full-Stack & Agentic AI Engineer
 Location: E11, Islamabad, Pakistan
-Experience: 3+ years in software engineering
+Experience: 6+ years in software engineering
 
 ---
 
 ## About Me
 
-I am a Full-Stack Software Engineer and Agentic AI Engineer with 3+ years of professional experience building scalable SaaS platforms, cloud-native applications, and intelligent software solutions. I design and develop modern web applications using TypeScript, Node.js, NestJS, React.js, PostgreSQL, and Python across the full software development lifecycle.
+I am a Full-Stack & Agentic AI Engineer with 6+ years of experience building multi-tenant SaaS platforms in TypeScript, NestJS, React and Python.
 
-I specialize in integrating Agentic AI and LLM-powered capabilities into production applications using OpenAI APIs, OpenAI Agents SDK, LangChain, LangGraph, CrewAI, and Model Context Protocol (MCP). I build multi-agent systems, Retrieval-Augmented Generation (RAG) pipelines, AI workflow automation, and tool-calling architectures that enable intelligent, context-aware user experiences.
+I ship LLM features to production, including Retrieval-Augmented Generation (RAG) pipelines and Model Context Protocol (MCP) tool integrations, across municipal planning, healthcare (HIPAA) and fintech products deployed on AWS and Google Cloud Platform.
 
-I have proven experience delivering secure, scalable backend systems, multi-tenant SaaS platforms, GIS-based applications, cloud deployments on AWS and Google Cloud Platform, and production-ready APIs. I am passionate about building reliable software that combines modern engineering practices with practical AI to solve complex real-world problems.
-
-Focus areas: Multi-tenant SaaS, Agentic AI / multi-agent systems, LLM/RAG, GIS (ArcGIS, PostGIS), FastAPI, AWS ECS, GCP, Stripe, HIPAA-compliant systems.
+Focus areas: Multi-tenant SaaS, LLM/RAG, MCP tool integrations, GIS (ArcGIS), FastAPI, AWS ECS, GCP Cloud Run, Stripe, HIPAA-compliant systems.
 
 ---
 
@@ -30,13 +28,13 @@ Focus areas: Multi-tenant SaaS, Agentic AI / multi-agent systems, LLM/RAG, GIS (
 Email: hussainhtp@gmail.com
 Phone: +92 307 4727093
 Website: https://portfolio-sigma-bice-58.vercel.app/
-LinkedIn: https://www.linkedin.com/in/muzammal-hussain-836a96151/
+LinkedIn: https://www.linkedin.com/in/muzammalhussain-se/
 GitHub: https://github.com/muzammal-dev0
 WhatsApp: https://api.whatsapp.com/send?phone=923074727093
 
 Availability: Open to freelance and full-time opportunities.
 
-Interested in: SaaS products, Agentic AI / LLM applications, healthcare-adjacent platforms, GIS/geospatial systems, and cloud-native products. Happy to discuss architecture, delivery, and project collaboration.
+Interested in: SaaS products, LLM / AI applications, healthcare-adjacent platforms, GIS/geospatial systems, and cloud-native products. Happy to discuss architecture, delivery, and project collaboration.
 
 CV download: Available on the portfolio site at /assets/CV.pdf
 
@@ -45,44 +43,37 @@ CV download: Available on the portfolio site at /assets/CV.pdf
 ## Work Experience
 
 ### Software Engineer — Futurenostics
-Period: 31 October 2024 – Present (current role)
+Period: 31 December 2024 – Present (current role)
 Location: E11, Islamabad, Pakistan
 
 Responsibilities and contributions:
-- Design and develop scalable backend services and modern frontend features for AEDI, a multi-tenant municipal planning SaaS platform used by Canadian municipalities for zoning and land development assessments.
-- Build HIPAA-compliant healthcare solutions, including dynamic form builders, workflow automation, secure case management platforms, and enterprise-grade backend services for healthcare organizations.
-- Engineer cloud-native applications using NestJS, React.js, FastAPI, PostgreSQL, Redis, Docker, AWS ECS, and Google Cloud Platform (GCP), ensuring scalability, reliability, and high availability.
-- Design and implement secure authentication, authorization, and Role-Based Access Control (RBAC) across enterprise SaaS applications.
-- Integrate third-party services including Stripe, GIS platforms, payment providers, and external APIs to extend platform capabilities and streamline business workflows.
-- Collaborate with product managers, designers, and engineering teams in Agile environments, contributing to architecture decisions, code reviews, and the delivery of production-ready software.
-- Developed the Sales Management System, a SaaS platform for managing products, inventory, customers, orders, and sales operations by designing scalable backend APIs and business workflow automation.
-- Developed Sidekick, an Agentic AI assistant using Python, LangChain, and LangGraph, capable of planning multi-step tasks, invoking external tools, supporting human-in-the-loop interactions, and evaluating responses through graph-based workflows.
-- Built Autonomous Trading Floor, a multi-agent AI platform using Python, OpenAI Agents SDK, and Model Context Protocol (MCP), enabling specialized AI agents to collaborate on financial research, market analysis, and custom MCP server integration through autonomous agent orchestration.
+- Build backend services and frontend features for AEDI, a multi-tenant municipal planning SaaS used by Canadian municipalities to automate zoning and land development assessments, including AI-assisted regulatory analysis with OpenAI and RAG.
+- Develop HIPAA-compliant healthcare platforms, including a case management system with configurable dynamic forms, workflow automation and secure APIs on Google Cloud Platform.
+- Ship cloud-native services with NestJS, FastAPI, React.js, PostgreSQL and Redis, containerised with Docker and deployed on AWS ECS and GCP Cloud Run.
+- Implement authentication, authorization and Role-Based Access Control (RBAC) across multi-tenant enterprise SaaS applications.
+- Integrate Stripe, ArcGIS and third-party APIs to add payments, GIS mapping and automated business workflows.
+- Develop the backend for a Sales Management SaaS covering products, inventory, customers, orders and sales workflows.
 
 ### Backend Developer — Argonteq
-Period: 31 May 2023 – 30 November 2024
+Period: 1 June 2020 – 30 November 2024
 Location: Model Town, Lahore, Pakistan
 
 Responsibilities and contributions:
-- Developed scalable backend services and RESTful APIs using Node.js, NestJS, Express.js, MongoDB, and PostgreSQL for SaaS, fintech, healthcare, gaming, and education platforms.
-- Built Willo Box, an AI-powered document intelligence platform using OpenAI API, LangChain, vector embeddings, and semantic search, enabling users to retrieve context-aware insights from uploaded documents.
-- Designed secure authentication, authorization, and Role-Based Access Control (RBAC) systems for enterprise applications.
-- Contributed to backend development of a cryptocurrency exchange platform, implementing user management, transaction processing, and secure API integrations.
-- Developed backend services for pharmacy marketplace, restaurant engagement, gaming, and educational CRM platforms, delivering scalable business solutions across multiple industries.
-- Integrated third-party services including Google Reviews, payment gateways, and external APIs to enhance application functionality.
-- Worked closely with frontend developers, QA engineers, and product managers to deliver high-quality software through Agile development practices.
+- Built RESTful APIs and backend services with Node.js, NestJS, Express.js, MongoDB and PostgreSQL for SaaS, fintech, healthcare, gaming and education clients.
+- Built Willo Box, an AI document intelligence platform using OpenAI, LangChain and vector embeddings, letting users query uploaded PDFs and get context-aware answers through RAG.
+- Developed user management, transaction processing and secure API integrations for a cryptocurrency exchange platform.
+- Delivered backend services for a pharmacy marketplace, a restaurant engagement app, a gaming platform and an educational CRM.
+- Implemented authentication and RBAC, and integrated payment gateways, Google Reviews and other third-party APIs across client applications.
 
 ---
 
 ## Education
 
 ### BS Software Engineering — Virtual University of Pakistan
-Period: 07 October 2021 – 31 May 2025
 Location: Lahore
-Final grade: 3.69 / 4.0
+CGPA: 3.69 / 4.0
 
 ### F.Sc Pre-Engineering — Govt. Degree College
-Period: 22 May 2014 – 05 April 2016
 Final grade: 82%
 
 ---
@@ -90,28 +81,28 @@ Final grade: 82%
 ## Skills
 
 ### Frontend
-React.js, TypeScript, Vite, Bootstrap, Tailwind CSS, Zustand, TanStack Router/Query, Shadcn/UI
+TypeScript, React.js, Vite, Tailwind CSS, Zustand, TanStack Router/Query, Shadcn/UI
 
 ### Backend
-JavaScript, Express.js, Node.js, NestJS, GraphQL, Python, FastAPI, RabbitMQ, WebSockets, Microservices Architecture
+Node.js (TypeScript, JavaScript), NestJS, Express.js, Python (FastAPI), REST APIs, GraphQL, RabbitMQ, WebSockets, Microservices Architecture
 
 ### Databases
-MongoDB, PostgreSQL, MySQL, Redis, Vector Database, Firestore
+MongoDB, PostgreSQL, MySQL, Redis, pgvector, Pinecone, Firestore
+
+### Version Control & CI/CD
+Git, GitHub, GitLab, GitHub Actions
 
 ### Cloud & DevOps
 Docker, AWS (EC2, ECS, S3), Google Cloud Platform (Cloud Run, Artifact Registry, GCS)
 
-### Version Control & Collaboration
-Git, GitHub, GitLab, GitHub Actions, Husky, Jira, ClickUp, Slack
-
-### Testing
+### Testing & Code Quality
 Jest, ESLint, Prettier, Storybook, Unit Testing, Integration Testing, Postman Automation Testing, Playwright
 
-### AI & Automation
-OpenAI, LangChain, LangGraph, CrewAI, OpenAI Agents SDK, Model Context Protocol (MCP), Agentic AI, Multi-Agent Systems, AI Agent Orchestration, Retrieval-Augmented Generation (RAG)
+### Integrations
+Stripe, ArcGIS
 
-### GIS
-ArcGIS, PostGIS, geospatial planning workflows (used on AEDI and related municipal planning work)
+### AI & Automation
+OpenAI, LangChain, LangGraph, CrewAI, OpenAI Agents SDK, Model Context Protocol (MCP), Retrieval-Augmented Generation (RAG)
 
 ---
 
@@ -142,24 +133,16 @@ Technologies: Node.js, TypeScript, NestJS, Monday.com API, Webhooks
 Digital tipping platform that enables businesses to accept cashless tips through secure online payments. Scalable backend APIs, Stripe payment processing, authentication, RBAC, and responsive frontend features.
 Technologies: Node.js, NestJS, React.js, PostgreSQL, Stripe
 
-### Sidekick — Agentic AI Assistant
-Intelligent AI assistant capable of planning tasks, invoking external tools, evaluating responses against success criteria, and supporting human-in-the-loop interactions through graph-based agent workflows.
-Technologies: LangChain, LangGraph, Python
-
-### Autonomous Trading Floor — Multi-Agent AI Platform
-Multi-agent trading platform where specialized AI agents collaborate on market research, financial data analysis, and access to custom MCP servers for account management and market intelligence using autonomous agent orchestration.
-Technologies: Python, OpenAI Agents SDK, MCP (Model Context Protocol)
-
 ---
 
 ## Topics I Can Discuss
 
 - My work experience at Futurenostics and Argonteq
-- Projects listed above (AEDI, CMH, Willo Box, Sales Management System, Sidekick, Autonomous Trading Floor, Obon, Monday.com Automation, etc.)
-- Technical skills and stack (Node.js, NestJS, React, Python, FastAPI, PostgreSQL, Agentic AI, LangGraph, CrewAI, MCP, RAG, GIS, cloud)
+- Projects listed above (AEDI, Case Management Hub, Sales Management System, Willo Box, Monday.com Automation, Obon)
+- Technical skills and stack (Node.js, NestJS, React, Python, FastAPI, PostgreSQL, OpenAI, LangChain, LangGraph, CrewAI, MCP, RAG, ArcGIS, AWS, GCP)
 - Education background
 - Location, availability, and how to contact me
-- Freelance and full-time opportunities in SaaS, Agentic AI / LLM, healthcare-adjacent, GIS, and cloud-native products
+- Freelance and full-time opportunities in SaaS, LLM / AI, healthcare-adjacent, GIS, and cloud-native products
 
 ---
 

@@ -2,9 +2,9 @@ import ReactMarkdown from 'react-markdown'
 import { cn } from '../../utils/cn'
 
 const roleStyles = {
-  user: 'ml-auto max-w-[85%] bg-[#FF3D00] text-white',
-  assistant: 'mr-auto max-w-[85%] border border-stone-200 bg-white text-stone-800',
-  system: 'mx-auto max-w-[90%] text-center text-xs text-stone-500',
+  user: 'ml-auto max-w-[85%] bg-[#0A0A0A] text-white',
+  assistant: 'mr-auto max-w-[85%] border border-ink-200 bg-white text-ink-700',
+  system: 'mx-auto max-w-[90%] text-center text-xs text-ink-500',
 }
 
 const assistantMarkdownComponents = {
@@ -12,12 +12,12 @@ const assistantMarkdownComponents = {
   ul: ({ children }) => <ul className="mb-2 ml-4 list-disc space-y-1 last:mb-0">{children}</ul>,
   ol: ({ children }) => <ol className="mb-2 ml-4 list-decimal space-y-1 last:mb-0">{children}</ol>,
   li: ({ children }) => <li className="leading-relaxed">{children}</li>,
-  strong: ({ children }) => <strong className="font-semibold text-stone-900">{children}</strong>,
+  strong: ({ children }) => <strong className="font-semibold text-ink-900">{children}</strong>,
   em: ({ children }) => <em>{children}</em>,
   a: ({ href, children }) => (
     <a
       href={href}
-      className="text-[#FF3D00] underline underline-offset-2 hover:text-[#e63600]"
+      className="text-[#0A0A0A] underline underline-offset-2 hover:text-[#333333]"
       target="_blank"
       rel="noopener noreferrer"
     >

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './App.jsx'
 import ProjectDetail from './pages/ProjectDetail.jsx'
 import ChatWidget from './components/chat/ChatWidget.jsx'
+import CommandPalette from './components/command/CommandPalette.jsx'
 import './index.css'
 import './styles/styles.css'
 
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/project/:slug" element={<ProjectDetail />} />
       </Routes>
       <ChatWidget />
+      <CommandPalette />
     </BrowserRouter>
   </React.StrictMode>,
 )

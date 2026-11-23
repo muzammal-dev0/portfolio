@@ -36,11 +36,11 @@ function App() {
   }, [location.pathname, location.hash])
 
   return (
-    <div className="relative min-h-screen bg-ink-50 font-sans leading-normal tracking-normal text-ink antialiased">
+    <div className="relative min-h-screen bg-ink-50 font-sans leading-normal tracking-normal text-ink-900 antialiased">
       <div className="site-grain" aria-hidden />
       <a
         href="#home"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-mark focus:px-4 focus:py-2 focus:text-white focus:outline-none"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-mark focus:px-4 focus:py-2 focus:text-ink-50 focus:outline-none"
         onClick={(e) => {
           e.preventDefault()
           document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })
@@ -49,12 +49,14 @@ function App() {
         Skip to main content
       </a>
       <Header />
-      <Hero />
-      <About />
-      <TechnicalSkills />
-      <Projects />
-      <WorkExperience />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <TechnicalSkills />
+        <Projects />
+        <WorkExperience />
+        <Contact />
+      </main>
       <Footer />
     </div>
   )

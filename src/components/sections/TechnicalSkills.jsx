@@ -1,65 +1,31 @@
-import { useReducedMotion } from 'framer-motion'
 import {
   frontendSkills, backendSkills, databaseSkills,
   versionControlSkills, cloudDeploymentSkills, testingSkills, integrationSkills, aiSkills,
 } from '../../constants/skills'
+import LogSection from '../layout/LogSection'
 
-const allSkills = [
-  ...aiSkills,
-  ...backendSkills,
-  ...frontendSkills,
-  ...databaseSkills,
-  ...cloudDeploymentSkills,
-  ...integrationSkills,
-  ...testingSkills,
-  ...versionControlSkills,
-].map((s) => s.title)
+const groups = [
+  { name: 'AI & LLM', items: aiSkills },
+  { name: 'Backend', items: backendSkills },
+  { name: 'Frontend', items: frontendSkills },
+  { name: 'Data', items: databaseSkills },
+  { name: 'Cloud & DevOps', items: cloudDeploymentSkills },
+  { name: 'Testing', items: testingSkills },
+  { name: 'Integrations', items: integrationSkills },
+  { name: 'Version control', items: versionControlSkills },
+].filter((g) => g.items.length)
 
-const rowA = allSkills.filter((_, i) => i % 2 === 0)
-const rowB = allSkills.filter((_, i) => i % 2 === 1)
-
-const MarqueeRow = ({ items, reverse, reduced }) => {
-  const loop = [...items, ...items, ...items, ...items]
-  return (
-    <div className="overflow-hidden py-3">
-      <div
-        className={`flex w-max gap-3 ${
-          reduced ? '' : reverse ? 'animate-marquee-rev' : 'animate-marquee'
-        }`}
-      >
-        {loop.map((skill, i) => (
-          <span
-            key={`${skill}-${i}`}
-            className="shrink-0 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 font-mono text-sm text-ink-100"
-          >
-            {skill}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-const TechnicalSkills = () => {
-  const prefersReducedMotion = useReducedMotion()
-
-  return (
-    <section id="skills" className="overflow-hidden bg-ink py-24 text-ink-50 md:py-28">
-      <div className="mx-auto mb-12 max-w-6xl px-6">
-        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-mark">
-          Skills
-        </p>
-        <h2 className="max-w-xl font-display text-4xl font-bold tracking-tight md:text-5xl">
-          The stack I trust in production.
-        </h2>
-      </div>
-
-      <div className="space-y-2 border-y border-white/10 py-4">
-        <MarqueeRow items={rowA} reduced={prefersReducedMotion} />
-        <MarqueeRow items={rowB} reverse reduced={prefersReducedMotion} />
-      </div>
-    </section>
-  )
-}
+const TechnicalSkills = () => (
+  <LogSection id="skills" label="Stack" title="The tools I use in production.">
+    <dl className="divide-y divide-ink-200 border-y border-ink-200">
+      {groups.map((g) => (
+        <div key={g.name} className="grid gap-1.5 py-5 sm:grid-cols-[11rem_1fr] sm:gap-6">
+          <dt className="text-sm font-bold text-ink-900">{g.name}</dt>
+          <dd className="leading-relaxed text-ink-600">{g.items.map((s) => s.title).join(', ')}</dd>
+        </div>
+      ))}
+    </dl>
+  </LogSection>
+)
 
 export default TechnicalSkills

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react'
+import { OPEN_CHAT } from '../command/commandBus'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { CHATBOT_NAME, CHATBOT_SUBTITLE } from '../../constants/chatbot'
 import { useChatbot } from '../../hooks/useChatbot'
@@ -31,6 +32,11 @@ const ChatWidget = () => {
     close()
     requestAnimationFrame(() => fabRef.current?.focus())
   }, [close])
+
+  useEffect(() => {
+    window.addEventListener(OPEN_CHAT, open)
+    return () => window.removeEventListener(OPEN_CHAT, open)
+  }, [open])
 
   const toggle = useCallback(() => {
     if (isOpen) handleClose()
@@ -103,26 +109,26 @@ const ChatWidget = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="chat-title"
-            className="fixed bottom-24 right-4 z-[60] flex max-h-[min(560px,calc(100vh-7rem))] w-[calc(100vw-2rem)] flex-col overflow-hidden border border-stone-200 bg-stone-50 shadow-xl sm:right-6 sm:w-[380px]"
+            className="fixed bottom-24 right-4 z-[60] flex max-h-[min(560px,calc(100vh-7rem))] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border border-ink-200 bg-white shadow-xl sm:right-6 sm:w-[380px]"
             {...panelMotion}
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-stone-200 bg-white px-4 py-3">
+            <div className="flex items-center justify-between border-b border-ink-200 bg-white px-4 py-3">
               <div className="min-w-0">
                 <h2
                   id="chat-title"
-                  className="truncate font-display text-sm font-bold text-stone-900"
+                  className="truncate font-display text-sm font-bold text-ink-900"
                 >
                   {CHATBOT_NAME}
                 </h2>
-                <p className="text-xs text-stone-500">{CHATBOT_SUBTITLE}</p>
+                <p className="text-xs text-ink-500">{CHATBOT_SUBTITLE}</p>
               </div>
               <div className="flex shrink-0 items-center gap-1">
                 <button
                   type="button"
                   onClick={clearChat}
                   aria-label="Clear chat"
-                  className="flex h-8 w-8 items-center justify-center text-stone-400 transition hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00]"
+                  className="flex h-8 w-8 items-center justify-center text-ink-400 transition hover:text-ink-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]"
                 >
                   <i className="fas fa-redo-alt text-xs" aria-hidden />
                 </button>
@@ -131,7 +137,7 @@ const ChatWidget = () => {
                   type="button"
                   onClick={handleClose}
                   aria-label="Close chat"
-                  className="flex h-8 w-8 items-center justify-center text-stone-400 transition hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00]"
+                  className="flex h-8 w-8 items-center justify-center text-ink-400 transition hover:text-ink-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]"
                 >
                   <i className="fas fa-times" aria-hidden />
                 </button>
@@ -153,7 +159,7 @@ const ChatWidget = () => {
             </div>
 
             {/* Footer */}
-            <div className="border-t border-stone-200 bg-white p-3">
+            <div className="border-t border-ink-200 bg-white p-3">
               {showSuggestions && (
                 <ChatSuggestedQuestions
                   className="mb-3"
@@ -179,7 +185,7 @@ const ChatWidget = () => {
         onClick={toggle}
         aria-label={isOpen ? 'Close chat' : 'Open chat'}
         aria-expanded={isOpen}
-        className="fixed bottom-6 right-4 z-[60] flex h-14 w-14 items-center justify-center bg-[#FF3D00] text-white shadow-lg transition hover:bg-[#e63600] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00] focus-visible:ring-offset-2 focus-visible:ring-offset-stone-50 sm:right-6"
+        className="fixed bottom-6 right-4 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#0A0A0A] text-white shadow-lg transition hover:bg-[#333333] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-50 sm:right-6"
       >
         <i
           className={`fas ${isOpen ? 'fa-times' : 'fa-comment-dots'} text-xl`}

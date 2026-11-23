@@ -1,114 +1,112 @@
+import { useEffect } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
-import { getProjectBySlug } from '../constants/projects'
+import { getProjectBySlug, projects } from '../constants/projects'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import { personalInfo } from '../constants/personalInfo'
+
+const splitTitle = (title) => {
+  const [name, ...rest] = title.split(' — ')
+  return { name, tagline: rest.join(' — ') }
+}
 
 const ProjectDetail = () => {
   const { slug } = useParams()
   const project = slug ? getProjectBySlug(slug) : null
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
+
   if (!project) return <Navigate to="/" replace />
 
+  const { name, tagline } = splitTitle(project.title)
+  const index = projects.findIndex((p) => p.slug === project.slug)
+  const next = projects[(index + 1) % projects.length]
+
   return (
-    <div className="min-h-screen bg-ink-50 font-sans text-ink antialiased">
-      <div className="site-grain" aria-hidden />
+    <div className="min-h-screen bg-ink-50 font-sans text-ink-900 antialiased">
       <Header />
 
-      <main className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-        <Link
-          to="/#projects"
-          className="mb-12 inline-flex items-center gap-2 text-sm font-medium text-ink-400 transition hover:text-mark"
-        >
-          <i className="fas fa-arrow-left text-[10px]" aria-hidden />
-          Back to work
-        </Link>
-
-        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-mark">
-          Project
-        </p>
-
-        <h1 className="mb-4 font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-          {project.title}
-        </h1>
-
-        {project.role && (
-          <p className="mb-10 text-sm text-ink-400">
-            Role: <span className="font-semibold text-mark">{project.role}</span>
-          </p>
-        )}
-
-        <div className="mb-10 flex aspect-video items-center justify-center rounded-[1.75rem] bg-ink text-mark/40">
-          <i className={`${project.icon ?? 'fas fa-code'} text-6xl md:text-7xl`} aria-hidden />
-        </div>
-
-        <p className="mb-10 text-base leading-relaxed text-ink-500 md:text-lg">
-          {project.description}
-        </p>
-
-        {project.bullets?.length > 0 && (
-          <section className="mb-10">
-            <h2 className="mb-5 font-display text-xl font-bold md:text-2xl">Highlights</h2>
-            <ul className="space-y-3">
-              {project.bullets.map((line, i) => (
-                <li key={i} className="flex gap-3 text-sm leading-relaxed text-ink-500 md:text-base">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mark" aria-hidden />
-                  <span>{line}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        <section className="mb-12">
-          <h2 className="mb-5 font-display text-xl font-bold md:text-2xl">Tech Stack</h2>
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full bg-white px-3 py-1.5 font-mono text-xs text-ink-500 shadow-sm ring-1 ring-ink/10"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        <div className="flex flex-wrap gap-3 border-t border-ink/10 pt-10">
+      <main className="px-6 pb-28 pt-12 md:pt-20">
+        <article className="mx-auto max-w-3xl">
           <Link
-            to="/#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-ink-50 transition hover:bg-mark"
+            to="/#projects"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.1em] text-ink-900 underline-offset-[6px] hover:underline"
           >
-            Discuss this project
+            <i className="fas fa-arrow-left text-[10px]" aria-hidden />
+            All projects
           </Link>
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-ink"
-            >
-              Live Demo
-            </a>
-          )}
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-ink"
-            >
-              GitHub
-            </a>
-          )}
-        </div>
 
-        <p className="mt-12 text-sm text-ink-400">
-          Questions?{' '}
-          <a href={`mailto:${personalInfo.email}`} className="font-semibold text-mark hover:underline">
-            {personalInfo.email}
-          </a>
-        </p>
+          <p className="eyebrow mt-14">Project</p>
+          <h1
+            className="mt-4 font-bold leading-[1.04] tracking-[-0.03em]"
+            style={{ fontSize: 'clamp(2.5rem, 6vw, 4.25rem)' }}
+          >
+            {name}
+          </h1>
+          {tagline && <p className="mt-3 text-xl text-ink-500">{tagline}</p>}
+
+          <p className="mt-10 text-xl leading-relaxed text-ink-800 md:text-[1.375rem] md:leading-[1.6]">
+            {project.description}
+          </p>
+
+          {project.bullets?.length > 0 && (
+            <section className="mt-16">
+              <div className="flex items-center gap-4">
+                <h2 className="eyebrow shrink-0">Highlights</h2>
+                <span className="h-px flex-1 bg-ink-200" aria-hidden />
+              </div>
+              <ul className="mt-8 space-y-4">
+                {project.bullets.map((line, i) => (
+                  <li key={i} className="flex gap-3 text-lg leading-relaxed text-ink-700">
+                    <span className="mt-[0.8em] h-px w-3 shrink-0 bg-ink-900" aria-hidden />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <section className="mt-16">
+            <div className="flex items-center gap-4">
+              <h2 className="eyebrow shrink-0">Stack</h2>
+              <span className="h-px flex-1 bg-ink-200" aria-hidden />
+            </div>
+            <p className="mt-6 font-mono text-sm uppercase leading-loose tracking-[0.06em] text-ink-700">
+              {project.technologies.join(' / ')}
+            </p>
+          </section>
+
+          <div className="mt-16 flex flex-wrap gap-3">
+            <a
+              href={`mailto:${personalInfo.email}?subject=${encodeURIComponent(`About ${name}`)}`}
+              className="pill pill-solid"
+            >
+              Discuss this project
+            </a>
+            {project.demo && (
+              <a href={project.demo} target="_blank" rel="noopener noreferrer" className="pill">
+                Live demo ↗
+              </a>
+            )}
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="pill">
+                GitHub ↗
+              </a>
+            )}
+          </div>
+
+          {next && next.slug !== project.slug && (
+            <Link to={`/project/${next.slug}`} className="group mt-24 block border-t border-ink-200 pt-8">
+              <p className="eyebrow">Next project</p>
+              <p className="mt-3 flex items-center justify-between text-2xl font-bold tracking-tight md:text-3xl">
+                {splitTitle(next.title).name}
+                <i className="fas fa-arrow-right text-base transition-transform group-hover:translate-x-1" aria-hidden />
+              </p>
+            </Link>
+          )}
+        </article>
       </main>
 
       <Footer />

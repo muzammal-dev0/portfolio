@@ -9,7 +9,7 @@ const ChatSuggestedQuestions = ({ onSelect, disabled, className }) => (
         type="button"
         disabled={disabled}
         onClick={() => onSelect(message)}
-        className="border border-stone-200 bg-white px-3 py-1.5 text-left text-xs text-stone-700 transition hover:border-[#FF3D00]/40 hover:bg-stone-50 hover:text-stone-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3D00] disabled:cursor-not-allowed disabled:opacity-50"
+        className="border border-ink-200 bg-white px-3 py-1.5 text-left text-xs text-ink-700 transition hover:border-[#0A0A0A]/40 hover:bg-ink-100 hover:text-ink-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] disabled:cursor-not-allowed disabled:opacity-50"
       >
         {label}
       </button>

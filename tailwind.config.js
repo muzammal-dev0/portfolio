@@ -7,29 +7,31 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Cool blue-black ink scale (token name kept so every page picks it up)
         ink: {
-          DEFAULT: '#111111',
-          50: '#f7f7f5',
-          100: '#ebebe8',
-          200: '#d4d4d0',
-          300: '#a3a39c',
-          400: '#73736c',
-          500: '#52524c',
-          600: '#3a3a36',
-          700: '#262623',
-          800: '#1a1a18',
-          900: '#111111',
+          DEFAULT: '#0A0A0A',
+          50: '#FAFAFA',
+          100: '#F2F2F2',
+          200: '#E5E5E5',
+          300: '#D4D4D4',
+          400: '#A3A3A3',
+          500: '#6B6B6B',
+          600: '#4D4D4D',
+          700: '#333333',
+          800: '#1A1A1A',
+          900: '#0A0A0A',
         },
+        // Single cobalt accent
         mark: {
-          DEFAULT: '#e11d48',
-          dim: '#be123c',
-          soft: 'rgba(225, 29, 72, 0.1)',
+          DEFAULT: '#0A0A0A',
+          dim: '#333333',
+          soft: '#F2F2F2',
         },
       },
       fontFamily: {
-        sans: ['Figtree', 'system-ui', 'sans-serif'],
-        display: ['Fraunces', 'Georgia', 'serif'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        display: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
     },
   },

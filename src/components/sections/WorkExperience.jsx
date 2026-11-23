@@ -13,9 +13,9 @@ const titleCase = (s) => s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase()
 
 const WorkExperience = () => (
   <LogSection id="experience" label="Experience" title="Where I've worked.">
-    <ol className="space-y-16">
+    <ol className="space-y-12 md:space-y-16">
       {workExperience.map((exp) => (
-        <li key={exp.id} className="grid gap-3 sm:grid-cols-[11rem_1fr] sm:gap-6">
+        <li key={exp.id} className="grid gap-2 sm:grid-cols-[11rem_1fr] sm:gap-6">
           <p className="pt-1.5 font-mono text-xs uppercase tracking-[0.08em] text-ink-500">
             {formatDate(exp.startDate)} — {formatDate(exp.endDate)}
           </p>
@@ -24,9 +24,9 @@ const WorkExperience = () => (
             <p className="mt-1 text-ink-500">
               {titleCase(exp.company)}, {exp.location.split(', ').slice(-2).join(', ')}
             </p>
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-5 space-y-3 md:mt-6">
               {exp.responsibilities.slice(0, 4).map((resp, i) => (
-                <li key={i} className="flex gap-3 leading-relaxed text-ink-600">
+                <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-ink-600 md:text-base">
                   <span className="mt-[0.75em] h-px w-3 shrink-0 bg-ink-900" aria-hidden />
                   <span>{resp}</span>
                 </li>

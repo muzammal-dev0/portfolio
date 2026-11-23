@@ -28,7 +28,7 @@ const ProjectDetail = () => {
     <div className="min-h-screen bg-ink-50 font-sans text-ink-900 antialiased">
       <Header />
 
-      <main className="px-6 pb-28 pt-12 md:pt-20">
+      <main className="px-5 pb-20 pt-10 md:px-6 md:pb-28 md:pt-20">
         <article className="mx-auto max-w-3xl">
           <Link
             to="/#projects"
@@ -38,16 +38,16 @@ const ProjectDetail = () => {
             All projects
           </Link>
 
-          <p className="eyebrow mt-14">Project</p>
+          <p className="eyebrow mt-10 md:mt-14">Project</p>
           <h1
             className="mt-4 font-bold leading-[1.04] tracking-[-0.03em]"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 4.25rem)' }}
           >
             {name}
           </h1>
-          {tagline && <p className="mt-3 text-xl text-ink-500">{tagline}</p>}
+          {tagline && <p className="mt-3 text-lg text-ink-500 md:text-xl">{tagline}</p>}
 
-          <p className="mt-10 text-xl leading-relaxed text-ink-800 md:text-[1.375rem] md:leading-[1.6]">
+          <p className="mt-8 text-lg leading-relaxed text-ink-800 md:mt-10 md:text-[1.375rem] md:leading-[1.6]">
             {project.description}
           </p>
 
@@ -59,7 +59,7 @@ const ProjectDetail = () => {
               </div>
               <ul className="mt-8 space-y-4">
                 {project.bullets.map((line, i) => (
-                  <li key={i} className="flex gap-3 text-lg leading-relaxed text-ink-700">
+                  <li key={i} className="flex gap-3 text-base leading-relaxed text-ink-700 md:text-lg">
                     <span className="mt-[0.8em] h-px w-3 shrink-0 bg-ink-900" aria-hidden />
                     <span>{line}</span>
                   </li>
@@ -78,7 +78,7 @@ const ProjectDetail = () => {
             </p>
           </section>
 
-          <div className="mt-16 flex flex-wrap gap-3">
+          <div className="mt-14 flex flex-col gap-3 sm:mt-16 sm:flex-row sm:flex-wrap">
             <a
               href={`mailto:${personalInfo.email}?subject=${encodeURIComponent(`About ${name}`)}`}
               className="pill pill-solid"
@@ -98,7 +98,7 @@ const ProjectDetail = () => {
           </div>
 
           {next && next.slug !== project.slug && (
-            <Link to={`/project/${next.slug}`} className="group mt-24 block border-t border-ink-200 pt-8">
+            <Link to={`/project/${next.slug}`} className="group mt-16 block border-t border-ink-200 pt-8 md:mt-24">
               <p className="eyebrow">Next project</p>
               <p className="mt-3 flex items-center justify-between text-2xl font-bold tracking-tight md:text-3xl">
                 {splitTitle(next.title).name}

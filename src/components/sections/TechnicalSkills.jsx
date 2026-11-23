@@ -19,9 +19,9 @@ const TechnicalSkills = () => (
   <LogSection id="skills" label="Stack" title="The tools I use in production.">
     <dl className="divide-y divide-ink-200 border-y border-ink-200">
       {groups.map((g) => (
-        <div key={g.name} className="grid gap-1.5 py-5 sm:grid-cols-[11rem_1fr] sm:gap-6">
+        <div key={g.name} className="grid gap-1 py-4 sm:grid-cols-[11rem_1fr] sm:gap-6 sm:py-5">
           <dt className="text-sm font-bold text-ink-900">{g.name}</dt>
-          <dd className="leading-relaxed text-ink-600">{g.items.map((s) => s.title).join(', ')}</dd>
+          <dd className="text-[15px] leading-relaxed text-ink-600 md:text-base">{g.items.map((s) => s.title).join(', ')}</dd>
         </div>
       ))}
     </dl>

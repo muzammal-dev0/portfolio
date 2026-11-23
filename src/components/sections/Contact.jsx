@@ -9,23 +9,23 @@ const links = [
 ]
 
 const Contact = () => (
-  <section id="contact" className="border-t border-ink-200 px-6 py-28 text-center md:py-36">
+  <section id="contact" className="border-t border-ink-200 px-5 py-20 text-center md:px-6 md:py-36">
     <p className="eyebrow">Contact</p>
     <h2
-      className="mx-auto mt-8 max-w-3xl font-bold leading-[1.04] tracking-[-0.03em] text-ink-900"
+      className="mx-auto mt-6 max-w-3xl font-bold md:mt-8 leading-[1.04] tracking-[-0.03em] text-ink-900"
       style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
     >
       Have a product to build? Let&apos;s talk.
     </h2>
-    <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-ink-600">
+    <p className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-ink-600 md:mt-6 md:text-lg">
       Open to freelance and full-time roles in SaaS, LLM/AI, healthcare, GIS and cloud-native products.
     </p>
 
-    <a href={`mailto:${personalInfo.email}`} className="pill pill-solid mt-12 px-10 normal-case tracking-normal text-sm">
+    <a href={`mailto:${personalInfo.email}`} className="pill pill-solid mt-10 w-full max-w-xs py-3.5 text-sm normal-case tracking-normal sm:w-auto sm:max-w-none sm:px-10 md:mt-12">
       {personalInfo.email}
     </a>
 
-    <ul className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3">
+    <ul className="mx-auto mt-10 grid max-w-xs grid-cols-2 gap-x-6 gap-y-5 sm:flex sm:max-w-none sm:flex-wrap sm:justify-center sm:gap-x-8">
       {links.map((l) => (
         <li key={l.label}>
           <a

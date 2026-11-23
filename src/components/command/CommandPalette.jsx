@@ -279,7 +279,7 @@ const CommandPalette = () => {
               })}
             </ul>
 
-            <div className="flex items-center gap-4 border-t border-ink-200 px-4 py-2.5 font-mono text-[11px] text-ink-400">
+            <div className="hidden items-center gap-4 border-t border-ink-200 px-4 py-2.5 sm:flex font-mono text-[11px] text-ink-400">
               <span className="flex items-center gap-1.5"><kbd className="kbd">↑</kbd><kbd className="kbd">↓</kbd> move</span>
               <span className="flex items-center gap-1.5"><kbd className="kbd">↵</kbd> open</span>
               <span className="ml-auto hidden items-center gap-1.5 sm:flex"><kbd className="kbd">{modKeyLabel}</kbd><kbd className="kbd">K</kbd> toggle</span>

@@ -109,7 +109,7 @@ const ChatWidget = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="chat-title"
-            className="fixed bottom-24 right-4 z-[60] flex max-h-[min(560px,calc(100vh-7rem))] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border border-ink-200 bg-white shadow-xl sm:right-6 sm:w-[380px]"
+            className="fixed bottom-20 right-4 z-[60] sm:bottom-24 flex max-h-[min(560px,calc(100vh-7rem))] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border border-ink-200 bg-white shadow-xl sm:right-6 sm:w-[380px]"
             {...panelMotion}
           >
             {/* Header */}
@@ -185,7 +185,7 @@ const ChatWidget = () => {
         onClick={toggle}
         aria-label={isOpen ? 'Close chat' : 'Open chat'}
         aria-expanded={isOpen}
-        className="fixed bottom-6 right-4 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#0A0A0A] text-white shadow-lg transition hover:bg-[#333333] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-50 sm:right-6"
+        className="fixed bottom-4 right-4 z-[60] flex h-12 w-12 items-center sm:bottom-6 sm:h-14 sm:w-14 justify-center rounded-full bg-[#0A0A0A] text-white shadow-lg transition hover:bg-[#333333] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-50 sm:right-6"
       >
         <i
           className={`fas ${isOpen ? 'fa-times' : 'fa-comment-dots'} text-xl`}
